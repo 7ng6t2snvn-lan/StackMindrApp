@@ -29,7 +29,7 @@
   </div>
   <div class="container">
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: April 18, 2026</p>
+    <p class="updated">Last updated: May 4, 2026</p>
 
     <h2>Overview</h2>
     <p>StackMindr ("we," "our," or "the app") is a peptide and hormone protocol tracking application. We are committed to protecting your privacy and being transparent about how your data is handled.</p>
@@ -48,6 +48,12 @@
     <p>If you enable the AI Protocol Assistant (Pro feature), your protocol data — including compound names, doses, schedules, and your questions — is sent to Anthropic (the maker of Claude AI) to generate personalized responses. Anthropic processes your data solely to generate a response. Data sent via their API is not used to train AI models and is handled in accordance with <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Anthropic's Privacy Policy</a>.</p>
     <p>AI features require explicit consent before activation. You can revoke AI consent at any time in Settings, which immediately stops data sharing with Anthropic.</p>
 
+    <h2>Apple Health Integration</h2>
+    <p>StackMindr Pro can optionally read sleep data from Apple Health to display alongside your daily protocol log. This integration is strictly opt-in: the app never accesses Apple Health unless you tap "Connect Apple Health" in Settings and grant permission through the iOS system prompt.</p>
+    <p><strong>Health data stays on your device.</strong> Sleep samples read from Apple Health are used only to render the sleep duration shown on each day's protocol card. This data is never transmitted to our servers, never written to Firestore, never sent to Anthropic or any AI service, and is not retained between app sessions. We do not collect, store, sell, or share any health data.</p>
+    <p>You can revoke StackMindr's access to Apple Health at any time by opening iOS <strong>Settings → Privacy &amp; Security → Health → StackMindr</strong> and toggling the data categories off. Doing so immediately stops the app from reading any health data; previously displayed sleep durations will no longer appear.</p>
+    <p>StackMindr does not write any data to Apple Health.</p>
+
     <h2>How We Use Your Data</h2>
     <p>Your data is used solely to provide the app's functionality — tracking your protocols, calculating doses, managing inventory, and powering the AI assistant. We do not sell, rent, or share your personal data with third parties for marketing purposes.</p>
 
@@ -61,6 +67,7 @@
       <li><strong>Cloud Firestore</strong> — for secure data storage</li>
       <li><strong>Anthropic API</strong> — for AI Protocol Assistant responses (Pro only, requires consent)</li>
       <li><strong>Apple StoreKit</strong> — for subscription purchases and management</li>
+      <li><strong>Apple HealthKit</strong> — for reading sleep data on-device (Pro only, requires consent; data is not transmitted to any server)</li>
     </ul>
 
     <h2>Data Retention & Deletion</h2>
@@ -76,7 +83,7 @@
     <p>We may update this privacy policy from time to time. Any changes will be reflected on this page with an updated date.</p>
 
     <h2>Contact</h2>
-    <p>If you have questions about this privacy policy or your data, contact us at <a href="mailto:stackmindr@proton.me">stackmindr@proton.me</a>.</p>
+    <p>If you have questions about this privacy policy or your data, contact us at <a href="mailto:justin@stackmindr.app">justin@stackmindr.app</a>.</p>
 
     <div class="footer">
       © 2026 Justin Wills · <a href="https://7ng6t2snvn-lan.github.io/StackMindrApp/">StackMindr</a> · <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a>
