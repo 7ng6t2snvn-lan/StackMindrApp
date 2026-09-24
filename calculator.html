@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2a1f1f">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="format-detection" content="telephone=no">
+
+  <title>Free Peptide, TRT, HCG &amp; HGH Reconstitution Calculator — StackMindr</title>
+  <meta name="description" content="Free reconstitution and dose calculator for peptides, TRT, HCG, and HGH. Enter your vial size, BAC water, and target dose to get the exact units to draw on a U-100 insulin syringe. Same math as the StackMindr app.">
+  <meta name="keywords" content="peptide reconstitution calculator, peptide dose calculator, BAC water calculator, TRT dose calculator, HCG reconstitution calculator, HGH IU calculator, insulin syringe units calculator, peptide mixing calculator, semaglutide dose calculator">
+  <meta name="author" content="STACKMINDR LLC">
+
+  <link rel="canonical" href="https://stackmindr.app/calculator.html">
+
+  <link rel="icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+  <meta name="apple-itunes-app" content="app-id=6762165518">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="StackMindr">
+  <meta property="og:title" content="Free Peptide, TRT, HCG &amp; HGH Reconstitution Calculator">
+  <meta property="og:description" content="Enter vial size, BAC water, and target dose — get the exact units to draw. Free calculator for peptides, TRT, HCG, and HGH. The OS for your body.">
+  <meta property="og:url" content="https://stackmindr.app/calculator.html">
+  <meta property="og:image" content="https://stackmindr.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Reconstitution &amp; Dose Calculator — StackMindr">
+  <meta name="twitter:description" content="Peptide, TRT, HCG, and HGH dose math, done for you. Free.">
+  <meta name="twitter:image" content="https://stackmindr.app/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "StackMindr Reconstitution & Dose Calculator",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web",
+    "url": "https://stackmindr.app/calculator.html",
+    "description": "Free reconstitution and dose calculator for peptides, TRT, HCG, and HGH. Converts vial size, BAC water, and target dose into the exact units to draw on a U-100 insulin syringe.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "STACKMINDR LLC", "url": "https://stackmindr.app/" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "StackMindr", "item": "https://stackmindr.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Calculator", "item": "https://stackmindr.app/calculator.html" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --maroon: #8b2e1f;
+      --maroon-dark: #6b1a10;
+      --cream: #faf7f5;
+      --dark: #1a1210;
+      --text: #2a1f1f;
+      --text-muted: #8a7a7a;
+      --gold: #c9a84c;
+      --line: #ece6e3;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; color: var(--text); background: var(--cream); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; height: auto; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+
+    /* ── NAV ───────────────────────────────────────── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(26,18,16,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 12px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 0 rgba(255,255,255,0.06); }
+    .nav-logo { display: flex; align-items: center; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: #fff; letter-spacing: -0.3px; text-decoration: none; }
+    .nav-logo img { height: 22px; width: auto; display: block; margin-right: 10px; }
+    .nav-logo span { color: var(--maroon); filter: brightness(1.6); }
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a { color: #ccc; text-decoration: none; font-size: 14px; font-weight: 400; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
+    .nav-cta { background: var(--maroon); color: #fff !important; padding: 8px 20px; border-radius: 8px; font-weight: 600 !important; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--maroon-dark); }
+
+    /* ── HEADER ────────────────────────────────────── */
+    .calc-hero { padding: 128px 24px 56px; background: linear-gradient(170deg, var(--dark) 0%, #2a1210 45%, var(--maroon-dark) 100%); text-align: center; position: relative; overflow: hidden; }
+    .calc-hero::before { content: ''; position: absolute; top: -40%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(201,168,76,0.10) 0%, transparent 70%); }
+    .calc-hero > * { position: relative; z-index: 1; }
+    .calc-hero .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 2.4px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .calc-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 5vw, 52px); font-weight: 700; color: #fff; line-height: 1.08; letter-spacing: -0.5px; margin-bottom: 16px; }
+    .calc-hero h1 span { color: var(--gold); font-style: italic; }
+    .calc-hero p { color: rgba(255,255,255,0.7); font-size: 17px; line-height: 1.6; max-width: 620px; margin: 0 auto; }
+
+    /* ── CALCULATOR ────────────────────────────────── */
+    .calc-wrap { max-width: 860px; margin: -34px auto 0; padding: 0 24px 40px; position: relative; z-index: 5; }
+    .calc-card { background: #fff; border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 24px 60px rgba(26,18,16,0.12); overflow: hidden; }
+
+    .mode-tabs { display: flex; gap: 4px; padding: 8px; background: #f5f0ee; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+    .mode-tab { flex: 1 1 auto; min-width: 88px; text-align: center; padding: 12px 10px; border: none; background: transparent; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600; color: var(--text-muted); border-radius: 12px; cursor: pointer; transition: all 0.2s; }
+    .mode-tab:hover { color: var(--text); }
+    .mode-tab.active { background: var(--maroon); color: #fff; box-shadow: 0 4px 14px rgba(139,46,31,0.25); }
+
+    .calc-body { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .calc-body[hidden] { display: none; }
+    .calc-inputs { padding: 32px; border-right: 1px solid var(--line); }
+    .calc-output { padding: 32px; background: linear-gradient(175deg, #fdf8f7, #fff); }
+    .mode-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+    .mode-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 22px; line-height: 1.5; }
+
+    .field { margin-bottom: 18px; }
+    .field label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 7px; }
+    .field .hint { font-weight: 400; color: var(--text-muted); }
+    .input-row { display: flex; gap: 8px; }
+    .field input, .field select { width: 100%; font-family: 'Outfit', sans-serif; font-size: 16px; color: var(--text); padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: #fff; transition: border-color 0.2s; -webkit-appearance: none; appearance: none; }
+    .field input:focus, .field select:focus { border-color: var(--maroon); }
+    .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238a7a7a' d='M6 8 0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 34px; }
+    .input-row select { width: 108px; flex-shrink: 0; }
+
+    .result-hero { text-align: center; padding: 8px 0 20px; border-bottom: 1px dashed var(--line); margin-bottom: 20px; }
+    .result-hero .r-label { font-size: 12px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+    .result-hero .r-value { font-family: 'Cormorant Garamond', serif; font-size: 64px; font-weight: 700; color: var(--maroon); line-height: 1; letter-spacing: -1px; }
+    .result-hero .r-value span { font-size: 22px; color: var(--text-muted); font-weight: 400; font-family: 'Outfit', sans-serif; margin-left: 4px; }
+    .result-hero .r-caption { font-size: 13px; color: var(--text-muted); margin-top: 10px; }
+    .result-hero .r-caption b { color: var(--text); }
+
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .stat { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+    .stat .s-label { font-size: 11px; font-weight: 600; letter-spacing: 0.6px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 5px; }
+    .stat .s-value { font-size: 20px; font-weight: 600; color: var(--text); }
+    .stat .s-value small { font-size: 13px; font-weight: 400; color: var(--text-muted); }
+
+    .warn { margin-top: 18px; background: rgba(201,168,76,0.14); border: 1px solid rgba(201,168,76,0.5); color: #7a5c12; font-size: 13px; line-height: 1.5; padding: 12px 14px; border-radius: 10px; }
+    .warn.hidden { display: none; }
+
+    /* ── EXPLAINER / CTA ───────────────────────────── */
+    .explain { max-width: 760px; margin: 44px auto 0; padding: 0 24px; }
+    .explain h2 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; margin-bottom: 14px; }
+    .explain p { color: var(--text-muted); font-size: 15px; line-height: 1.75; margin-bottom: 14px; }
+    .explain strong { color: var(--text); }
+
+    .app-cta { max-width: 860px; margin: 52px auto 0; padding: 0 24px; }
+    .app-cta-inner { background: linear-gradient(170deg, var(--dark) 0%, #2a1210 55%, var(--maroon-dark) 100%); border-radius: 20px; padding: 44px 36px; text-align: center; position: relative; overflow: hidden; }
+    .app-cta-inner::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 65%); }
+    .app-cta-inner > * { position: relative; z-index: 1; }
+    .app-cta h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 4vw, 36px); font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .app-cta h2 em { color: var(--gold); font-style: italic; }
+    .app-cta p { color: rgba(255,255,255,0.6); font-size: 15.5px; line-height: 1.6; max-width: 520px; margin: 0 auto 28px; }
+    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--maroon); color: #fff; padding: 14px 26px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 15px; transition: all 0.3s; }
+    .btn-primary:hover { background: var(--maroon-dark); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(139,46,31,0.4); }
+    .btn-store { display: inline-flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.85); text-decoration: none; font-size: 15px; font-weight: 500; padding: 13px 24px; border: 1px solid rgba(255,255,255,0.18); border-radius: 12px; transition: all 0.25s; }
+    .btn-store:hover { color: #fff; border-color: rgba(255,255,255,0.4); transform: translateY(-2px); }
+
+    .disclaimer { max-width: 760px; margin: 40px auto 0; padding: 0 24px; }
+    .disclaimer p { font-size: 12.5px; line-height: 1.7; color: var(--text-muted); font-style: italic; text-align: center; }
+
+    /* ── FOOTER ────────────────────────────────────── */
+    footer { background: #140d0c; color: rgba(255,255,255,0.45); padding: 52px 40px 48px; text-align: center; font-size: 13px; margin-top: 56px; }
+    .footer-logo { width: 168px; height: auto; opacity: 0.82; margin: 0 auto 26px; display: block; }
+    footer a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: #fff; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; flex-wrap: wrap; }
+    .footer-disclaimer { max-width: 660px; margin: 0 auto 18px; font-size: 12px; line-height: 1.7; color: rgba(255,255,255,0.32); }
+
+    @media (max-width: 768px) {
+      nav { padding: 12px 20px; }
+      .nav-links { gap: 0; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .calc-body { grid-template-columns: 1fr; }
+      .calc-inputs { border-right: none; border-bottom: 1px solid var(--line); }
+      .result-hero .r-value { font-size: 54px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo" aria-label="StackMindr home">
+      <img src="images/logo-mark-light.png" alt="" width="97" height="162">
+      <b style="font-weight:700"><span>Stack</span>Mindr</b>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#features">Features</a>
+      <a href="calculator.html" class="active">Calculator</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="index.html#get" class="nav-cta">Get the app</a>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <section class="calc-hero">
+    <div class="eyebrow">Free calculator</div>
+    <h1>Reconstitution &amp; dose <span>calculator.</span></h1>
+    <p>Enter your vial size, BAC water, and target dose — get the exact units to draw on a U-100 insulin syringe. The same math the StackMindr app runs, free in your browser.</p>
+  </section>
+
+  <!-- CALCULATOR -->
+  <div class="calc-wrap">
+    <div class="calc-card">
+      <div class="mode-tabs" role="tablist">
+        <button class="mode-tab active" data-mode="peptide" role="tab">Peptide</button>
+        <button class="mode-tab" data-mode="trt" role="tab">TRT</button>
+        <button class="mode-tab" data-mode="hcg" role="tab">HCG</button>
+        <button class="mode-tab" data-mode="hgh" role="tab">HGH</button>
+      </div>
+
+      <!-- PEPTIDE -->
+      <div class="calc-body" data-panel="peptide">
+        <div class="calc-inputs">
+          <div class="mode-title">Peptide reconstitution</div>
+          <div class="mode-desc">Lyophilized peptides — BPC-157, TB-500, ipamorelin, semaglutide, and the rest.</div>
+          <div class="field">
+            <label>Peptide per vial <span class="hint">(mg)</span></label>
+            <input type="number" inputmode="decimal" id="p_vial" value="10" min="0" step="any">
+          </div>
+          <div class="field">
+            <label>BAC water added <span class="hint">(mL)</span></label>
+            <input type="number" inputmode="decimal" id="p_bac" value="2" min="0" step="any">
+          </div>
+          <div class="field">
+            <label>Desired dose</label>
+            <div class="input-row">
+              <input type="number" inputmode="decimal" id="p_dose" value="250" min="0" step="any">
+              <select id="p_unit"><option value="mcg" selected>mcg</option><option value="mg">mg</option></select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Syringe size</label>
+            <select id="p_syr"><option value="100">1cc (100 units)</option><option value="50">0.5cc (50 units)</option><option value="30">0.3cc (30 units)</option></select>
+          </div>
+        </div>
+        <div class="calc-output">
+          <div class="result-hero">
+            <div class="r-label">Draw to this line</div>
+            <div class="r-value" id="p_units">5.0<span>units</span></div>
+            <div class="r-caption">on a <b id="p_syrname">1cc (100 units)</b> insulin syringe</div>
+          </div>
+          <div class="stat-grid">
+            <div class="stat"><div class="s-label">Concentration</div><div class="s-value" id="p_conc">5,000 <small>mcg/mL</small></div></div>
+            <div class="stat"><div class="s-label">Volume</div><div class="s-value" id="p_vol">0.050 <small>mL</small></div></div>
+            <div class="stat"><div class="s-label">Doses per vial</div><div class="s-value" id="p_doses">40</div></div>
+            <div class="stat"><div class="s-label">Dose</div><div class="s-value" id="p_dosemg">0.250 <small>mg</small></div></div>
+          </div>
+          <div class="warn hidden" id="p_warn"></div>
+        </div>
+      </div>
+
+      <!-- TRT -->
+      <div class="calc-body" data-panel="trt" hidden>
+        <div class="calc-inputs">
+          <div class="mode-title">TRT (testosterone)</div>
+          <div class="mode-desc">Oil-based esters at a known concentration — cypionate, enanthate, propionate.</div>
+          <div class="field">
+            <label>Weekly dose <span class="hint">(mg/week)</span></label>
+            <input type="number" inputmode="decimal" id="t_weekly" value="100" min="0" step="any">
+          </div>
+          <div class="field">
+            <label>Injection interval <span class="hint">(days between shots)</span></label>
+            <input type="number" inputmode="decimal" id="t_interval" value="3.5" min="0" step="any">
+          </div>
+          <div class="field">
+            <label>Vial concentration <span class="hint">(mg/mL)</span></label>
+            <input type="number" inputmode="decimal" id="t_conc" value="200" min="0" step="any">
+          </div>
+        </div>
+        <div class="calc-output">
+          <div class="result-hero">
+            <div class="r-label">Draw to this line</div>
+            <div class="r-value" id="t_units">25.0<span>units</span></div>
+            <div class="r-caption">on a <b>1cc (100 units)</b> insulin syringe</div>
+          </div>
+          <div class="stat-grid">
+            <div class="stat"><div class="s-label">Dose per injection</div><div class="s-value" id="t_perinj">50.0 <small>mg</small></div></div>
+            <div class="stat"><div class="s-label">Volume</div><div class="s-value" id="t_vol">0.25 <small>mL</small></div></div>
+            <div class="stat"><div class="s-label">Injections / week</div><div class="s-value" id="t_perweek">2.0</div></div>
+            <div class="stat"><div class="s-label">Weekly volume</div><div class="s-value" id="t_wkvol">0.50 <small>mL</small></div></div>
+          </div>
+          <div class="warn hidden" id="t_warn"></div>
+        </div>
+      </div>
+
+      <!-- HCG -->
+      <div class="calc-body" data-panel="hcg" hidden>
+        <div class="calc-inputs">
+          <div class="mode-title">HCG</div>
+          <div class="mode-desc">Reconstituted from IU per vial and dosed in IU.</div>
+          <div class="field">
+            <label>Total per vial <span class="hint">(IU)</span></label>
+            <input type="number" inputmode="decimal" id="h_total" value="5000" min="0" step="any">
+          </div>
+          <div class="field">
+            <label>BAC water added <span class="hint">(mL)</span></label>
+            <input type="number" inputmode="decimal" id="h_bac" value="3" min="0" step="any">
+          </div>
+          <div class="field">
+            <label>Desired dose <span class="hint">(IU)</span></label>
+            <input type="number" inputmode="decimal" id="h_dose" value="250" min="0" step="any">
+          </div>
+          <div class="field">
+            <label>Syringe size</label>
+            <select id="h_syr"><option value="100">1cc (100 units)</option><option value="50">0.5cc (50 units)</option><option value="30">0.3cc (30 units)</option></select>
+          </div>
+        </div>
+        <div class="calc-output">
+          <div class="result-hero">
+            <div class="r-label">Draw to this line</div>
+            <div class="r-value" id="h_units">15.0<span>units</span></div>
+            <div class="r-caption">on a <b id="h_syrname">1cc (100 units)</b> insulin syringe</div>
+          </div>
+          <div class="stat-grid">
+            <div class="stat"><div class="s-label">Concentration</div><div class="s-value" id="h_conc">1,667 <small>IU/mL</small></div></div>
+            <div class="stat"><div class="s-label">Volume</div><div class="s-value" id="h_vol">0.150 <small>mL</small></div></div>
+            <div class="stat"><div class="s-label">Doses per vial</div><div class="s-value" id="h_doses">20</div></div>
+            <div class="stat"><div class="s-label">Dose</div><div class="s-value" id="h_doseiu">250 <small>IU</small></div></div>
+          </div>
+          <div class="warn hidden" id="h_warn"></div>
+        </div>
+      </div>
+
+      <!-- HGH -->
+      <div class="calc-body" data-panel="hgh" hidden>
+        <div class="calc-inputs">
+          <div class="mode-title">HGH (growth hormone)</div>
+          <div class="mode-desc">Dosed in IU, using the standard 1&nbsp;mg = 3&nbsp;IU conversion.</div>
+          <div class="field">
+            <label>Vial size <span class="hint">(mg)</span></label>
+            <input type="number" inputmode="decimal" id="g_vial" value="10" min="0" step="any">
+          </div>
+          <div class="field">
+            <label>BAC water added <span class="hint">(mL)</span></label>
+            <input type="number" inputmode="decimal" id="g_bac" value="1" min="0" step="any">
+          </div>
+          <div class="field">
+            <label>Desired dose <span class="hint">(IU)</span></label>
+            <input type="number" inputmode="decimal" id="g_dose" value="2" min="0" step="any">
+          </div>
+          <div class="field">
+            <label>Syringe size</label>
+            <select id="g_syr"><option value="100">1cc (100 units)</option><option value="50">0.5cc (50 units)</option><option value="30">0.3cc (30 units)</option></select>
+          </div>
+        </div>
+        <div class="calc-output">
+          <div class="result-hero">
+            <div class="r-label">Draw to this line</div>
+            <div class="r-value" id="g_units">6.7<span>units</span></div>
+            <div class="r-caption">on a <b id="g_syrname">1cc (100 units)</b> insulin syringe</div>
+          </div>
+          <div class="stat-grid">
+            <div class="stat"><div class="s-label">Total per vial</div><div class="s-value" id="g_totaliu">30.0 <small>IU</small></div></div>
+            <div class="stat"><div class="s-label">Concentration</div><div class="s-value" id="g_conc">30.0 <small>IU/mL</small></div></div>
+            <div class="stat"><div class="s-label">Volume</div><div class="s-value" id="g_vol">0.067 <small>mL</small></div></div>
+            <div class="stat"><div class="s-label">Doses per vial</div><div class="s-value" id="g_doses">15</div></div>
+          </div>
+          <div class="warn hidden" id="g_warn"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EXPLAINER -->
+  <section class="explain">
+    <h2>How the reconstitution math works</h2>
+    <p><strong>Concentration</strong> is how much compound ends up in each millilitre of solution: the amount in the vial divided by the BAC (bacteriostatic) water you add. More water means a weaker mix and a bigger, easier-to-read draw; less water means a stronger mix and a smaller draw.</p>
+    <p><strong>Units to draw</strong> is the number that matters at the needle. Insulin syringes are U-100, meaning 100 units per millilitre — so once you know the volume for your dose, the unit mark is just that volume &times; 100. A 1cc, 0.5cc, and 0.3cc syringe all use the same scale; they only differ in how much they hold.</p>
+    <p><strong>Doses per vial</strong> tells you how long a vial lasts at your dose, so you can reorder before you run dry. For HGH the calculator uses the standard <strong>1&nbsp;mg = 3&nbsp;IU</strong> conversion; for HCG and peptides it works directly from the IU or mg you enter.</p>
+  </section>
+
+  <!-- APP CTA -->
+  <div class="app-cta">
+    <div class="app-cta-inner">
+      <h2>Stop re-typing it every time. <em>Let the app remember.</em></h2>
+      <p>StackMindr saves every vial, does this math automatically on each dose, decrements your inventory as you go, and reminds you when it's time. Free on iOS and Android.</p>
+      <div class="cta-buttons">
+        <a href="https://apps.apple.com/us/app/stackmindr/id6762165518" class="btn-primary">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Download on iOS
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.stackmindr.app" class="btn-store">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 1.84a1.5 1.5 0 0 0-.6 1.2v17.92c0 .48.22.9.6 1.16l.1.06 10.03-10.03v-.24L3.7 1.78l-.1.06zm13.5 6.62L14.7 6.06l-9.4 9.4 2.4 2.4 9.4-9.4zM4.3 22.2l9.4-9.4 2.4 2.4-9.4 9.4-2.4-2.4zm16.34-11.6-2.5-1.45-2.7 2.7 2.7 2.7 2.5-1.45c.86-.5.86-1.99 0-2.5z" opacity=".95"/></svg>
+          Get it on Android
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <section class="disclaimer">
+    <p>This calculator is a mathematical tool for educational purposes only. It is not medical advice and does not diagnose, treat, or prescribe. Reconstitution and dosing carry real risk — always verify your own numbers and work with a qualified healthcare provider before starting or changing any protocol.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <img class="footer-logo" src="images/logo-full-light.png" alt="StackMindr — the OS for your body." width="626" height="370" loading="lazy">
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="calculator.html">Calculator</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="delete-account.html">Delete Account</a>
+      <a href="mailto:justin@stackmindr.app">Contact</a>
+    </div>
+    <p class="footer-disclaimer">StackMindr is a tracking and calculation tool for educational purposes only. It is not medical advice and does not diagnose, treat, cure, or prevent any condition. Always consult a qualified healthcare provider before starting or changing any protocol.</p>
+    <p>&copy; 2026 STACKMINDR LLC &middot; Built in Oregon</p>
+  </footer>
+
+  <script>
+    (function () {
+      var fmt0 = function (n) { return isFinite(n) ? Math.round(n).toLocaleString('en-US') : '—'; };
+      var num = function (id) { return parseFloat(document.getElementById(id).value); };
+      var set = function (id, html) { document.getElementById(id).innerHTML = html; };
+      var syrName = { '100': '1cc (100 units)', '50': '0.5cc (50 units)', '30': '0.3cc (30 units)' };
+
+      function warn(id, units, cap) {
+        var el = document.getElementById(id);
+        if (isFinite(units) && units > cap) {
+          el.innerHTML = 'This dose needs <b>' + units.toFixed(1) + ' units</b> — more than a ' +
+            (cap === 100 ? '1cc' : cap === 50 ? '0.5cc' : '0.3cc') + ' syringe holds (' + cap + ' units). Split the dose across injections or use a larger syringe.';
+          el.classList.remove('hidden');
+        } else { el.classList.add('hidden'); }
+      }
+
+      // ── PEPTIDE ──  concentration(mcg/mL)=mg/bac*1000; vol=doseMcg/conc; units=vol*100
+      function calcPeptide() {
+        var vial = num('p_vial'), bac = num('p_bac'), dose = num('p_dose');
+        var unit = document.getElementById('p_unit').value;
+        var cap = parseFloat(document.getElementById('p_syr').value);
+        var doseMcg = unit === 'mg' ? dose * 1000 : dose;
+        var conc = vial / bac * 1000;          // mcg/mL
+        var vol = doseMcg / conc;              // mL
+        var units = vol * 100;
+        var doses = Math.floor(vial * 1000 / doseMcg);
+        set('p_units', (isFinite(units) ? units.toFixed(1) : '—') + '<span>units</span>');
+        set('p_conc', fmt0(conc) + ' <small>mcg/mL</small>');
+        set('p_vol', (isFinite(vol) ? vol.toFixed(3) : '—') + ' <small>mL</small>');
+        set('p_doses', isFinite(doses) && doses > 0 ? fmt0(doses) : '—');
+        set('p_dosemg', (isFinite(doseMcg) ? (doseMcg / 1000).toFixed(3) : '—') + ' <small>mg</small>');
+        document.getElementById('p_syrname').textContent = syrName[document.getElementById('p_syr').value];
+        warn('p_warn', units, cap);
+      }
+
+      // ── TRT ──  perInj=weekly/(7/interval); vol=perInj/conc; units=vol*100
+      function calcTrt() {
+        var weekly = num('t_weekly'), interval = num('t_interval'), conc = num('t_conc');
+        var perWeek = 7 / interval;
+        var perInj = weekly / perWeek;
+        var vol = perInj / conc;
+        var units = vol * 100;
+        set('t_units', (isFinite(units) ? units.toFixed(1) : '—') + '<span>units</span>');
+        set('t_perinj', (isFinite(perInj) ? perInj.toFixed(1) : '—') + ' <small>mg</small>');
+        set('t_vol', (isFinite(vol) ? vol.toFixed(2) : '—') + ' <small>mL</small>');
+        set('t_perweek', isFinite(perWeek) ? perWeek.toFixed(1) : '—');
+        set('t_wkvol', (isFinite(vol * perWeek) ? (vol * perWeek).toFixed(2) : '—') + ' <small>mL</small>');
+        warn('t_warn', units, 100);
+      }
+
+      // ── HCG ──  conc(IU/mL)=total/bac; vol=dose/conc; units=vol*100
+      function calcHcg() {
+        var total = num('h_total'), bac = num('h_bac'), dose = num('h_dose');
+        var cap = parseFloat(document.getElementById('h_syr').value);
+        var conc = total / bac;
+        var vol = dose / conc;
+        var units = vol * 100;
+        var doses = Math.floor(total / dose);
+        set('h_units', (isFinite(units) ? units.toFixed(1) : '—') + '<span>units</span>');
+        set('h_conc', fmt0(conc) + ' <small>IU/mL</small>');
+        set('h_vol', (isFinite(vol) ? vol.toFixed(3) : '—') + ' <small>mL</small>');
+        set('h_doses', isFinite(doses) && doses > 0 ? fmt0(doses) : '—');
+        set('h_doseiu', (isFinite(dose) ? fmt0(dose) : '—') + ' <small>IU</small>');
+        document.getElementById('h_syrname').textContent = syrName[document.getElementById('h_syr').value];
+        warn('h_warn', units, cap);
+      }
+
+      // ── HGH ──  desiredMg=IU/3; conc(mg/mL)=vial/bac; vol=desiredMg/conc; units=vol*100; totalIU=vial*3
+      function calcHgh() {
+        var vial = num('g_vial'), bac = num('g_bac'), doseIU = num('g_dose');
+        var cap = parseFloat(document.getElementById('g_syr').value);
+        var desiredMg = doseIU / 3;
+        var concMg = vial / bac;
+        var vol = desiredMg / concMg;
+        var units = vol * 100;
+        var totalIU = vial * 3;
+        var concIU = totalIU / bac;
+        var doses = doseIU > 0 ? Math.floor(totalIU / doseIU) : 0;
+        set('g_units', (isFinite(units) ? units.toFixed(1) : '—') + '<span>units</span>');
+        set('g_totaliu', (isFinite(totalIU) ? totalIU.toFixed(1) : '—') + ' <small>IU</small>');
+        set('g_conc', (isFinite(concIU) ? concIU.toFixed(1) : '—') + ' <small>IU/mL</small>');
+        set('g_vol', (isFinite(vol) ? vol.toFixed(3) : '—') + ' <small>mL</small>');
+        set('g_doses', isFinite(doses) && doses > 0 ? fmt0(doses) : '—');
+        document.getElementById('g_syrname').textContent = syrName[document.getElementById('g_syr').value];
+        warn('g_warn', units, cap);
+      }
+
+      var calcs = { peptide: calcPeptide, trt: calcTrt, hcg: calcHcg, hgh: calcHgh };
+
+      // Wire inputs → recalc their panel live
+      document.querySelectorAll('.calc-body').forEach(function (panel) {
+        var mode = panel.getAttribute('data-panel');
+        panel.querySelectorAll('input, select').forEach(function (el) {
+          el.addEventListener('input', calcs[mode]);
+        });
+      });
+
+      // Tab switching
+      document.querySelectorAll('.mode-tab').forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var mode = tab.getAttribute('data-mode');
+          document.querySelectorAll('.mode-tab').forEach(function (t) { t.classList.toggle('active', t === tab); });
+          document.querySelectorAll('.calc-body').forEach(function (p) { p.hidden = p.getAttribute('data-panel') !== mode; });
+          calcs[mode]();
+        });
+      });
+
+      // Initial render
+      calcPeptide(); calcTrt(); calcHcg(); calcHgh();
+    })();
+  </script>
+
+</body>
+</html>
