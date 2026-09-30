@@ -7,7 +7,7 @@
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="format-detection" content="telephone=no">
 
-  <title>StackMindr — Peptide, TRT &amp; Protocol Tracker for iOS and Android</title>
+  <title>StackMindr — Peptide, TRT &amp; GLP-1 Tracker for iOS and Android</title>
   <meta name="description" content="The OS for your body. Track peptides, TRT, and hormones with dose logging, a reconstitution calculator, cycle planning, injection site rotation, vial inventory, a 130+ compound glossary, and an AI protocol assistant. Free on iOS and Android.">
   <meta name="keywords" content="peptide tracker, TRT tracker, peptide calculator, reconstitution calculator, cycle planner, injection site rotation, BPC-157, TB-500, GLP-1, semaglutide, tirzepatide, testosterone, biohacking app, hormone tracker, injection tracker, protocol tracker, dose reminder, vial inventory">
   <meta name="author" content="STACKMINDR LLC">
@@ -356,6 +356,8 @@
       <a href="#features">Features</a>
       <a href="#screenshots">Screenshots</a>
       <a href="calculator.html">Calculator</a>
+      <a href="glp-1-tracker.html">GLP-1</a>
+      <a href="compounds.html">Compounds</a>
       <a href="#pricing">Pricing</a>
       <a href="#get" class="nav-cta">Get the app</a>
     </div>
@@ -365,10 +367,10 @@
   <section class="hero">
     <div class="hero-content">
       <div class="hero-text">
-        <div class="hero-badge reveal"><span class="dot"></span>Version 1.4 · iOS &amp; Android</div>
-        <h1 class="reveal" data-d="1">The OS for <span>your body.</span></h1>
-        <p class="hero-lede reveal" data-d="2">Every compound, every dose, every vial, every injection site — in one place, with the math already done.</p>
-        <p class="hero-sub reveal" data-d="3">StackMindr tracks peptides, TRT, GLP-1s, supplements, and bioregulators the way people actually run them: a dozen compounds on different frequencies, cycles that start and stop, vials that run out at inconvenient times. Log a dose in one tap and your pantry updates itself.</p>
+        <div class="hero-badge reveal"><span class="dot"></span>The OS for your body · iOS &amp; Android</div>
+        <h1 class="reveal" data-d="1">The peptide, TRT &amp; GLP-1 tracker <span>that does the math for you.</span></h1>
+        <p class="hero-lede reveal" data-d="2">Schedules and reminders, reconstitution and dose calculators, cycle planning, a free levels chart, and injection-site rotation — every compound in one place.</p>
+        <p class="hero-sub reveal" data-d="3">Built for real protocols: a dozen compounds on different frequencies, GLP-1 titrations, cycles that start and stop, vials that run out at the worst time. Log a dose in one tap and your inventory updates itself.</p>
         <div class="hero-buttons reveal" data-d="4">
           <a href="https://apps.apple.com/us/app/stackmindr/id6762165518" class="btn-primary">
             <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -380,12 +382,49 @@
           </a>
         </div>
         <div class="hero-meta reveal" data-d="5">
-          <span>Free to start</span><span>No credit card</span><span>Built by one person in Oregon</span>
+          <span>Free to start</span><span>Your data is never sold</span><span>Built by one person in Oregon</span>
         </div>
       </div>
       <div class="hero-phone reveal" data-d="2">
         <div class="phone-frame">
           <img src="images/today.png" alt="Today's stack — the day's scheduled compounds grouped by time of day, with dose amounts and syringe units" width="620" height="1344">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section style="padding: 88px 40px; background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+    <div style="max-width: 1080px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 42px;">
+        <div class="reveal" style="color: var(--gold); font-size: 22px; letter-spacing: 3px; margin-bottom: 8px;">★★★★★</div>
+        <h2 class="reveal" data-d="1" style="font-family: 'Cormorant Garamond', serif; font-size: clamp(30px, 4vw, 42px); font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px;">Rated 5.0 on the App Store</h2>
+        <p class="reveal" data-d="2" style="color: var(--text-muted); font-size: 16px;">From people running real, multi-compound stacks.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); gap: 22px;">
+        <div class="reveal" data-d="1" style="background: var(--cream); border: 1px solid var(--line); border-radius: 16px; padding: 26px;">
+          <div style="color: var(--gold); font-size: 13px; letter-spacing: 2px; margin-bottom: 12px;">★★★★★</div>
+          <p style="font-size: 15px; line-height: 1.7; color: var(--text); margin-bottom: 16px;">“I was stuck between this app and a few others to track my stack, and this one won by a long shot. The interface is very clean and simple, and really easy to learn.”</p>
+          <div style="font-size: 13px; font-weight: 600; color: var(--maroon);">Raph Torino</div>
+          <div style="font-size: 12px; color: var(--text-muted);">United States</div>
+        </div>
+        <div class="reveal" data-d="2" style="background: var(--cream); border: 1px solid var(--line); border-radius: 16px; padding: 26px;">
+          <div style="color: var(--gold); font-size: 13px; letter-spacing: 2px; margin-bottom: 12px;">★★★★★</div>
+          <p style="font-size: 15px; line-height: 1.7; color: var(--text); margin-bottom: 16px;">“Exactly what I've been looking for — user friendly, looks good, keeps things organised. 9.5/10. Love it!”</p>
+          <div style="font-size: 13px; font-weight: 600; color: var(--maroon);">Nathan2615</div>
+          <div style="font-size: 12px; color: var(--text-muted);">Australia</div>
+        </div>
+        <div class="reveal" data-d="3" style="background: var(--cream); border: 1px solid var(--line); border-radius: 16px; padding: 26px;">
+          <div style="color: var(--gold); font-size: 13px; letter-spacing: 2px; margin-bottom: 12px;">★★★★★</div>
+          <p style="font-size: 15px; line-height: 1.7; color: var(--text); margin-bottom: 16px;">“I've tried a few different apps… but this one stands out. The inventory feature is especially useful — I can see exactly what I have on hand and reorder before I run out mid-cycle.”</p>
+          <div style="font-size: 13px; font-weight: 600; color: var(--maroon);">Zede98</div>
+          <div style="font-size: 12px; color: var(--text-muted);">United States</div>
+        </div>
+        <div class="reveal" data-d="4" style="background: var(--cream); border: 1px solid var(--line); border-radius: 16px; padding: 26px;">
+          <div style="color: var(--gold); font-size: 13px; letter-spacing: 2px; margin-bottom: 12px;">★★★★★</div>
+          <p style="font-size: 15px; line-height: 1.7; color: var(--text); margin-bottom: 16px;">“A 1-stop shop with the glossary, calculator, and calendar in one place. Great app for busy people!”</p>
+          <div style="font-size: 13px; font-weight: 600; color: var(--maroon);">Megs4280</div>
+          <div style="font-size: 12px; color: var(--text-muted);">United States</div>
         </div>
       </div>
     </div>
@@ -556,6 +595,49 @@
     </div>
   </section>
 
+  <!-- DIFFERENTIATORS -->
+  <section style="padding: 92px 40px; background: linear-gradient(170deg, var(--dark) 0%, #2a1210 55%, var(--maroon-dark) 100%); position: relative; overflow: hidden;">
+    <div style="max-width: 1080px; margin: 0 auto; position: relative; z-index: 1;">
+      <div style="text-align: center; max-width: 640px; margin: 0 auto 46px;">
+        <div class="reveal" style="color: var(--gold); font-size: 12px; font-weight: 600; letter-spacing: 2.4px; text-transform: uppercase; margin-bottom: 14px;">Why StackMindr</div>
+        <h2 class="reveal" data-d="1" style="font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; letter-spacing: -0.5px; color: #fff; margin-bottom: 12px;">What the other trackers don't do.</h2>
+        <p class="reveal" data-d="2" style="color: rgba(255,255,255,0.66); font-size: 16.5px; line-height: 1.65;">Plenty of apps log a dose. These are the things that made people switch.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); gap: 20px;">
+        <div class="reveal" data-d="1" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 28px;">
+          <div style="font-size: 26px; margin-bottom: 14px;">🤖</div>
+          <h3 style="color: #fff; font-size: 17px; font-weight: 600; margin-bottom: 8px;">An advisor that reads <em style="color: var(--gold); font-style: italic;">your</em> stack</h3>
+          <p style="color: rgba(255,255,255,0.62); font-size: 14.5px; line-height: 1.7;">Not a generic chatbot. The assistant sees your real schedules, inventory, and labs — so questions about timing, stacking, and interactions get answered for the compounds you're actually running.</p>
+        </div>
+        <div class="reveal" data-d="2" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 28px;">
+          <div style="font-size: 26px; margin-bottom: 14px;">🗓️</div>
+          <h3 style="color: #fff; font-size: 17px; font-weight: 600; margin-bottom: 8px;">Plan the cycle before you buy it</h3>
+          <p style="color: rgba(255,255,255,0.62); font-size: 14.5px; line-height: 1.7;">The Cycle Planner turns dose, frequency, and length into vials needed, total cost, and exact dates — so you order the right amount once, instead of running short mid-cycle or over-buying.</p>
+        </div>
+        <div class="reveal" data-d="3" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 28px;">
+          <div style="font-size: 26px; margin-bottom: 14px;">📸</div>
+          <h3 style="color: #fff; font-size: 17px; font-weight: 600; margin-bottom: 8px;">Set it up from a photo</h3>
+          <p style="color: rgba(255,255,255,0.62); font-size: 14.5px; line-height: 1.7;">Snap your vials or notes, or hand it a PDF, and StackMindr builds the schedules for you. The whole stack goes in in a minute — no evening of manual data entry to get started.</p>
+        </div>
+        <div class="reveal" data-d="1" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 28px;">
+          <div style="font-size: 26px; margin-bottom: 14px;">🧪</div>
+          <h3 style="color: #fff; font-size: 17px; font-weight: 600; margin-bottom: 8px;">Every compound class, one app</h3>
+          <p style="color: rgba(255,255,255,0.62); font-size: 14.5px; line-height: 1.7;">GLP-1s, TRT, HGH, HCG, peptides, and supplements — with dedicated reconstitution, TRT, HCG, and HGH calculators because they don't share math. Most apps pick one lane; this one runs the whole stack.</p>
+        </div>
+        <div class="reveal" data-d="2" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 28px;">
+          <div style="font-size: 26px; margin-bottom: 14px;">〰️</div>
+          <h3 style="color: #fff; font-size: 17px; font-weight: 600; margin-bottom: 8px;">See your levels build</h3>
+          <p style="color: rgba(255,255,255,0.62); font-size: 14.5px; line-height: 1.7;">A half-life chart shows how a compound accumulates and when it reaches steady state — the kind of pharmacokinetics view competitors put behind a paywall, free in StackMindr.</p>
+        </div>
+        <div class="reveal" data-d="3" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 28px;">
+          <div style="font-size: 26px; margin-bottom: 14px;">🔒</div>
+          <h3 style="color: #fff; font-size: 17px; font-weight: 600; margin-bottom: 8px;">Your data is never sold</h3>
+          <p style="color: rgba(255,255,255,0.62); font-size: 14.5px; line-height: 1.7;">No ads, no data brokers, no advertising ID. Your protocol is yours — export it to PDF or JSON any time, and take it with you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- COMPOUNDS -->
   <section class="compounds">
     <div class="compounds-inner">
@@ -688,6 +770,8 @@
     <img class="footer-logo" src="images/logo-full-light.png" alt="StackMindr — the OS for your body." width="626" height="370" loading="lazy">
     <div class="footer-links">
       <a href="calculator.html">Free Calculator</a>
+      <a href="glp-1-tracker.html">GLP-1 Tracker</a>
+      <a href="compounds.html">Compound Library</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="delete-account.html">Delete Account</a>
       <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2a1f1f">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="format-detection" content="telephone=no">
+
+  <title>Free GLP-1 Tracker — Semaglutide, Tirzepatide &amp; Retatrutide | StackMindr</title>
+  <meta name="description" content="A free GLP-1 tracker for semaglutide, tirzepatide, and retatrutide. Log doses, plan titration weeks, track weight with a trend chart, calculate reconstitution, and estimate your levels — free on iOS and Android.">
+  <meta name="keywords" content="GLP-1 tracker, semaglutide tracker, tirzepatide tracker, retatrutide tracker, GLP-1 dose calculator, GLP-1 titration, weight loss tracker, GLP-1 weight tracking, semaglutide dose, tirzepatide dose, GLP-1 reconstitution calculator">
+  <meta name="author" content="STACKMINDR LLC">
+
+  <link rel="canonical" href="https://stackmindr.app/glp-1-tracker.html">
+  <link rel="icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta name="apple-itunes-app" content="app-id=6762165518">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="StackMindr">
+  <meta property="og:title" content="Free GLP-1 Tracker — Semaglutide, Tirzepatide &amp; Retatrutide">
+  <meta property="og:description" content="Log doses, plan titration, track weight, and calculate reconstitution for GLP-1s. Free on iOS and Android. The OS for your body.">
+  <meta property="og:url" content="https://stackmindr.app/glp-1-tracker.html">
+  <meta property="og:image" content="https://stackmindr.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free GLP-1 Tracker — StackMindr">
+  <meta name="twitter:description" content="Semaglutide, tirzepatide & retatrutide — doses, titration, weight, and calculators. Free.">
+  <meta name="twitter:image" content="https://stackmindr.app/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Is the GLP-1 tracker free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Logging doses, planning titration, tracking weight with a trend chart, the levels chart, and the reconstitution and dose calculators are all free. A $4.99/month Pro tier adds unlimited compounds, lab tracking, and an AI protocol assistant." } },
+      { "@type": "Question", "name": "Which GLP-1s does StackMindr track?", "acceptedAnswer": { "@type": "Answer", "text": "Semaglutide, tirzepatide, and retatrutide, plus any other compound you run alongside them — peptides, TRT, HGH, HCG, and supplements — all in one place." } },
+      { "@type": "Question", "name": "Can it handle GLP-1 dose titration?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Set your starting dose and how many weeks each step lasts (for example 2.5 mg for 4 weeks, then 5 mg), and StackMindr schedules every dose on the right day automatically." } }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --maroon:#8b2e1f; --maroon-dark:#6b1a10; --cream:#faf7f5; --dark:#1a1210; --text:#2a1f1f; --text-muted:#8a7a7a; --gold:#c9a84c; --line:#ece6e3; }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Outfit',sans-serif; color:var(--text); background:var(--cream); overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+    img { max-width:100%; height:auto; }
+    a:focus-visible, button:focus-visible { outline:2px solid var(--gold); outline-offset:3px; border-radius:4px; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(26,18,16,0.97); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); padding:12px 40px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 1px 0 rgba(255,255,255,0.06); }
+    .nav-logo { display:flex; align-items:center; font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700; color:#fff; letter-spacing:-0.3px; text-decoration:none; }
+    .nav-logo img { height:22px; width:auto; display:block; margin-right:10px; }
+    .nav-logo span { color:var(--maroon); filter:brightness(1.6); }
+    .nav-links { display:flex; gap:30px; align-items:center; }
+    .nav-links a { color:#ccc; text-decoration:none; font-size:14px; transition:color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color:#fff; }
+    .nav-cta { background:var(--maroon); color:#fff !important; padding:8px 20px; border-radius:8px; font-weight:600 !important; }
+    .nav-cta:hover { background:var(--maroon-dark); }
+    .hero { padding:150px 24px 90px; background:linear-gradient(170deg,var(--dark) 0%,#2a1210 45%,var(--maroon-dark) 100%); text-align:center; position:relative; overflow:hidden; }
+    .hero::before { content:''; position:absolute; top:-40%; right:-10%; width:600px; height:600px; background:radial-gradient(circle,rgba(201,168,76,0.10) 0%,transparent 70%); }
+    .hero > * { position:relative; z-index:1; }
+    .hero .eyebrow { font-size:12px; font-weight:600; letter-spacing:2.4px; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+    .hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(34px,5.4vw,58px); font-weight:700; color:#fff; line-height:1.06; letter-spacing:-0.5px; margin-bottom:18px; max-width:900px; margin-left:auto; margin-right:auto; }
+    .hero h1 span { color:var(--gold); font-style:italic; }
+    .hero p { color:rgba(255,255,255,0.72); font-size:18px; line-height:1.6; max-width:640px; margin:0 auto 30px; }
+    .hero-buttons { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+    .btn-primary { display:inline-flex; align-items:center; gap:10px; background:var(--maroon); color:#fff; padding:15px 28px; border-radius:12px; text-decoration:none; font-weight:600; font-size:15px; transition:all 0.3s; }
+    .btn-primary:hover { background:var(--maroon-dark); transform:translateY(-2px); box-shadow:0 10px 32px rgba(139,46,31,0.4); }
+    .btn-store { display:inline-flex; align-items:center; gap:10px; color:rgba(255,255,255,0.85); text-decoration:none; font-size:15px; font-weight:500; padding:14px 26px; border:1px solid rgba(255,255,255,0.18); border-radius:12px; transition:all 0.25s; }
+    .btn-store:hover { color:#fff; border-color:rgba(255,255,255,0.4); transform:translateY(-2px); }
+    .hero-meta { display:flex; gap:22px; flex-wrap:wrap; justify-content:center; font-size:13px; color:rgba(255,255,255,0.5); margin-top:22px; }
+    .hero-meta span::before { content:'·'; margin-right:22px; color:rgba(255,255,255,0.25); }
+    .hero-meta span:first-child::before { content:none; margin:0; }
+    .wrap { max-width:1000px; margin:0 auto; padding:0 24px; }
+    .feature-band { padding:86px 24px; }
+    .feature-band.alt { background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .band-head { text-align:center; max-width:640px; margin:0 auto 48px; }
+    .band-head h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.5px; margin-bottom:12px; }
+    .band-head p { color:var(--text-muted); font-size:16.5px; line-height:1.65; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px; max-width:1000px; margin:0 auto; }
+    .card { background:var(--cream); border:1px solid var(--line); border-radius:16px; padding:28px; }
+    .feature-band.alt .card { background:var(--cream); }
+    .card .ico { width:44px; height:44px; background:linear-gradient(135deg,var(--maroon),var(--maroon-dark)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:20px; margin-bottom:16px; }
+    .card h3 { font-size:17px; font-weight:600; margin-bottom:8px; }
+    .card p { color:var(--text-muted); font-size:14.5px; line-height:1.7; }
+    .card a { color:var(--maroon); font-weight:600; text-decoration:none; font-size:13.5px; display:inline-block; margin-top:10px; }
+    .compounds-row { display:flex; flex-wrap:wrap; gap:9px; justify-content:center; margin-top:8px; }
+    .chip { font-size:13px; font-weight:500; color:var(--text); background:#fff; border:1px solid var(--line); padding:7px 14px; border-radius:50px; }
+    .cta-band { padding:96px 24px; text-align:center; background:linear-gradient(170deg,var(--dark) 0%,#2a1210 55%,var(--maroon-dark) 100%); }
+    .cta-band h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(30px,4.5vw,46px); font-weight:700; color:#fff; margin-bottom:14px; }
+    .cta-band h2 em { color:var(--gold); }
+    .cta-band p { color:rgba(255,255,255,0.6); font-size:16px; margin-bottom:30px; }
+    .disclaimer { max-width:760px; margin:0 auto; padding:40px 24px 0; }
+    .disclaimer p { font-size:12.5px; line-height:1.7; color:var(--text-muted); font-style:italic; text-align:center; }
+    footer { background:#140d0c; color:rgba(255,255,255,0.45); padding:52px 40px 48px; text-align:center; font-size:13px; margin-top:56px; }
+    .footer-logo { width:168px; height:auto; opacity:0.82; margin:0 auto 26px; display:block; }
+    footer a { color:rgba(255,255,255,0.6); text-decoration:none; }
+    footer a:hover { color:#fff; }
+    .footer-links { display:flex; justify-content:center; gap:24px; margin-bottom:20px; flex-wrap:wrap; }
+    .footer-disclaimer { max-width:660px; margin:0 auto 18px; font-size:12px; line-height:1.7; color:rgba(255,255,255,0.32); }
+    @media (max-width:768px){ nav{padding:12px 20px;} .nav-links{gap:0;} .nav-links a:not(.nav-cta){display:none;} }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo" aria-label="StackMindr home"><img src="images/logo-mark-light.png" alt="" width="97" height="162"><b style="font-weight:700"><span>Stack</span>Mindr</b></a>
+    <div class="nav-links">
+      <a href="index.html#features">Features</a>
+      <a href="calculator.html">Calculator</a>
+      <a href="glp-1-tracker.html" class="active">GLP-1</a>
+      <a href="compounds.html">Compounds</a>
+      <a href="index.html#get" class="nav-cta">Get the app</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="eyebrow">Free GLP-1 tracker · iOS &amp; Android</div>
+    <h1>Track semaglutide, tirzepatide &amp; retatrutide <span>the easy way.</span></h1>
+    <p>Log every dose, plan your titration weeks, watch your weight trend, and do the reconstitution math — all in one free app built for GLP-1 protocols.</p>
+    <div class="hero-buttons">
+      <a href="https://apps.apple.com/us/app/stackmindr/id6762165518" class="btn-primary">Download on iOS</a>
+      <a href="https://play.google.com/store/apps/details?id=com.stackmindr.app" class="btn-store">Get it on Android</a>
+    </div>
+    <div class="hero-meta"><span>Free to start</span><span>Your data is never sold</span><span>Rated 5.0 on the App Store</span></div>
+  </section>
+
+  <section class="feature-band">
+    <div class="band-head">
+      <h2>Everything a GLP-1 protocol needs</h2>
+      <p>Whether you're on semaglutide, tirzepatide, or retatrutide, StackMindr handles the schedule, the titration, the injections, and the math.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="ico">💉</div>
+        <h3>Dose logging &amp; reminders</h3>
+        <p>Weekly GLP-1 dosing with reminders you can act on right from the lock screen — mark a dose done or skip without opening the app.</p>
+      </div>
+      <div class="card">
+        <div class="ico">📈</div>
+        <h3>Weight &amp; progress</h3>
+        <p>Log your weight, measurements, and progress photos and watch the trend line over your cycle. Seeing it work is the whole point.</p>
+      </div>
+      <div class="card">
+        <div class="ico">🗓️</div>
+        <h3>Titration made simple</h3>
+        <p>Set your starting dose and how many weeks each step lasts — "2.5 mg for 4 weeks, then 5 mg" — and every dose lands on the right day automatically.</p>
+      </div>
+      <div class="card">
+        <div class="ico">🧪</div>
+        <h3>Reconstitution calculator</h3>
+        <p>Running compounded or research GLP-1s? Enter your vial and BAC water and get the exact units to draw — no guesswork.</p>
+        <a href="calculator.html">Open the free calculator →</a>
+      </div>
+      <div class="card">
+        <div class="ico">〰️</div>
+        <h3>Estimated levels chart</h3>
+        <p>See how a long-half-life GLP-1 builds up in your system and when it reaches steady state — free, based on half-life.</p>
+      </div>
+      <div class="card">
+        <div class="ico">🎯</div>
+        <h3>Injection-site rotation</h3>
+        <p>Tap where you injected on a body map and get your least-used site suggested, so you rotate properly week to week.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="feature-band alt">
+    <div class="band-head">
+      <h2>Runs more than just your GLP-1</h2>
+      <p>Most people on a GLP-1 are running other things too. StackMindr tracks them all in one place — no second app.</p>
+    </div>
+    <div class="compounds-row">
+      <span class="chip">Semaglutide</span><span class="chip">Tirzepatide</span><span class="chip">Retatrutide</span>
+      <span class="chip">Testosterone / TRT</span><span class="chip">HCG</span><span class="chip">HGH</span>
+      <span class="chip">BPC-157</span><span class="chip">TB-500</span><span class="chip">Supplements</span>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <h2>Your GLP-1, <em>handled.</em></h2>
+    <p>Free on iOS and Android. Set up your first dose in under two minutes.</p>
+    <div class="hero-buttons">
+      <a href="https://apps.apple.com/us/app/stackmindr/id6762165518" class="btn-primary">Download on iOS</a>
+      <a href="https://play.google.com/store/apps/details?id=com.stackmindr.app" class="btn-store">Get it on Android</a>
+    </div>
+  </div>
+
+  <section class="disclaimer">
+    <p>StackMindr is a tracking and educational reference tool. It is not medical advice and does not diagnose, treat, or prescribe. Always consult a qualified healthcare provider before starting, changing, or stopping any medication or protocol.</p>
+  </section>
+
+  <footer>
+    <img class="footer-logo" src="images/logo-full-light.png" alt="StackMindr — the OS for your body." width="626" height="370" loading="lazy">
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="calculator.html">Calculator</a>
+      <a href="glp-1-tracker.html">GLP-1 Tracker</a>
+      <a href="compounds.html">Compound Library</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:justin@stackmindr.app">Contact</a>
+    </div>
+    <p class="footer-disclaimer">StackMindr is a tracking and calculation tool for educational purposes only. It is not medical advice and does not diagnose, treat, cure, or prevent any condition. Always consult a qualified healthcare provider before starting or changing any protocol.</p>
+    <p>&copy; 2026 STACKMINDR LLC &middot; Built in Oregon</p>
+  </footer>
+
+</body>
+</html>

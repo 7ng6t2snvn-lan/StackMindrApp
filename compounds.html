@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2a1f1f">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <title>Peptide &amp; Supplement Library — 150+ Compounds | StackMindr</title>
+  <meta name="description" content="Dosage, timing, reconstitution and tracking reference for 150+ peptides and supplements — from semaglutide and BPC-157 to TRT, HGH, bioregulators and more. Free tracker for iOS &amp; Android.">
+  <meta name="keywords" content="peptide library, peptide dosage guide, semaglutide, tirzepatide, BPC-157, TB-500, TRT, HGH, bioregulators, peptide tracker">
+  <link rel="canonical" href="https://stackmindr.app/compounds.html">
+  <link rel="icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="StackMindr">
+  <meta property="og:title" content="Peptide &amp; Supplement Library — 150+ Compounds">
+  <meta property="og:description" content="Dosage, timing and tracking reference for 150+ peptides and supplements. Free on iOS &amp; Android.">
+  <meta property="og:url" content="https://stackmindr.app/compounds.html">
+  <meta property="og:image" content="https://stackmindr.app/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"StackMindr Compound Library","description":"Dosage, timing and tracking reference for 150+ peptides and supplements.","url":"https://stackmindr.app/compounds.html"}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    :root { --maroon:#8b2e1f; --maroon-dark:#6b1a10; --cream:#faf7f5; --dark:#1a1210; --text:#2a1f1f; --text-muted:#8a7a7a; --gold:#c9a84c; --line:#ece6e3; }
+    body { font-family:'Outfit',sans-serif; color:var(--text); background:var(--cream); -webkit-font-smoothing:antialiased; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(26,18,16,0.97); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); padding:12px 40px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 1px 0 rgba(255,255,255,0.06); }
+    .nav-logo { display:flex; align-items:center; font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700; color:#fff; letter-spacing:-0.3px; text-decoration:none; }
+    .nav-logo img { height:22px; width:auto; display:block; margin-right:10px; }
+    .nav-logo span { color:var(--maroon); filter:brightness(1.6); }
+    .nav-links { display:flex; gap:28px; align-items:center; }
+    .nav-links a { color:#ccc; text-decoration:none; font-size:14px; transition:color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color:#fff; }
+    .nav-cta { background:var(--maroon); color:#fff !important; padding:8px 20px; border-radius:8px; font-weight:600 !important; }
+    .hero { padding:130px 24px 40px; text-align:center; background:linear-gradient(170deg,var(--dark) 0%,#2a1210 60%,var(--maroon-dark) 100%); }
+    .hero .eyebrow { font-size:12px; font-weight:600; letter-spacing:2.4px; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+    .hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(34px,5.5vw,54px); font-weight:700; color:#fff; line-height:1.05; letter-spacing:-0.5px; margin-bottom:16px; }
+    .hero p { color:rgba(255,255,255,0.72); font-size:17px; line-height:1.6; max-width:600px; margin:0 auto 26px; }
+    .search-wrap { max-width:520px; margin:0 auto; }
+    #cmp-search { width:100%; padding:15px 20px; border-radius:12px; border:1px solid rgba(255,255,255,0.18); background:rgba(255,255,255,0.06); color:#fff; font-size:16px; font-family:inherit; outline:none; }
+    #cmp-search::placeholder { color:rgba(255,255,255,0.5); }
+    #cmp-search:focus { border-color:var(--gold); }
+    .wrap { max-width:1040px; margin:0 auto; padding:44px 24px 20px; }
+    .grp { margin-bottom:42px; }
+    .grp h2 { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:700; letter-spacing:-0.3px; margin-bottom:16px; display:flex; align-items:baseline; gap:10px; }
+    .grp-count { font-family:'Outfit',sans-serif; font-size:13px; font-weight:600; color:var(--maroon); background:#fff; border:1px solid var(--line); border-radius:50px; padding:2px 10px; }
+    .cmp-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:10px; }
+    .cmp-card { display:flex; justify-content:space-between; align-items:center; gap:10px; background:#fff; border:1px solid var(--line); border-radius:11px; padding:13px 16px; text-decoration:none; color:var(--text); transition:all 0.15s; }
+    .cmp-card:hover { border-color:var(--maroon); transform:translateY(-1px); box-shadow:0 4px 14px rgba(139,46,31,0.08); }
+    .cmp-name { font-size:14.5px; font-weight:500; }
+    .cmp-arrow { color:var(--maroon); font-weight:600; opacity:0; transition:opacity 0.15s; }
+    .cmp-card:hover .cmp-arrow { opacity:1; }
+    .no-results { text-align:center; color:var(--text-muted); padding:30px; font-size:15px; display:none; }
+    footer { background:#140d0c; color:rgba(255,255,255,0.45); padding:48px 40px; text-align:center; font-size:13px; margin-top:40px; }
+    .footer-logo { width:150px; height:auto; opacity:0.82; margin:0 auto 22px; display:block; }
+    footer a { color:rgba(255,255,255,0.6); text-decoration:none; }
+    .footer-links { display:flex; justify-content:center; gap:22px; margin-bottom:18px; flex-wrap:wrap; }
+    .footer-disclaimer { max-width:640px; margin:0 auto 16px; font-size:12px; line-height:1.7; color:rgba(255,255,255,0.32); }
+    @media (max-width:768px){ nav{padding:12px 20px;} .nav-links a:not(.nav-cta){display:none;} }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo" aria-label="StackMindr home"><img src="images/logo-mark-light.png" alt="" width="97" height="162"><b style="font-weight:700"><span>Stack</span>Mindr</b></a>
+    <div class="nav-links">
+      <a href="index.html#features">Features</a>
+      <a href="calculator.html">Calculator</a>
+      <a href="compounds.html" class="active">Compounds</a>
+      <a href="index.html#get" class="nav-cta">Get the app</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="eyebrow">The library</div>
+    <h1>152+ compounds, one reference.</h1>
+    <p>Dosage, timing, and tracking notes for every peptide and supplement in StackMindr — from GLP-1s and TRT to bioregulators. Tap any compound for the details.</p>
+    <div class="search-wrap"><input id="cmp-search" type="search" placeholder="Search compounds…" autocomplete="off" aria-label="Search compounds"></div>
+  </section>
+
+  <div class="wrap">
+    <section class="grp" data-group="Metabolic">
+      <h2>GLP-1 &amp; Metabolic <span class="grp-count">9</span></h2>
+      <div class="cmp-grid">
+        <a class="cmp-card" href="compounds/5-amino-1mq.html" data-name="5-amino-1mq"><span class="cmp-name">5-Amino-1MQ</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/adipotide.html" data-name="adipotide"><span class="cmp-name">Adipotide</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/aicar.html" data-name="aicar"><span class="cmp-name">AICAR</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/hgh-frag-176-191.html" data-name="hgh frag 176-191"><span class="cmp-name">HGH Frag 176-191</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/retatrutide.html" data-name="retatrutide"><span class="cmp-name">Retatrutide</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/semaglutide.html" data-name="semaglutide"><span class="cmp-name">Semaglutide</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/slu-pp-332.html" data-name="slu-pp-332"><span class="cmp-name">SLU-PP-332</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/tesofensine.html" data-name="tesofensine"><span class="cmp-name">Tesofensine</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/tirzepatide.html" data-name="tirzepatide"><span class="cmp-name">Tirzepatide</span><span class="cmp-arrow">→</span></a>
+      </div>
+    </section>
+    <section class="grp" data-group="Hormones &amp; TRT">
+      <h2>Hormones &amp; TRT <span class="grp-count">13</span></h2>
+      <div class="cmp-grid">
+        <a class="cmp-card" href="compounds/ace-031.html" data-name="ace-031"><span class="cmp-name">ACE-031</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/follistatin-344.html" data-name="follistatin-344"><span class="cmp-name">Follistatin-344</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/gonadorelin.html" data-name="gonadorelin"><span class="cmp-name">Gonadorelin</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/hcg.html" data-name="hcg"><span class="cmp-name">HCG</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/hgh.html" data-name="hgh"><span class="cmp-name">HGH</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/igf-1-des.html" data-name="igf-1 des"><span class="cmp-name">IGF-1 DES</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/igf-1-lr3.html" data-name="igf-1 lr3"><span class="cmp-name">IGF-1 LR3</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/kisspeptin-10.html" data-name="kisspeptin-10"><span class="cmp-name">Kisspeptin-10</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/kisspeptin-54.html" data-name="kisspeptin-54"><span class="cmp-name">Kisspeptin-54</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/peg-mgf.html" data-name="peg-mgf"><span class="cmp-name">PEG-MGF</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/testosterone-cypionate.html" data-name="testosterone cypionate"><span class="cmp-name">Testosterone Cypionate</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/testosterone-enanthate.html" data-name="testosterone enanthate"><span class="cmp-name">Testosterone Enanthate</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/testosterone-propionate.html" data-name="testosterone propionate"><span class="cmp-name">Testosterone Propionate</span><span class="cmp-arrow">→</span></a>
+      </div>
+    </section>
+    <section class="grp" data-group="GH Release">
+      <h2>Growth Hormone <span class="grp-count">9</span></h2>
+      <div class="cmp-grid">
+        <a class="cmp-card" href="compounds/cjc-1293.html" data-name="cjc-1293"><span class="cmp-name">CJC-1293</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/cjc-1295-no-dac.html" data-name="cjc-1295 no dac"><span class="cmp-name">CJC-1295 no DAC</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/cjc-ipa-blend.html" data-name="cjc/ipa blend"><span class="cmp-name">CJC/Ipa Blend</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/ghrp-2.html" data-name="ghrp-2"><span class="cmp-name">GHRP-2</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/ghrp-6.html" data-name="ghrp-6"><span class="cmp-name">GHRP-6</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/hexarelin.html" data-name="hexarelin"><span class="cmp-name">Hexarelin</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/ipamorelin.html" data-name="ipamorelin"><span class="cmp-name">Ipamorelin</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/sermorelin.html" data-name="sermorelin"><span class="cmp-name">Sermorelin</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/tesamorelin.html" data-name="tesamorelin"><span class="cmp-name">Tesamorelin</span><span class="cmp-arrow">→</span></a>
+      </div>
+    </section>
+    <section class="grp" data-group="Healing &amp; Recovery">
+      <h2>Healing &amp; Recovery <span class="grp-count">12</span></h2>
+      <div class="cmp-grid">
+        <a class="cmp-card" href="compounds/aod-9604.html" data-name="aod-9604"><span class="cmp-name">AOD-9604</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/ara-290.html" data-name="ara-290"><span class="cmp-name">ARA-290</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/b7-33.html" data-name="b7-33"><span class="cmp-name">B7-33</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/bpc-157.html" data-name="bpc-157"><span class="cmp-name">BPC-157</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/ghk-cu.html" data-name="ghk-cu"><span class="cmp-name">GHK-Cu</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/kpv.html" data-name="kpv"><span class="cmp-name">KPV</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/larazotide.html" data-name="larazotide"><span class="cmp-name">Larazotide</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/ll-37.html" data-name="ll-37"><span class="cmp-name">LL-37</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/tb-500.html" data-name="tb-500"><span class="cmp-name">TB-500</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/thymosin-beta-4-fragment.html" data-name="thymosin beta-4 fragment"><span class="cmp-name">Thymosin Beta-4 Fragment</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/tp508.html" data-name="tp508"><span class="cmp-name">TP508</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/wolverine-stack.html" data-name="wolverine stack"><span class="cmp-name">Wolverine Stack</span><span class="cmp-arrow">→</span></a>
+      </div>
+    </section>
+    <section class="grp" data-group="Anti-aging">
+      <h2>Longevity &amp; Anti-aging <span class="grp-count">14</span></h2>
+      <div class="cmp-grid">
+        <a class="cmp-card" href="compounds/angiotensin.html" data-name="angiotensin"><span class="cmp-name">Angiotensin</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/epitalon.html" data-name="epitalon"><span class="cmp-name">Epitalon</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/foxo4-dri.html" data-name="foxo4-dri"><span class="cmp-name">FOXO4-DRI</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/gdf11.html" data-name="gdf11"><span class="cmp-name">GDF11</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/glow.html" data-name="glow"><span class="cmp-name">GLOW</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/humanin.html" data-name="humanin"><span class="cmp-name">Humanin</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/humanin-analog.html" data-name="humanin analog"><span class="cmp-name">Humanin analog</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/klotho-peptide.html" data-name="klotho peptide"><span class="cmp-name">Klotho peptide</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/klow.html" data-name="klow"><span class="cmp-name">KLOW</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/mots-c.html" data-name="mots-c"><span class="cmp-name">MOTS-c</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/nad.html" data-name="nad+"><span class="cmp-name">NAD+</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/pinealon.html" data-name="pinealon"><span class="cmp-name">Pinealon</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/ss-20.html" data-name="ss-20"><span class="cmp-name">SS-20</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/ss-31.html" data-name="ss-31"><span class="cmp-name">SS-31</span><span class="cmp-arrow">→</span></a>
+      </div>
+    </section>
+    <section class="grp" data-group="Cognitive">
+      <h2>Cognitive <span class="grp-count">9</span></h2>
+      <div class="cmp-grid">
+        <a class="cmp-card" href="compounds/cerebrolysin.html" data-name="cerebrolysin"><span class="cmp-name">Cerebrolysin</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/dihexa.html" data-name="dihexa"><span class="cmp-name">Dihexa</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/dsip.html" data-name="dsip"><span class="cmp-name">DSIP</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/n-acetyl-selank-amidate.html" data-name="n-acetyl selank amidate"><span class="cmp-name">N-Acetyl Selank Amidate</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/n-acetyl-semax-amidate.html" data-name="n-acetyl semax amidate"><span class="cmp-name">N-Acetyl Semax Amidate</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/p21.html" data-name="p21"><span class="cmp-name">P21</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/pe-22-28.html" data-name="pe-22-28"><span class="cmp-name">PE-22-28</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/selank.html" data-name="selank"><span class="cmp-name">Selank</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/semax.html" data-name="semax"><span class="cmp-name">Semax</span><span class="cmp-arrow">→</span></a>
+      </div>
+    </section>
+    <section class="grp" data-group="Immune">
+      <h2>Immune <span class="grp-count">6</span></h2>
+      <div class="cmp-grid">
+        <a class="cmp-card" href="compounds/ae37.html" data-name="ae37"><span class="cmp-name">AE37</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/glutathione.html" data-name="glutathione"><span class="cmp-name">Glutathione</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/pnc-27.html" data-name="pnc-27"><span class="cmp-name">PNC-27</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/ta-1.html" data-name="ta-1"><span class="cmp-name">TA-1</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/thymalin.html" data-name="thymalin"><span class="cmp-name">Thymalin</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/vip.html" data-name="vip"><span class="cmp-name">VIP</span><span class="cmp-arrow">→</span></a>
+      </div>
+    </section>
+    <section class="grp" data-group="Sexual Health">
+      <h2>Sexual Health <span class="grp-count">4</span></h2>
+      <div class="cmp-grid">
+        <a class="cmp-card" href="compounds/melanotan-i.html" data-name="melanotan i"><span class="cmp-name">Melanotan I</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/melanotan-ii.html" data-name="melanotan ii"><span class="cmp-name">Melanotan II</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/oxytocin.html" data-name="oxytocin"><span class="cmp-name">Oxytocin</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/pt-141.html" data-name="pt-141"><span class="cmp-name">PT-141</span><span class="cmp-arrow">→</span></a>
+      </div>
+    </section>
+    <section class="grp" data-group="Bioregulators">
+      <h2>Bioregulators (Khavinson) <span class="grp-count">40</span></h2>
+      <div class="cmp-grid">
+        <a class="cmp-card" href="compounds/adamax.html" data-name="adamax"><span class="cmp-name">Adamax</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/bonomarlot.html" data-name="bonomarlot"><span class="cmp-name">Bonomarlot</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/bonothyrk.html" data-name="bonothyrk"><span class="cmp-name">Bonothyrk</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/bronchogen.html" data-name="bronchogen"><span class="cmp-name">Bronchogen</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/cardiogen.html" data-name="cardiogen"><span class="cmp-name">Cardiogen</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/cartalax.html" data-name="cartalax"><span class="cmp-name">Cartalax</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/cerluten.html" data-name="cerluten"><span class="cmp-name">Cerluten</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/chelohart.html" data-name="chelohart"><span class="cmp-name">Chelohart</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/chitomur.html" data-name="chitomur"><span class="cmp-name">Chitomur</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/chondragen.html" data-name="chondragen"><span class="cmp-name">Chondragen</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/chonluten.html" data-name="chonluten"><span class="cmp-name">Chonluten</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/cochleotrophin.html" data-name="cochleotrophin"><span class="cmp-name">Cochleotrophin</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/cortexin.html" data-name="cortexin"><span class="cmp-name">Cortexin</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/crystagen.html" data-name="crystagen"><span class="cmp-name">Crystagen</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/endoluten.html" data-name="endoluten"><span class="cmp-name">Endoluten</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/glandokort.html" data-name="glandokort"><span class="cmp-name">Glandokort</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/gotratix.html" data-name="gotratix"><span class="cmp-name">Gotratix</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/livagen.html" data-name="livagen"><span class="cmp-name">Livagen</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/metaprot.html" data-name="metaprot"><span class="cmp-name">Metaprot</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/neurogen.html" data-name="neurogen"><span class="cmp-name">Neurogen</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/normoftal.html" data-name="normoftal"><span class="cmp-name">Normoftal</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/ovagen.html" data-name="ovagen"><span class="cmp-name">Ovagen</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/pancragen.html" data-name="pancragen"><span class="cmp-name">Pancragen</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/pielotax.html" data-name="pielotax"><span class="cmp-name">Pielotax</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/prostatilen.html" data-name="prostatilen"><span class="cmp-name">Prostatilen</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/renisamin.html" data-name="renisamin"><span class="cmp-name">Renisamin</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/retinalamin.html" data-name="retinalamin"><span class="cmp-name">Retinalamin</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/sigumir.html" data-name="sigumir"><span class="cmp-name">Sigumir</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/stamacort.html" data-name="stamacort"><span class="cmp-name">Stamacort</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/suprefort.html" data-name="suprefort"><span class="cmp-name">Suprefort</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/svetinorm.html" data-name="svetinorm"><span class="cmp-name">Svetinorm</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/testagen.html" data-name="testagen"><span class="cmp-name">Testagen</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/testoluten.html" data-name="testoluten"><span class="cmp-name">Testoluten</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/thymogen.html" data-name="thymogen"><span class="cmp-name">Thymogen</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/thyreogen.html" data-name="thyreogen"><span class="cmp-name">Thyreogen</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/ventfort.html" data-name="ventfort"><span class="cmp-name">Ventfort</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/vesugen.html" data-name="vesugen"><span class="cmp-name">Vesugen</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/visoluten.html" data-name="visoluten"><span class="cmp-name">Visoluten</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/vladonix.html" data-name="vladonix"><span class="cmp-name">Vladonix</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/zhenoluten.html" data-name="zhenoluten"><span class="cmp-name">Zhenoluten</span><span class="cmp-arrow">→</span></a>
+      </div>
+    </section>
+    <section class="grp" data-group="Nootropics">
+      <h2>Nootropics <span class="grp-count">3</span></h2>
+      <div class="cmp-grid">
+        <a class="cmp-card" href="compounds/alpha-gpc.html" data-name="alpha-gpc"><span class="cmp-name">Alpha-GPC</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/bacopa-monnieri.html" data-name="bacopa monnieri"><span class="cmp-name">Bacopa Monnieri</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/phosphatidylserine.html" data-name="phosphatidylserine"><span class="cmp-name">Phosphatidylserine</span><span class="cmp-arrow">→</span></a>
+      </div>
+    </section>
+    <section class="grp" data-group="Adaptogens">
+      <h2>Adaptogens <span class="grp-count">5</span></h2>
+      <div class="cmp-grid">
+        <a class="cmp-card" href="compounds/ashwagandha.html" data-name="ashwagandha"><span class="cmp-name">Ashwagandha</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/cordyceps.html" data-name="cordyceps"><span class="cmp-name">Cordyceps</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/lion-s-mane.html" data-name="lion's mane"><span class="cmp-name">Lion's Mane</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/rhodiola-rosea.html" data-name="rhodiola rosea"><span class="cmp-name">Rhodiola Rosea</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/tongkat-ali.html" data-name="tongkat ali"><span class="cmp-name">Tongkat Ali</span><span class="cmp-arrow">→</span></a>
+      </div>
+    </section>
+    <section class="grp" data-group="Amino Acids">
+      <h2>Amino Acids <span class="grp-count">6</span></h2>
+      <div class="cmp-grid">
+        <a class="cmp-card" href="compounds/acetyl-l-carnitine.html" data-name="acetyl-l-carnitine"><span class="cmp-name">Acetyl-L-Carnitine</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/glycine.html" data-name="glycine"><span class="cmp-name">Glycine</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/l-glutamine.html" data-name="l-glutamine"><span class="cmp-name">L-Glutamine</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/l-theanine.html" data-name="l-theanine"><span class="cmp-name">L-Theanine</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/l-tyrosine.html" data-name="l-tyrosine"><span class="cmp-name">L-Tyrosine</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/taurine.html" data-name="taurine"><span class="cmp-name">Taurine</span><span class="cmp-arrow">→</span></a>
+      </div>
+    </section>
+    <section class="grp" data-group="Vitamins">
+      <h2>Vitamins <span class="grp-count">5</span></h2>
+      <div class="cmp-grid">
+        <a class="cmp-card" href="compounds/methylcobalamin.html" data-name="methylcobalamin"><span class="cmp-name">Methylcobalamin</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/methylfolate.html" data-name="methylfolate"><span class="cmp-name">Methylfolate</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/niacinamide.html" data-name="niacinamide"><span class="cmp-name">Niacinamide</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/vitamin-c.html" data-name="vitamin c"><span class="cmp-name">Vitamin C</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/vitamin-d3-k2.html" data-name="vitamin d3 + k2"><span class="cmp-name">Vitamin D3 + K2</span><span class="cmp-arrow">→</span></a>
+      </div>
+    </section>
+    <section class="grp" data-group="Minerals">
+      <h2>Minerals <span class="grp-count">4</span></h2>
+      <div class="cmp-grid">
+        <a class="cmp-card" href="compounds/iodine.html" data-name="iodine"><span class="cmp-name">Iodine</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/magnesium-glycinate.html" data-name="magnesium glycinate"><span class="cmp-name">Magnesium Glycinate</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/selenium.html" data-name="selenium"><span class="cmp-name">Selenium</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/zinc.html" data-name="zinc"><span class="cmp-name">Zinc</span><span class="cmp-arrow">→</span></a>
+      </div>
+    </section>
+    <section class="grp" data-group="Performance">
+      <h2>Performance <span class="grp-count">3</span></h2>
+      <div class="cmp-grid">
+        <a class="cmp-card" href="compounds/beta-alanine.html" data-name="beta-alanine"><span class="cmp-name">Beta-Alanine</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/coq10-ubiquinol.html" data-name="coq10 / ubiquinol"><span class="cmp-name">CoQ10 / Ubiquinol</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/creatine-monohydrate.html" data-name="creatine monohydrate"><span class="cmp-name">Creatine Monohydrate</span><span class="cmp-arrow">→</span></a>
+      </div>
+    </section>
+    <section class="grp" data-group="Sleep &amp; Recovery">
+      <h2>Sleep &amp; Recovery <span class="grp-count">3</span></h2>
+      <div class="cmp-grid">
+        <a class="cmp-card" href="compounds/apigenin.html" data-name="apigenin"><span class="cmp-name">Apigenin</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/magnesium-l-threonate.html" data-name="magnesium l-threonate"><span class="cmp-name">Magnesium L-Threonate</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/melatonin.html" data-name="melatonin"><span class="cmp-name">Melatonin</span><span class="cmp-arrow">→</span></a>
+      </div>
+    </section>
+    <section class="grp" data-group="Other">
+      <h2>Other Supplements <span class="grp-count">7</span></h2>
+      <div class="cmp-grid">
+        <a class="cmp-card" href="compounds/astaxanthin.html" data-name="astaxanthin"><span class="cmp-name">Astaxanthin</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/berberine.html" data-name="berberine"><span class="cmp-name">Berberine</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/curcumin.html" data-name="curcumin"><span class="cmp-name">Curcumin</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/nac.html" data-name="nac"><span class="cmp-name">NAC</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/omega-3.html" data-name="omega-3"><span class="cmp-name">Omega-3</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/spermidine.html" data-name="spermidine"><span class="cmp-name">Spermidine</span><span class="cmp-arrow">→</span></a>
+        <a class="cmp-card" href="compounds/tmg.html" data-name="tmg"><span class="cmp-name">TMG</span><span class="cmp-arrow">→</span></a>
+      </div>
+    </section>
+    <div class="no-results" id="no-results">No compounds match that search.</div>
+  </div>
+
+  <footer>
+    <img class="footer-logo" src="images/logo-full-light.png" alt="StackMindr — the OS for your body." width="626" height="370" loading="lazy">
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="calculator.html">Calculator</a>
+      <a href="glp-1-tracker.html">GLP-1 Tracker</a>
+      <a href="compounds.html">All Compounds</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+    <p class="footer-disclaimer">StackMindr is a tracking and educational reference tool for informational purposes only. It is not medical advice and does not diagnose, treat, cure, or prevent any condition, and does not sell, source, or recommend any compound. Always consult a qualified healthcare provider before starting or changing any protocol.</p>
+    <p>&copy; 2026 STACKMINDR LLC · Built in Oregon</p>
+  </footer>
+
+  <script>
+    (function(){
+      var input = document.getElementById('cmp-search');
+      var cards = [].slice.call(document.querySelectorAll('.cmp-card'));
+      var groups = [].slice.call(document.querySelectorAll('.grp'));
+      var noRes = document.getElementById('no-results');
+      input.addEventListener('input', function(){
+        var q = input.value.trim().toLowerCase();
+        var any = false;
+        cards.forEach(function(c){
+          var show = !q || c.getAttribute('data-name').indexOf(q) !== -1;
+          c.style.display = show ? '' : 'none';
+          if (show) any = true;
+        });
+        groups.forEach(function(g){
+          var vis = g.querySelectorAll('.cmp-card:not([style*="display: none"])').length;
+          g.style.display = vis ? '' : 'none';
+        });
+        noRes.style.display = any ? 'none' : 'block';
+      });
+    })();
+  </script>
+</body>
+</html>
