@@ -208,11 +208,21 @@
   <!-- CALCULATOR -->
   <div class="calc-wrap">
     <div class="calc-card">
+      <div id="acctBar" style="display:none;margin:0 0 16px;padding:10px 14px;border-radius:12px;background:#f2ead8;border:1px solid #e4d9c2;font-size:13px;color:#7a5a3a;align-items:center;gap:10px;flex-wrap:wrap;">
+        <span id="acctStatus">Connecting to your account…</span>
+        <select id="acctPrefill" style="display:none;margin-left:auto;padding:6px 8px;border-radius:8px;border:1px solid #d9cdb3;background:#fff;font-size:13px;color:#2a2218;">
+          <option value="">Prefill from your stack…</option>
+        </select>
+        <button id="acctSave" type="button" style="display:none;padding:7px 12px;border-radius:8px;border:none;background:#8b1c1c;color:#fff;font-size:13px;font-weight:600;cursor:pointer;">Save to my stack</button>
+      </div>
       <div class="mode-tabs" role="tablist">
         <button class="mode-tab active" data-mode="peptide" role="tab">Peptide</button>
         <button class="mode-tab" data-mode="trt" role="tab">TRT</button>
         <button class="mode-tab" data-mode="hcg" role="tab">HCG</button>
         <button class="mode-tab" data-mode="hgh" role="tab">HGH</button>
+        <button class="mode-tab" data-mode="blend" role="tab">Blend</button>
+        <button class="mode-tab" data-mode="levels" role="tab">Levels</button>
+        <button class="mode-tab" data-mode="cycle" role="tab">Cycle</button>
       </div>
 
       <!-- PEPTIDE -->
@@ -366,6 +376,152 @@
         </div>
       </div>
 
+      <!-- BLEND -->
+      <div class="calc-body" data-panel="blend" hidden>
+        <div class="calc-inputs">
+          <div class="mode-title">Peptide blend</div>
+          <div class="mode-desc">Reconstitute a multi-peptide blend and see how many mg of each component you get per draw.</div>
+          <div class="field">
+            <label>Preset</label>
+            <select id="bl_preset">
+              <option value="">Custom blend</option>
+              <option value="glow">GLOW — GHK-Cu / BPC-157 / TB-500</option>
+              <option value="klow">KLOW — GHK-Cu / BPC-157 / TB-500 / KPV</option>
+              <option value="wolverine">Wolverine — BPC-157 / TB-500</option>
+            </select>
+          </div>
+          <label class="hint" style="display:block;margin:4px 0 6px;font-weight:600;">Components (mg per vial)</label>
+          <div id="bl_rows"></div>
+          <button type="button" id="bl_add" style="background:none;border:none;color:#8b1c1c;font-size:13px;font-weight:600;cursor:pointer;padding:2px 0 10px;">+ Add component</button>
+          <div class="field">
+            <label>Calculate by</label>
+            <div style="display:flex;gap:8px;">
+              <button type="button" class="bl-toggle" data-blmode="draw" style="flex:1;padding:10px;border-radius:10px;border:1px solid #d9cdb3;background:#8b1c1c;color:#fff;font-weight:600;font-size:13px;cursor:pointer;">Draw amount</button>
+              <button type="button" class="bl-toggle" data-blmode="target" style="flex:1;padding:10px;border-radius:10px;border:1px solid #d9cdb3;background:transparent;color:#7a5a3a;font-weight:600;font-size:13px;cursor:pointer;">Target dose</button>
+            </div>
+          </div>
+          <div class="field">
+            <label>BAC water added <span class="hint">(mL)</span></label>
+            <input type="number" inputmode="decimal" id="bl_bac" value="3" min="0" step="any">
+          </div>
+          <div class="field" id="bl_draw_field">
+            <label>Draw <span class="hint">(units)</span></label>
+            <input type="number" inputmode="decimal" id="bl_draw" value="20" min="0" step="any">
+          </div>
+          <div id="bl_target_fields" hidden>
+            <div class="field">
+              <label>Target component</label>
+              <select id="bl_target_idx"></select>
+            </div>
+            <div class="field">
+              <label>Desired dose of that component</label>
+              <div class="input-row">
+                <input type="number" inputmode="decimal" id="bl_target_dose" value="500" min="0" step="any">
+                <select id="bl_target_unit"><option value="mcg" selected>mcg</option><option value="mg">mg</option></select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="calc-output">
+          <div class="result-hero">
+            <div class="r-label">Draw to this line</div>
+            <div class="r-value" id="bl_units">20.0<span>units</span></div>
+            <div class="r-caption" id="bl_sub">draw — mL · — doses per vial</div>
+          </div>
+          <div style="font-size:11px;color:#9a8468;font-weight:600;letter-spacing:.5px;margin:14px 2px 6px;">PER INJECTION</div>
+          <div id="bl_components"></div>
+          <div class="warn hidden" id="bl_warn"></div>
+        </div>
+      </div>
+
+      <!-- LEVELS -->
+      <div class="calc-body" data-panel="levels" hidden>
+        <div class="calc-inputs">
+          <div class="mode-title">Estimated levels</div>
+          <div class="mode-desc">See how a compound builds up with repeated dosing and roughly when it levels off. Educational estimate from half-life — not a blood test.</div>
+          <div class="field">
+            <label>Compound</label>
+            <select id="lv_preset"></select>
+          </div>
+          <div class="field">
+            <label>Half-life <span class="hint">(hours)</span></label>
+            <input type="number" inputmode="decimal" id="lv_hl" value="192" min="0" step="any">
+          </div>
+          <div class="field">
+            <label>Dose <span class="hint">(any unit)</span></label>
+            <input type="number" inputmode="decimal" id="lv_dose" value="100" min="0" step="any">
+          </div>
+          <div class="field">
+            <label>Inject / take every <span class="hint">(days)</span></label>
+            <input type="number" inputmode="decimal" id="lv_interval" value="3.5" min="0" step="any">
+          </div>
+        </div>
+        <div class="calc-output">
+          <div style="background:#faf6ee;border:1px solid #e4d9c2;border-radius:12px;padding:12px 12px 8px;">
+            <div style="font-size:12.5px;color:#5a4a3a;font-weight:600;margin-bottom:8px;">Estimated amount in your system (% of steady state)</div>
+            <svg id="lv_chart" viewBox="0 0 320 140" style="width:100%;height:auto;display:block;" role="img" aria-label="Estimated level over time"></svg>
+            <div style="display:flex;justify-content:space-between;font-size:10px;color:#9a8468;padding:4px 2px 0;"><span>Day 0</span><span>Time (days) →</span><span id="lv_endday">Day —</span></div>
+          </div>
+          <div class="stat-grid" style="margin-top:12px;">
+            <div class="stat"><div class="s-label">Accumulation</div><div class="s-value" id="lv_accum">—</div></div>
+            <div class="stat"><div class="s-label">To ~90% steady</div><div class="s-value" id="lv_t90">—</div></div>
+            <div class="stat"><div class="s-label">Doses to steady</div><div class="s-value" id="lv_dosesss">—</div></div>
+            <div class="stat"><div class="s-label">Peak-to-trough</div><div class="s-value" id="lv_swing">—</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CYCLE -->
+      <div class="calc-body" data-panel="cycle" hidden>
+        <div class="calc-inputs">
+          <div class="mode-title">Cycle planner</div>
+          <div class="mode-desc">Plan a cycle before you buy — vials, timing, and cost. Nothing is saved.</div>
+          <div class="field">
+            <label>Cycle length <span class="hint">(weeks)</span></label>
+            <input type="number" inputmode="decimal" id="cy_weeks" value="8" min="0" step="any">
+          </div>
+          <div class="field">
+            <label>Dose per injection</label>
+            <div class="input-row">
+              <input type="number" inputmode="decimal" id="cy_dose" value="300" min="0" step="any">
+              <select id="cy_unit"><option value="mg">mg</option><option value="mcg" selected>mcg</option><option value="iu">IU</option></select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Frequency</label>
+            <select id="cy_freq">
+              <option value="daily">Daily</option>
+              <option value="5x">5&times; / week</option>
+              <option value="eod">Every other day</option>
+              <option value="3x">3&times; / week</option>
+              <option value="2x">2&times; / week</option>
+              <option value="weekly">Weekly</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Vial size <span class="hint">(mg)</span></label>
+            <input type="number" inputmode="decimal" id="cy_vial" value="10" min="0" step="any">
+          </div>
+          <div class="field">
+            <label>Cost per vial <span class="hint">(optional)</span></label>
+            <input type="number" inputmode="decimal" id="cy_cost" value="" min="0" step="any" placeholder="$">
+          </div>
+        </div>
+        <div class="calc-output">
+          <div class="result-hero">
+            <div class="r-label">You'll need</div>
+            <div class="r-value" id="cy_vials">—<span>vials</span></div>
+            <div class="r-caption" id="cy_costline">for the full cycle</div>
+          </div>
+          <div class="stat-grid">
+            <div class="stat"><div class="s-label">Total doses</div><div class="s-value" id="cy_totaldoses">—</div></div>
+            <div class="stat"><div class="s-label">Doses per vial</div><div class="s-value" id="cy_perdoses">—</div></div>
+            <div class="stat"><div class="s-label">Total compound</div><div class="s-value" id="cy_total">—</div></div>
+            <div class="stat"><div class="s-label">Leftover</div><div class="s-value" id="cy_leftover">—</div></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -503,13 +659,148 @@
         warn('g_warn', units, cap);
       }
 
-      var calcs = { peptide: calcPeptide, trt: calcTrt, hcg: calcHcg, hgh: calcHgh };
+      // ── BLEND ──  each component shares one vial + BAC water; draw volume → mg of each per shot
+      var BLEND_PRESETS = {
+        '': [{ name: '', mg: '' }, { name: '', mg: '' }, { name: '', mg: '' }],
+        glow: [{ name: 'GHK-Cu', mg: '50' }, { name: 'BPC-157', mg: '10' }, { name: 'TB-500', mg: '10' }],
+        klow: [{ name: 'GHK-Cu', mg: '50' }, { name: 'BPC-157', mg: '10' }, { name: 'TB-500', mg: '10' }, { name: 'KPV', mg: '10' }],
+        wolverine: [{ name: 'BPC-157', mg: '10' }, { name: 'TB-500', mg: '10' }]
+      };
+      var blComps = BLEND_PRESETS[''].map(function (c) { return { name: c.name, mg: c.mg }; });
+      var blMode = 'draw';
+      function renderBlRows() {
+        var box = document.getElementById('bl_rows'); if (!box) return;
+        box.innerHTML = '';
+        blComps.forEach(function (c, i) {
+          var row = document.createElement('div');
+          row.style.cssText = 'display:flex;gap:8px;margin-bottom:8px;align-items:center;';
+          row.innerHTML = '<input type="text" placeholder="Name (e.g. BPC-157)" value="' + (c.name || '').replace(/"/g, '&quot;') + '" data-bi="' + i + '" data-bf="name" style="flex:2;padding:10px;border-radius:8px;border:1px solid #d9cdb3;font-size:14px;">' +
+            '<input type="number" inputmode="decimal" placeholder="mg" value="' + (c.mg || '') + '" data-bi="' + i + '" data-bf="mg" style="flex:1;min-width:0;padding:10px;border-radius:8px;border:1px solid #d9cdb3;font-size:14px;">' +
+            '<button type="button" data-brm="' + i + '" aria-label="Remove" style="background:none;border:none;color:#9a8468;font-size:22px;cursor:pointer;padding:0 4px;line-height:1;">&times;</button>';
+          box.appendChild(row);
+        });
+        box.querySelectorAll('input').forEach(function (el) { el.addEventListener('input', function () { blComps[+el.getAttribute('data-bi')][el.getAttribute('data-bf')] = el.value; refreshBlTargetOpts(); calcBlend(); }); });
+        box.querySelectorAll('[data-brm]').forEach(function (b) { b.addEventListener('click', function () { if (blComps.length > 1) { blComps.splice(+b.getAttribute('data-brm'), 1); renderBlRows(); refreshBlTargetOpts(); calcBlend(); } }); });
+      }
+      function refreshBlTargetOpts() {
+        var sel = document.getElementById('bl_target_idx'); if (!sel) return;
+        var cur = sel.value;
+        sel.innerHTML = blComps.map(function (c, i) { return ((c.name && c.name.trim()) || parseFloat(c.mg) > 0) ? '<option value="' + i + '">' + (c.name || ('Component ' + (i + 1))) + '</option>' : ''; }).join('');
+        if (cur && sel.querySelector('option[value="' + cur + '"]')) sel.value = cur;
+      }
+      function calcBlend() {
+        var bac = parseFloat(document.getElementById('bl_bac').value) || 0, drawMl;
+        if (blMode === 'target') {
+          var ti = parseInt(document.getElementById('bl_target_idx').value, 10) || 0;
+          var tc = blComps[ti] || {};
+          var tConc = bac > 0 ? (parseFloat(tc.mg) || 0) / bac : 0;
+          var tUnit = document.getElementById('bl_target_unit').value;
+          var tMg = (parseFloat(document.getElementById('bl_target_dose').value) || 0) / (tUnit === 'mg' ? 1 : 1000);
+          drawMl = tConc > 0 ? tMg / tConc : 0;
+        } else { drawMl = (parseFloat(document.getElementById('bl_draw').value) || 0) / 100; }
+        var units = drawMl * 100;
+        var dpv = (bac > 0 && drawMl > 0) ? Math.floor(bac / drawMl) : 0;
+        set('bl_units', (isFinite(units) ? units.toFixed(1) : '—') + '<span>units</span>');
+        document.getElementById('bl_sub').textContent = 'draw ' + (isFinite(drawMl) ? drawMl.toFixed(3) : '—') + ' mL · ' + (dpv || '—') + ' doses per vial';
+        var comps = blComps.filter(function (c) { return (c.name && c.name.trim()) || parseFloat(c.mg) > 0; });
+        document.getElementById('bl_components').innerHTML = comps.map(function (c) {
+          var mg = parseFloat(c.mg) || 0, conc = bac > 0 ? mg / bac : 0, perMg = conc * drawMl, perMcg = perMg * 1000;
+          var val = perMg >= 1 ? (perMg.toFixed(2).replace(/\.?0+$/, '') + ' mg') : (Math.round(perMcg) + ' mcg');
+          var alt = perMg >= 1 ? ('(' + Math.round(perMcg) + ' mcg)') : ('(' + perMg.toFixed(3).replace(/\.?0+$/, '') + ' mg)');
+          return '<div style="display:flex;justify-content:space-between;align-items:baseline;padding:10px 12px;background:#faf6ee;border:1px solid #e4d9c2;border-radius:10px;margin-bottom:8px;"><span style="font-weight:600;font-size:14px;">' + (c.name || 'Component') + '</span><span style="font-size:14px;"><b style="color:#8b1c1c;">' + val + '</b> <span style="color:#9a8468;font-size:12px;">' + alt + '</span></span></div>';
+        }).join('') || '<div style="color:#9a8468;font-size:13px;padding:8px 0;">Add components (mg), BAC water, and a draw amount.</div>';
+        warn('bl_warn', units, 100);
+      }
+
+      // ── LEVELS ──  single-compartment accumulation: level = Σ dose·½^(t/half-life)
+      var HALF_LIVES = [['', 'Custom (enter half-life)', ''], ['test-cyp', 'Testosterone Cypionate', 192], ['test-e', 'Testosterone Enanthate', 108], ['test-p', 'Testosterone Propionate', 20], ['sema', 'Semaglutide', 168], ['tirz', 'Tirzepatide', 120], ['reta', 'Retatrutide', 144], ['hcg', 'HCG', 33], ['hgh', 'HGH (somatropin)', 2.5], ['cjc-dac', 'CJC-1295 (with DAC)', 168], ['cjc-nodac', 'CJC-1295 (no DAC) / Mod GRF', 0.5], ['ipa', 'Ipamorelin', 2], ['tesa', 'Tesamorelin', 0.5], ['bpc', 'BPC-157', 4], ['tb500', 'TB-500', 48], ['mt2', 'Melanotan II', 33], ['pt141', 'PT-141', 2.5]];
+      function calcLevels() {
+        var hl = parseFloat(document.getElementById('lv_hl').value) || 0;
+        var dose = parseFloat(document.getElementById('lv_dose').value) || 0;
+        var intervalDays = parseFloat(document.getElementById('lv_interval').value) || 0;
+        var intervalHrs = intervalDays * 24, chart = document.getElementById('lv_chart');
+        if (!(hl > 0 && dose > 0 && intervalHrs > 0)) { chart.innerHTML = ''; ['lv_accum', 'lv_t90', 'lv_dosesss', 'lv_swing'].forEach(function (id) { set(id, '—'); }); return; }
+        var k = Math.LN2 / hl, windowHrs = Math.min(Math.max(5 * hl, 6 * intervalHrs), 24 * 365);
+        var doseTimes = []; for (var td = 0; td <= windowHrs; td += intervalHrs) { doseTimes.push(td); if (doseTimes.length > 3000) break; }
+        var eps = Math.min(intervalHrs * 0.002, 0.25), tset = {}; tset[0] = 1; tset[windowHrs] = 1;
+        doseTimes.forEach(function (t) { if (t > eps) tset[t - eps] = 1; tset[t] = 1; tset[Math.min(windowHrs, t + intervalHrs * 0.33)] = 1; tset[Math.min(windowHrs, t + intervalHrs * 0.66)] = 1; });
+        var times = Object.keys(tset).map(parseFloat).filter(function (t) { return t >= 0 && t <= windowHrs; }).sort(function (a, b) { return a - b; });
+        var pts = [], maxLvl = 0;
+        times.forEach(function (t) { var lvl = 0; for (var d = 0; d < doseTimes.length; d++) { if (doseTimes[d] <= t) lvl += dose * Math.exp(-k * (t - doseTimes[d])); else break; } pts.push([t, lvl]); if (lvl > maxLvl) maxLvl = lvl; });
+        var accum = 1 / (1 - Math.exp(-k * intervalHrs)), ssPeak = dose * accum, ssTrough = ssPeak * Math.exp(-k * intervalHrs);
+        var W = 320, H = 140, pad = 6, denom = (ssPeak > 0 && isFinite(ssPeak)) ? ssPeak : (maxLvl || 1);
+        var poly = pts.map(function (p) { var x = pad + (p[0] / windowHrs) * (W - 2 * pad), frac = Math.min(1.02, p[1] / denom), y = H - pad - frac * (H - 2 * pad); return x.toFixed(1) + ',' + y.toFixed(1); }).join(' ');
+        var y100 = H - pad - (H - 2 * pad), y50 = H - pad - 0.5 * (H - 2 * pad);
+        chart.innerHTML = '<line x1="6" y1="' + y100 + '" x2="' + (W - 6) + '" y2="' + y100 + '" stroke="#e4d9c2" stroke-dasharray="3 3"/><line x1="6" y1="' + y50 + '" x2="' + (W - 6) + '" y2="' + y50 + '" stroke="#e4d9c2" stroke-dasharray="3 3"/><line x1="6" y1="' + (H - 6) + '" x2="' + (W - 6) + '" y2="' + (H - 6) + '" stroke="#e4d9c2"/><polyline points="' + poly + '" fill="none" stroke="#8b1c1c" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><text x="9" y="' + (y100 + 3) + '" font-size="8" fill="#9a8468">100%</text><text x="9" y="' + (y50 + 3) + '" font-size="8" fill="#9a8468">50%</text>';
+        document.getElementById('lv_endday').textContent = 'Day ' + Math.round(windowHrs / 24);
+        set('lv_accum', accum.toFixed(1) + '×');
+        set('lv_t90', ((3.32 * hl) / 24).toFixed(1) + ' <small>days</small>');
+        set('lv_dosesss', Math.ceil(((3.32 * hl) / 24) / (intervalDays || 1)));
+        set('lv_swing', (ssPeak / (ssTrough || 1)).toFixed(1) + '×');
+      }
+
+      // ── CYCLE ──  total doses × dose → vials, cost, leftover
+      var CY_FREQ = { daily: 7, '5x': 5, eod: 3.5, '3x': 3, '2x': 2, weekly: 1 };
+      function calcCycle() {
+        var weeks = parseFloat(document.getElementById('cy_weeks').value) || 0;
+        var dose = parseFloat(document.getElementById('cy_dose').value) || 0;
+        var unit = document.getElementById('cy_unit').value;
+        var perWeek = CY_FREQ[document.getElementById('cy_freq').value] || 0;
+        var vialSize = parseFloat(document.getElementById('cy_vial').value) || 0;
+        var cost = parseFloat(document.getElementById('cy_cost').value);
+        if (!(weeks > 0 && dose > 0 && perWeek > 0)) {
+          set('cy_vials', '—<span>vials</span>'); ['cy_totaldoses', 'cy_perdoses', 'cy_total', 'cy_leftover'].forEach(function (id) { set(id, '—'); });
+          document.getElementById('cy_costline').textContent = 'Enter cycle length, dose, and frequency.'; return;
+        }
+        var doseInVial = unit === 'mcg' ? dose / 1000 : dose;
+        var vialUnit = unit === 'iu' ? 'IU' : 'mg';
+        var totalDoses = Math.round(weeks * perWeek), totalAmt = totalDoses * dose, totalInVial = totalDoses * doseInVial;
+        var vials = vialSize > 0 ? Math.ceil(totalInVial / vialSize) : null;
+        var perVial = (vialSize > 0 && doseInVial > 0) ? Math.floor(vialSize / doseInVial) : null;
+        var leftover = vials != null ? Math.max(0, vials * vialSize - totalInVial) : null;
+        var costTotal = (vials != null && isFinite(cost) && cost > 0) ? vials * cost : null;
+        set('cy_vials', (vials != null ? vials : '—') + '<span>vials</span>');
+        document.getElementById('cy_costline').textContent = costTotal != null ? ('≈ $' + costTotal.toLocaleString('en-US') + ' for the cycle') : 'for the full cycle';
+        set('cy_totaldoses', totalDoses);
+        set('cy_perdoses', perVial != null ? perVial : '—');
+        set('cy_total', fmt0(totalAmt) + ' <small>' + unit + '</small>');
+        set('cy_leftover', leftover != null ? (leftover.toFixed(leftover < 10 ? 1 : 0) + ' <small>' + vialUnit + '</small>') : '—');
+      }
+
+      var calcs = { peptide: calcPeptide, trt: calcTrt, hcg: calcHcg, hgh: calcHgh, blend: calcBlend, levels: calcLevels, cycle: calcCycle };
+
+      // Levels compound dropdown
+      (function () {
+        var sel = document.getElementById('lv_preset'); if (!sel) return;
+        sel.innerHTML = HALF_LIVES.map(function (h) { return '<option value="' + h[0] + '">' + h[1] + '</option>'; }).join('');
+        sel.value = 'test-cyp';
+        sel.addEventListener('change', function () { var h = HALF_LIVES.filter(function (x) { return x[0] === sel.value; })[0]; if (h && h[2]) document.getElementById('lv_hl').value = h[2]; calcLevels(); });
+      })();
+
+      // Blend setup
+      renderBlRows(); refreshBlTargetOpts();
+      (function () {
+        var ps = document.getElementById('bl_preset');
+        if (ps) ps.addEventListener('change', function () { blComps = (BLEND_PRESETS[ps.value] || BLEND_PRESETS['']).map(function (c) { return { name: c.name, mg: c.mg }; }); renderBlRows(); refreshBlTargetOpts(); calcBlend(); });
+        var add = document.getElementById('bl_add');
+        if (add) add.addEventListener('click', function () { if (blComps.length < 6) { blComps.push({ name: '', mg: '' }); renderBlRows(); refreshBlTargetOpts(); } });
+        document.querySelectorAll('.bl-toggle').forEach(function (b) {
+          b.addEventListener('click', function () {
+            blMode = b.getAttribute('data-blmode');
+            document.querySelectorAll('.bl-toggle').forEach(function (t) { var on = t === b; t.style.background = on ? '#8b1c1c' : 'transparent'; t.style.color = on ? '#fff' : '#7a5a3a'; });
+            document.getElementById('bl_draw_field').hidden = blMode !== 'draw';
+            document.getElementById('bl_target_fields').hidden = blMode !== 'target';
+            calcBlend();
+          });
+        });
+      })();
 
       // Wire inputs → recalc their panel live
       document.querySelectorAll('.calc-body').forEach(function (panel) {
         var mode = panel.getAttribute('data-panel');
         panel.querySelectorAll('input, select').forEach(function (el) {
           el.addEventListener('input', calcs[mode]);
+          el.addEventListener('change', calcs[mode]);
         });
       });
 
@@ -524,7 +815,101 @@
       });
 
       // Initial render
-      calcPeptide(); calcTrt(); calcHcg(); calcHgh();
+      calcPeptide(); calcTrt(); calcHcg(); calcHgh(); calcBlend(); calcLevels(); calcCycle();
+    })();
+  </script>
+
+  <!-- Account tie-in: when opened from the StackMindr app, auto-sign-in from the ?t= custom token,
+       prefill from the user's stack, and save results back to their inventory. -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script>
+    (function () {
+      if (typeof firebase === 'undefined') return;
+      var cfg = {
+        apiKey: "AIzaSyD_1ec1nCTnoge97CUHf6qNW4u7ytAFxQg",
+        authDomain: "stackmindr.firebaseapp.com",
+        projectId: "stackmindr",
+        storageBucket: "stackmindr.firebasestorage.app",
+        messagingSenderId: "339390855259",
+        appId: "1:339390855259:web:d4c76814d6068d6a2e677e"
+      };
+      try { firebase.initializeApp(cfg); } catch (e) {}
+      var auth = firebase.auth(), db = firebase.firestore();
+      var bar = document.getElementById('acctBar'),
+          statusEl = document.getElementById('acctStatus'),
+          prefillEl = document.getElementById('acctPrefill'),
+          saveBtn = document.getElementById('acctSave');
+      var currentUser = null, inv = [];
+
+      // Token minted by the app and passed on the URL.
+      var tok = new URLSearchParams(location.search).get('t');
+      if (tok) {
+        bar.style.display = 'flex';
+        auth.signInWithCustomToken(tok).catch(function () {
+          statusEl.textContent = 'Could not sign in automatically — using the calculator in guest mode.';
+        });
+        // Don't leave the token sitting in the address bar / history.
+        try { history.replaceState(null, '', location.pathname); } catch (e) {}
+      }
+
+      auth.onAuthStateChanged(function (u) {
+        currentUser = u;
+        if (!u) return;
+        bar.style.display = 'flex';
+        statusEl.textContent = 'Signed in as ' + (u.email || 'your account') + ' ✓';
+        loadInventory(u.uid);
+      });
+
+      function loadInventory(uid) {
+        db.collection('users').doc(uid).collection('inventory').get().then(function (snap) {
+          inv = [];
+          snap.forEach(function (d) { var x = d.data(); x._id = d.id; inv.push(x); });
+          inv.sort(function (a, b) { return (a.name || '').localeCompare(b.name || ''); });
+          if (inv.length) {
+            prefillEl.style.display = 'inline-block';
+            saveBtn.style.display = 'inline-block';
+            prefillEl.innerHTML = '<option value="">Prefill from your stack…</option>' +
+              inv.map(function (it, i) { return '<option value="' + i + '">' + (it.name || 'Compound') + '</option>'; }).join('');
+          }
+        }).catch(function () {});
+      }
+
+      function fire(id) { var e = document.getElementById(id); if (e) e.dispatchEvent(new Event('input', { bubbles: true })); }
+
+      // Prefill the active panel's vial + BAC water from a chosen inventory item.
+      if (prefillEl) prefillEl.addEventListener('change', function () {
+        var it = inv[parseInt(prefillEl.value, 10)]; if (!it) return;
+        var mg = parseFloat(it.mgPerVial) || 0, bac = parseFloat(it.reconstitution) || 0;
+        var active = document.querySelector('.mode-tab.active');
+        var mode = active ? active.getAttribute('data-mode') : 'peptide';
+        var map = { peptide: ['p_vial', 'p_bac'], hcg: ['h_total', 'h_bac'], hgh: ['g_vial', 'g_bac'] };
+        var ids = map[mode];
+        if (ids) {
+          if (mg) { var v = document.getElementById(ids[0]); if (v) v.value = mg; }
+          if (bac) { var b = document.getElementById(ids[1]); if (b) b.value = bac; }
+          fire(ids[0]);
+        }
+      });
+
+      // Save the current result back to the chosen inventory item (as a reference note).
+      if (saveBtn) saveBtn.addEventListener('click', function () {
+        if (!currentUser) return;
+        var it = inv[parseInt(prefillEl.value, 10)];
+        if (!it) { alert('Pick a compound from "Prefill from your stack" first, then Save.'); return; }
+        var active = document.querySelector('.mode-tab.active');
+        var mode = active ? active.getAttribute('data-mode') : 'peptide';
+        var unitsId = { peptide: 'p_units', trt: 't_units', hcg: 'h_units', hgh: 'g_units' }[mode] || 'p_units';
+        var el = document.getElementById(unitsId);
+        var txt = el ? (el.textContent || '').replace('units', '').trim() : '';
+        db.collection('users').doc(currentUser.uid).collection('inventory').doc(it._id).set({
+          savedDraw: { units: parseFloat(txt) || null, label: (txt || '—') + ' units', mode: mode, savedAt: new Date().toISOString() }
+        }, { merge: true }).then(function () {
+          saveBtn.textContent = 'Saved ✓';
+          setTimeout(function () { saveBtn.textContent = 'Save to my stack'; }, 2200);
+        }).catch(function (e) { alert('Could not save: ' + ((e && e.message) || 'error')); });
+      });
     })();
   </script>
 
