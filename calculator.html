@@ -57,6 +57,7 @@
     ]
   }
   </script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you calculate peptide reconstitution?","acceptedAnswer":{"@type":"Answer","text":"Reconstitution math has two steps. First find the concentration: divide the amount of compound in the vial by the millilitres of bacteriostatic (BAC) water you add, which gives the strength per millilitre. Then divide your target dose by that concentration to get the volume to inject, and multiply the volume by 100 to get the units on a U-100 insulin syringe. This calculator does all three steps for you once you enter vial size, BAC water, and dose."}},{"@type":"Question","name":"How much BAC water should I mix with a peptide vial?","acceptedAnswer":{"@type":"Answer","text":"There is no single correct amount — the BAC water volume is a choice that sets how concentrated your mix is. More water makes a weaker solution and a larger, easier-to-read draw on the syringe; less water makes a stronger solution and a smaller draw. Common choices are 1, 2, or 3 mL per vial. Enter whatever amount you plan to use and the calculator shows the resulting concentration and units. Always confirm your approach with a qualified healthcare provider."}},{"@type":"Question","name":"How do I know how many units to draw on an insulin syringe?","acceptedAnswer":{"@type":"Answer","text":"Insulin syringes are U-100, meaning 100 units per millilitre, so the unit mark equals the injection volume in millilitres times 100. Once the calculator knows your concentration and target dose, it works out the volume and converts it to units automatically. A 1cc, 0.5cc, and 0.3cc syringe all use the same U-100 scale — they only differ in how much total volume they hold."}},{"@type":"Question","name":"How do I calculate a semaglutide or tirzepatide dose?","acceptedAnswer":{"@type":"Answer","text":"GLP-1 compounds like semaglutide and tirzepatide are reconstituted the same way as other peptides: concentration equals the mg in the vial divided by the BAC water added, and units to draw equals dose volume times 100. Because GLP-1 doses are often in milligrams while vials are labeled in milligrams too, enter them in matching units. This is educational reference only — your dose should be set by your prescriber."}},{"@type":"Question","name":"How do you reconstitute HCG?","acceptedAnswer":{"@type":"Answer","text":"HCG is supplied as a lyophilized powder measured in international units (IU) and mixed with BAC or sterile water before subcutaneous injection. Enter the IU in the vial and the water you add, and the calculator gives the concentration and the units to draw for your target IU dose on a U-100 syringe."}},{"@type":"Question","name":"How do you convert HGH from mg to IU?","acceptedAnswer":{"@type":"Answer","text":"The standard conversion used for human growth hormone is 1 mg = 3 IU. This calculator applies that conversion automatically on the HGH tab, so you can enter your vial and dose in whichever unit your product is labeled with and still get the correct units to draw."}},{"@type":"Question","name":"Does the syringe size change how many units I draw?","acceptedAnswer":{"@type":"Answer","text":"No. The number of units for a given dose is the same on a 1cc, 0.5cc, or 0.3cc insulin syringe, because all three are U-100. The only difference is capacity — a 0.3cc syringe simply can't hold more than 30 units, so if a dose needs more volume than your syringe holds, you'd split it or use a larger one. The calculator flags this for you."}},{"@type":"Question","name":"Is this reconstitution calculator accurate?","acceptedAnswer":{"@type":"Answer","text":"It uses the same standard concentration and U-100 unit math as the StackMindr app, and shows its work (concentration, volume, units, and doses per vial) so you can verify every figure. It is a mathematical tool for educational purposes, not medical advice — always double-check your own numbers and work with a qualified healthcare provider before injecting anything."}}]}</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -145,6 +146,12 @@
     .explain h2 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; margin-bottom: 14px; }
     .explain p { color: var(--text-muted); font-size: 15px; line-height: 1.75; margin-bottom: 14px; }
     .explain strong { color: var(--text); }
+    .faq { max-width: 760px; margin: 44px auto 0; padding: 0 24px; }
+    .faq h2 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; margin-bottom: 20px; }
+    .faq-item { margin-bottom: 20px; }
+    .faq-item h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+    .faq-item p { font-size: 14.5px; line-height: 1.7; color: var(--text-muted); }
+    .faq-item a { color: var(--maroon); }
 
     .app-cta { max-width: 860px; margin: 52px auto 0; padding: 0 24px; }
     .app-cta-inner { background: linear-gradient(170deg, var(--dark) 0%, #2a1210 55%, var(--maroon-dark) 100%); border-radius: 20px; padding: 44px 36px; text-align: center; position: relative; overflow: hidden; }
@@ -550,6 +557,43 @@
       </div>
     </div>
   </div>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2>Reconstitution calculator FAQ</h2>
+    <div class="faq-item">
+      <h3>How do you calculate peptide reconstitution?</h3>
+      <p>Two steps. First, concentration = the amount in the vial ÷ the BAC water you add (strength per mL). Then, units to draw = (your dose ÷ concentration) × 100, since insulin syringes are U-100. This calculator runs both steps and shows the concentration, volume, units, and doses per vial once you enter your numbers.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How much BAC water should I mix with a peptide vial?</h3>
+      <p>There's no single right amount — it's a choice that sets how concentrated the mix is. More water = a weaker solution and a larger, easier-to-read draw; less water = a stronger solution and a smaller draw. Common choices are 1, 2, or 3 mL. Enter what you plan to use and the calculator shows the resulting concentration. Confirm your approach with a qualified provider.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do I know how many units to draw on an insulin syringe?</h3>
+      <p>Insulin syringes are U-100 (100 units per mL), so the unit mark = injection volume in mL × 100. Once the calculator knows your concentration and dose, it works out the volume and converts it to units for you. A 1cc, 0.5cc, and 0.3cc syringe all use the same scale.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do I calculate a semaglutide or tirzepatide dose?</h3>
+      <p>GLP-1 compounds reconstitute like any other peptide: concentration = mg in the vial ÷ BAC water, and units to draw = dose volume × 100. Enter vial and dose in matching units. This is educational reference only — your dose should be set by your prescriber. See the <a href="compounds/semaglutide.html">semaglutide</a> and <a href="compounds/tirzepatide.html">tirzepatide</a> pages for more.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do you reconstitute HCG?</h3>
+      <p>HCG is a lyophilized powder measured in international units (IU), mixed with BAC or sterile water before subcutaneous injection. Enter the IU in the vial and the water you add, and the calculator gives the concentration and units to draw for your target IU dose.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do you convert HGH from mg to IU?</h3>
+      <p>The standard conversion is <strong>1 mg = 3 IU</strong>. The HGH tab applies it automatically, so you can enter your vial and dose in whichever unit your product is labeled with and still get the correct units to draw.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does the syringe size change how many units I draw?</h3>
+      <p>No. The units for a given dose are the same on a 1cc, 0.5cc, or 0.3cc syringe — all are U-100. They only differ in capacity: a 0.3cc holds at most 30 units, so if a dose needs more volume than your syringe holds you'd split it or size up. The calculator flags this automatically.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is this reconstitution calculator accurate?</h3>
+      <p>It uses the same standard concentration and U-100 unit math as the StackMindr app, and shows its work so you can verify every figure. It's a mathematical tool for educational purposes, not medical advice — always double-check your own numbers and work with a qualified healthcare provider.</p>
+    </div>
+  </section>
 
   <!-- DISCLAIMER -->
   <section class="disclaimer">
