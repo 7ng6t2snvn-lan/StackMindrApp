@@ -56,6 +56,8 @@
     .cmp-arrow { color:var(--maroon); font-weight:600; opacity:0; transition:opacity 0.15s; }
     .cmp-card:hover .cmp-arrow { opacity:1; }
     .no-results { text-align:center; color:var(--text-muted); padding:30px; font-size:15px; display:none; }
+    .correct-note { font-size:14px; color:var(--text-muted); margin:-4px 0 18px; font-style:italic; }
+    .correct-note strong { color:var(--maroon); font-style:normal; }
     .guides { max-width:1000px; margin:0 auto; padding:34px 24px 6px; border-bottom:1px solid var(--line); }
     .guides h2 { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:700; margin:0 0 4px; }
     .guides .intro { color:var(--text-muted); font-size:14px; margin-bottom:18px; }
@@ -90,11 +92,13 @@
     <p>Dosage, timing, and tracking notes for every peptide and supplement in StackMindr — from GLP-1s and TRT to bioregulators. Tap any compound for the details.</p>
     <div class="search-wrap"><input id="cmp-search" type="search" placeholder="Search by name, category, or goal — e.g. gut, GLP-1, sleep…" autocomplete="off" aria-label="Search compounds"></div>
     <div class="quick" id="cmp-quick">
-      <button type="button" data-q="GLP-1">GLP-1</button>
+      <button type="button" data-q="weight">Weight</button>
       <button type="button" data-q="healing">Healing</button>
       <button type="button" data-q="growth hormone">Growth hormone</button>
+      <button type="button" data-q="hair">Hair</button>
       <button type="button" data-q="sleep">Sleep</button>
       <button type="button" data-q="libido">Libido</button>
+      <button type="button" data-q="anti-aging">Anti-aging</button>
       <button type="button" data-q="bioregulator">Bioregulators</button>
     </div>
   </section>
@@ -129,6 +133,7 @@
   </section>
 
   <div class="wrap">
+    <p id="cmp-correct" class="correct-note" hidden></p>
     <section class="grp" data-group="Metabolic">
       <h2>GLP-1 &amp; Metabolic <span class="grp-count">18</span></h2>
       <div class="cmp-grid">
@@ -412,23 +417,65 @@
       // Goal/brand aliases → matched against compound-name substrings, so people can
       // find things by what they want (not just the exact name). Category search is
       // handled automatically via each card's parent group name.
+      var GLP = 'semaglutide tirzepatide retatrutide cagrilintide liraglutide survodutide mazdutide vk2735 orforglipron amycretin maritide pemvidutide';
+      var GH  = 'hgh sermorelin ipamorelin cjc-1295 cjc-1293 cjc/ipa tesamorelin ghrp hexarelin mk-677 ibutamoren';
       var ALIASES = {
-        'weight loss':'semaglutide tirzepatide retatrutide aicar tesofensine 5-amino',
-        'weightloss':'semaglutide tirzepatide retatrutide',
-        'fat loss':'semaglutide tirzepatide retatrutide aicar',
-        'glp':'semaglutide tirzepatide retatrutide',
-        'ozempic':'semaglutide','wegovy':'semaglutide',
-        'mounjaro':'tirzepatide','zepbound':'tirzepatide',
-        'gut':'bpc-157 kpv larazotide','ibd':'bpc-157 kpv',
-        'healing':'bpc-157 tb-500 ghk-cu kpv','injury':'bpc-157 tb-500',
-        'recovery':'bpc-157 tb-500 ghk-cu','tendon':'bpc-157 tb-500','joint':'bpc-157 tb-500',
-        'tanning':'melanotan','tan':'melanotan',
-        'libido':'pt-141 melanotan kisspeptin oxytocin','sex':'pt-141 melanotan oxytocin kisspeptin','erectile':'pt-141',
-        'sleep':'dsip epitalon pinealon',
-        'growth hormone':'hgh sermorelin ipamorelin cjc-1295 tesamorelin mk-677 ibutamoren hexarelin ghrp',
-        'muscle':'igf-1 follistatin ace-031 peg-mgf mk-677',
-        'skin':'ghk-cu glow','anti-aging':'epitalon nad ghk-cu','longevity':'epitalon nad mots-c 5-amino',
-        'cognitive':'dihexa cerebrolysin semax selank','nootropic':'semax selank dihexa','focus':'semax selank'
+        // Weight / metabolic
+        'weight':GLP+' aod-9604 adipotide 5-amino aicar tesofensine slu-pp',
+        'weight loss':GLP+' aod-9604 adipotide 5-amino aicar tesofensine','weightloss':GLP,
+        'lose weight':GLP,'fat loss':GLP+' aod-9604 aicar','fat burn':GLP+' aod-9604','fat burner':GLP+' aod-9604','slimming':GLP,
+        'obesity':GLP+' adipotide tesofensine','obese':GLP,'overweight':GLP,
+        'glp':GLP,'incretin':GLP,
+        'diabetes':'semaglutide tirzepatide liraglutide mazdutide survodutide berberine','blood sugar':'semaglutide tirzepatide liraglutide mazdutide berberine','a1c':'semaglutide tirzepatide','insulin':'semaglutide tirzepatide berberine',
+        'appetite':'mk-677 ghrp-6 ghrp-2 '+GLP,'hunger':'mk-677 ghrp-6 '+GLP,'cravings':GLP,
+        'metabolic':'5-amino aicar slu-pp mots-c tesofensine '+GLP,'metabolism':'5-amino aicar slu-pp mots-c',
+        'ozempic':'semaglutide','wegovy':'semaglutide','rybelsus':'semaglutide',
+        'mounjaro':'tirzepatide','zepbound':'tirzepatide','saxenda':'liraglutide','victoza':'liraglutide',
+        'elmiron':'pentosan','scenesse':'melanotan i','vyleesi':'pt-141',
+        // Hair / skin / cosmetic
+        'hair':'ghk-cu glow klow','hair loss':'ghk-cu glow klow','hair growth':'ghk-cu','regrowth':'ghk-cu','balding':'ghk-cu','thinning':'ghk-cu',
+        'skin':'ghk-cu argireline glow klow','complexion':'ghk-cu argireline','beauty':'argireline ghk-cu',
+        'wrinkle':'argireline ghk-cu','wrinkles':'argireline ghk-cu','fine lines':'argireline','botox':'argireline','anti-wrinkle':'argireline','cosmetic':'argireline ghk-cu',
+        'collagen':'ghk-cu','elasticity':'ghk-cu',
+        'tanning':'melanotan','tan':'melanotan','melanin':'melanotan',
+        // Healing / joints / gut
+        'healing':'bpc-157 tb-500 ghk-cu tp508 pentosan aod-9604 wolverine','heal':'bpc-157 tb-500 ghk-cu wolverine','injury':'bpc-157 tb-500 tp508','recovery':'bpc-157 tb-500 ghk-cu wolverine','repair':'bpc-157 tb-500 tp508','soft tissue':'bpc-157 tb-500',
+        'tendon':'bpc-157 tb-500 tp508','ligament':'bpc-157 tb-500','joint':'pentosan bpc-157 tb-500','joints':'pentosan bpc-157 tb-500','cartilage':'pentosan sigumir cartalax chondragen','arthritis':'pentosan bpc-157','osteoarthritis':'pentosan','knee':'pentosan bpc-157 tb-500','bone':'sigumir cartalax tp508',
+        'gut':'bpc-157 kpv larazotide stamacort','ibd':'bpc-157 kpv','stomach':'bpc-157 stamacort','digestion':'bpc-157 kpv larazotide','leaky gut':'bpc-157 larazotide','colitis':'bpc-157 kpv','ulcer':'bpc-157',
+        'bladder':'pentosan chitomur','cystitis':'pentosan','interstitial':'pentosan',
+        // Inflammation / immune
+        'inflammation':'kpv ara-290 ll-37 bpc-157 vip glutathione','inflammatory':'kpv ara-290 ll-37 bpc-157','anti-inflammatory':'kpv ara-290 ll-37 bpc-157','swelling':'kpv tb-500',
+        'immune':'thymalin thymogen ta-1 thymosin vip glutathione vilon crystagen','immunity':'thymalin thymogen ta-1 vilon','immune system':'thymalin thymogen ta-1',
+        'antioxidant':'glutathione nac astaxanthin vitamin c coq10','detox':'glutathione nac','oxidative':'glutathione nac astaxanthin',
+        'antimicrobial':'ll-37','infection':'ll-37',
+        // Growth hormone / IGF / muscle
+        'growth hormone':GH+' hgh frag mots-c','gh':GH,'hgh':GH+' hgh frag','human growth hormone':GH,
+        'ibutamoren':'mk-677','mk677':'mk-677','mk 677':'mk-677','secretagogue':'ipamorelin ghrp hexarelin mk-677 sermorelin',
+        'igf':'igf-1 peg-mgf','growth factor':'igf-1 peg-mgf',
+        'muscle':'igf-1 follistatin ace-031 peg-mgf mk-677 ghrp testosterone','muscle growth':'igf-1 follistatin ace-031 mk-677','bulk':'igf-1 mk-677 testosterone','lean mass':'igf-1 follistatin mk-677','mass':'igf-1 mk-677','bodybuilding':'igf-1 follistatin mk-677 testosterone','anabolic':'igf-1 follistatin testosterone','strength':'igf-1 creatine testosterone',
+        'endurance':'aicar slu-pp metaprot cordyceps beta-alanine creatine coq10','stamina':'aicar metaprot cordyceps','performance':'aicar slu-pp creatine beta-alanine','myostatin':'follistatin ace-031',
+        // TRT / hormones / fertility
+        'trt':'testosterone gonadorelin hcg kisspeptin','testosterone':'testosterone gonadorelin hcg','low t':'testosterone gonadorelin hcg','low testosterone':'testosterone hcg gonadorelin','androgen':'testosterone','hormone replacement':'testosterone hcg',
+        'fertility':'hcg gonadorelin kisspeptin','sperm':'hcg gonadorelin','testicular':'hcg gonadorelin',
+        // Sexual health
+        'libido':'pt-141 melanotan kisspeptin oxytocin','sex':'pt-141 melanotan oxytocin kisspeptin','sexual':'pt-141 melanotan oxytocin','erectile':'pt-141','arousal':'pt-141 melanotan','sex drive':'pt-141 kisspeptin','desire':'pt-141','bonding':'oxytocin',
+        // Cognitive / mood / sleep / nerve
+        'cognitive':'semax selank dihexa cerebrolysin p21 pe-22-28 cortexin cerluten cortagen pinealon','nootropic':'semax selank dihexa p21','focus':'semax selank l-tyrosine','memory':'semax dihexa cerebrolysin','brain':'semax selank cerebrolysin cortexin cerluten cortagen dihexa','neuro':'semax cerebrolysin cortexin','clarity':'semax selank','concentration':'semax l-tyrosine',
+        'sleep':'dsip epitalon pinealon melatonin apigenin magnesium','insomnia':'dsip melatonin magnesium','rest':'dsip melatonin',
+        'anxiety':'selank l-theanine ashwagandha rhodiola glycine','stress':'selank ashwagandha rhodiola l-theanine','calm':'selank l-theanine glycine','relax':'l-theanine magnesium glycine','mood':'selank semax','depression':'selank',
+        'nerve':'ara-290 cerebrolysin cortexin cortagen dihexa bpc-157','neuropathy':'ara-290','regeneration':'ara-290 cerebrolysin tp508',
+        // Longevity / anti-aging / mitochondria
+        'anti-aging':'epitalon nad mots-c ss-31 ss-20 humanin foxo4 klotho gdf11 spermidine 5-amino pinealon','antiaging':'epitalon nad mots-c ss-31 humanin foxo4','aging':'epitalon nad mots-c humanin foxo4 spermidine','longevity':'epitalon nad mots-c ss-31 humanin foxo4 klotho 5-amino','lifespan':'epitalon nad foxo4','age':'epitalon nad mots-c',
+        'nad':'nad mots-c ss-31 humanin','mitochondria':'nad mots-c ss-31 ss-20 humanin','mitochondrial':'mots-c ss-31 ss-20 humanin','cellular energy':'nad mots-c ss-31','energy':'nad mots-c coq10',
+        'senolytic':'foxo4','senescence':'foxo4','telomere':'epitalon','telomeres':'epitalon',
+        // Bioregulators / organ-specific
+        'khavinson':'epitalon pinealon vilon cortagen thymalin endoluten cerluten prostatilen','bioregulator':'epitalon pinealon vilon cortagen thymalin','cytomax':'cerluten cardiogen prostatilen','cytogen':'cartalax pinealon vesugen bronchogen',
+        'thyroid':'thyreogen','liver':'ovagen svetinorm livagen','heart':'cardiogen chelohart','cardiac':'cardiogen chelohart','cardiovascular':'cardiogen chelohart ventfort',
+        'lung':'bronchogen chonluten','lungs':'bronchogen chonluten','respiratory':'bronchogen chonluten','kidney':'pielotax renisamin','renal':'pielotax renisamin',
+        'prostate':'prostatilen','eye':'retinalamin visoluten normoftal','eyes':'retinalamin visoluten normoftal','vision':'retinalamin visoluten normoftal','retina':'retinalamin visoluten',
+        'pancreas':'pancragen suprefort','pancreatic':'pancragen suprefort','adrenal':'glandokort','spine':'cartalax sigumir','vascular':'ventfort vesugen','circulation':'ventfort vesugen','veins':'ventfort vesugen','parathyroid':'bonothyrk','thymus':'thymalin thymogen vladonix','ovary':'zhenoluten','ovarian':'zhenoluten','female':'zhenoluten','menopause':'zhenoluten','pineal':'endoluten epitalon pinealon','ear':'cochleotrophin','hearing':'cochleotrophin','marrow':'bonomarlot',
+        // Vitamins / minerals / basics
+        'b12':'methylcobalamin','folate':'methylfolate','omega':'omega-3','fish oil':'omega-3'
       };
 
       function cardText(c){
@@ -439,27 +486,81 @@
         c._txt = (name + ' ' + g).replace(/&amp;/g,'&');
         return c._txt;
       }
-      function aliasMatch(q, name){
+      function aliasHit(k, q, tokens){
+        if (k.indexOf(' ') !== -1){
+          // phrase key: query contains the phrase, or query is a prefix of it ("weight" -> "weight loss")
+          return q.indexOf(k) !== -1 || (q.length >= 3 && k.indexOf(q) === 0);
+        }
+        // single-word key: match only on token boundaries (never a substring inside a longer word,
+        // so "weight" never hits "gh" and "libdo" never hits "ibd")
+        for (var ti=0; ti<tokens.length; ti++){
+          var t = tokens[ti];
+          if (t === k) return true;
+          if (t.length >= 4 && k.indexOf(t) === 0) return true;   // token is a prefix of the key
+          if (k.length >= 4 && t.indexOf(k) === 0) return true;   // key is a prefix of the token
+        }
+        return false;
+      }
+      function aliasMatch(q, tokens, name){
         for (var k in ALIASES){
-          if (q.indexOf(k) !== -1){
+          if (aliasHit(k, q, tokens)){
             var subs = ALIASES[k].split(' ');
             for (var i=0;i<subs.length;i++){ if (subs[i] && name.indexOf(subs[i]) !== -1) return true; }
           }
         }
         return false;
       }
-      function run(){
-        var q = input.value.trim().toLowerCase();
-        var tokens = q ? q.split(/\s+/) : [];
+
+      // ---- Spell-check vocabulary: every searchable word people might type ----
+      var VOCAB = (function(){
+        var set = {};
+        function add(w){ w = w.toLowerCase(); if (w.length >= 3) set[w] = 1; }
+        for (var k in ALIASES){ k.split(/[^a-z0-9]+/).forEach(add); }
+        cards.forEach(function(c){
+          (c.getAttribute('data-name')||'').split(/[\s\-\/+]+/).forEach(add);
+          var g = c.closest('.grp'); if (g){ (g.getAttribute('data-group')||'').replace(/&amp;/g,' ').split(/[^a-z0-9]+/i).forEach(add); }
+        });
+        return Object.keys(set);
+      })();
+      // Damerau-style distance (optimal string alignment) — counts a letter swap as one edit,
+      // so "hiar"->"hair" and "wieght"->"weight" are distance 1.
+      function lev(a,b){
+        var m=a.length, n=b.length; if (!m) return n; if (!n) return m;
+        var d=[]; for (var i=0;i<=m;i++){ d[i]=[]; d[i][0]=i; } for (var j=0;j<=n;j++) d[0][j]=j;
+        for (i=1;i<=m;i++){ for (j=1;j<=n;j++){
+          var cost=a.charAt(i-1)===b.charAt(j-1)?0:1;
+          d[i][j]=Math.min(d[i-1][j]+1, d[i][j-1]+1, d[i-1][j-1]+cost);
+          if (i>1 && j>1 && a.charAt(i-1)===b.charAt(j-2) && a.charAt(i-2)===b.charAt(j-1))
+            d[i][j]=Math.min(d[i][j], d[i-2][j-2]+1);
+        }}
+        return d[m][n];
+      }
+      // Correct a query token-by-token to the nearest known word (typo tolerance)
+      function correct(q){
+        var toks = q.split(/\s+/), changed=false;
+        var out = toks.map(function(t){
+          if (t.length < 3) return t;
+          if (VOCAB.indexOf(t) !== -1) return t;
+          var thr = t.length <= 4 ? 1 : 2, best=null, bestD=thr+1;
+          for (var i=0;i<VOCAB.length;i++){
+            var w=VOCAB[i]; if (Math.abs(w.length-t.length) > thr) continue;
+            var d=lev(t,w); if (d < bestD){ bestD=d; best=w; if (d===0) break; }
+          }
+          if (best && bestD <= thr){ changed=true; return best; }
+          return t;
+        });
+        return changed ? out.join(' ') : null;
+      }
+      var noteEl = document.getElementById('cmp-correct');
+      function cardMatches(c, q, tokens){
+        var txt = cardText(c);
+        var name = (c.getAttribute('data-name')||'').toLowerCase();
+        return tokens.every(function(t){ return txt.indexOf(t) !== -1; }) || aliasMatch(q, tokens, name);
+      }
+      function paint(matched){
         var any = false;
         cards.forEach(function(c){
-          var show;
-          if (!q){ show = true; }
-          else {
-            var txt = cardText(c);
-            var name = (c.getAttribute('data-name')||'').toLowerCase();
-            show = tokens.every(function(t){ return txt.indexOf(t) !== -1; }) || aliasMatch(q, name);
-          }
+          var show = !matched || matched.indexOf(c) !== -1;
           c.style.display = show ? '' : 'none';
           if (show) any = true;
         });
@@ -468,6 +569,25 @@
           g.style.display = vis ? '' : 'none';
         });
         noRes.style.display = any ? 'none' : 'block';
+      }
+      function run(){
+        var q = input.value.trim().toLowerCase();
+        if (noteEl){ noteEl.hidden = true; noteEl.textContent = ''; }
+        if (!q){ paint(null); return; }
+        var tokens = q.split(/\s+/);
+        var matched = cards.filter(function(c){ return cardMatches(c, q, tokens); });
+        if (!matched.length){
+          var cq = correct(q);
+          if (cq && cq !== q){
+            var ct = cq.split(/\s+/);
+            var m2 = cards.filter(function(c){ return cardMatches(c, cq, ct); });
+            if (m2.length){
+              matched = m2;
+              if (noteEl){ noteEl.innerHTML = 'Showing results for “<strong>'+cq.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</strong>”'; noteEl.hidden = false; }
+            }
+          }
+        }
+        paint(matched);
       }
       input.addEventListener('input', run);
 
