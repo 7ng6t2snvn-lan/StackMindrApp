@@ -85,7 +85,18 @@
     footer a { color:rgba(255,255,255,0.6); text-decoration:none; }
     .footer-links { display:flex; justify-content:center; gap:22px; margin-bottom:18px; flex-wrap:wrap; }
     .footer-disclaimer { max-width:640px; margin:0 auto 16px; font-size:12px; line-height:1.7; color:rgba(255,255,255,0.32); }
-    @media (max-width:768px){ nav{padding:12px 20px;} .nav-links a:not(.nav-cta){display:none;} }
+    .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:0;cursor:pointer;padding:7px;}
+    .nav-toggle span{display:block;height:2px;width:100%;background:#fff;border-radius:2px;transition:transform .25s,opacity .2s;}
+    nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    nav.open .nav-toggle span:nth-child(2){opacity:0;}
+    nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    @media (max-width:768px){
+      nav{padding:12px 20px;}
+      .nav-toggle{display:flex;}
+      .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(26,18,16,0.98);padding:6px 0 12px;box-shadow:0 12px 28px rgba(0,0,0,0.38);max-height:0;overflow:hidden;opacity:0;pointer-events:none;transition:max-height .3s ease,opacity .2s;}
+      nav.open .nav-links{max-height:75vh;opacity:1;pointer-events:auto;}
+      .nav-links a{padding:13px 24px;font-size:15px;color:#eee;}
+      .nav-links a.nav-cta{margin:8px 24px 0;text-align:center;border-radius:8px;color:#fff !important;} }
   </style>
 </head>
 <body>
@@ -97,6 +108,7 @@
       <a href="../compounds.html">Compounds</a>
       <a href="../index.html#get" class="nav-cta">Get the app</a>
     </div>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </nav>
 
   <div class="wrap">
@@ -128,6 +140,17 @@
     </section>
 
     <section class="block">
+      <h2>Why NAD+ declines with age</h2>
+      <p>NAD+ isn't a fixed reserve — it's constantly being made, spent, and recycled. The reason levels fall with age is that the balance tips toward consumption, for a few well-documented reasons:</p>
+      <ul>
+        <li><strong>Rising CD38</strong> — CD38 is an enzyme that consumes NAD+, and its activity climbs with age and chronic low-grade inflammation (sometimes called "inflammaging"). It's considered one of the single biggest drains on the aging NAD+ pool.</li>
+        <li><strong>More DNA-repair demand</strong> — PARP enzymes spend NAD+ repairing DNA damage, and as that damage accumulates over a lifetime, PARPs draw the pool down faster.</li>
+        <li><strong>Slower salvage</strong> — the recycling pathway that regenerates NAD+ from its own breakdown products becomes less efficient with age, so less is replenished.</li>
+      </ul>
+      <p>The net result is a steady, repeatedly measured decline in tissue NAD+ as we get older. That single observation — NAD+ goes down with age, and low NAD+ tracks with dysfunction — is what launched the entire field of NAD+ restoration.</p>
+    </section>
+
+    <section class="block">
       <h2>How NAD+ is thought to work</h2>
       <p>The rationale for raising NAD+ rests on its two big roles in the cell:</p>
       <ul>
@@ -143,6 +166,18 @@
       <h2>What the research shows</h2>
       <p>The basic biochemistry of NAD+ is not in doubt, and in animal studies, raising NAD+ (often with NMN or NR) has improved metabolic markers, mitochondrial function, and some measures of healthspan. Human trials of NMN and NR have generally shown that they can <strong>reliably raise blood NAD+ levels and appear reasonably safe at studied doses</strong>.</p>
       <p>What human trials have <em>not</em> clearly shown is that this translates into the dramatic anti-aging, energy, or longevity benefits that marketing often implies. Results on performance, fatigue, and clinical endpoints have been mixed or modest. IV NAD+, popular in wellness clinics, has even less rigorous evidence behind it. The honest summary: NAD+ precursors can raise NAD+ and look safe so far, but "raises a biomarker" is not the same as "slows aging," and that gap is still open.</p>
+    </section>
+
+    <section class="block">
+      <h2>NMN, NR, and the other forms</h2>
+      <p>"NAD+" on a label can mean several different molecules, and the differences genuinely matter:</p>
+      <ul>
+        <li><strong>Nicotinamide Riboside (NR)</strong> — a precursor (sold under brands such as Niagen). It's one of the most-studied forms, reliably raises NAD+, and has an established path as a supplement ingredient.</li>
+        <li><strong>Nicotinamide Mononucleotide (NMN)</strong> — a precursor one step closer to NAD+ in the pathway. It's hugely popular and well-studied, but in the US its supplement status became complicated when the FDA moved to exclude NMN from the dietary-supplement definition because it's being investigated as a drug — so availability has been in flux.</li>
+        <li><strong>Niacin (nicotinic acid) &amp; Nicotinamide (NAM)</strong> — the classic vitamin B3 forms. Both raise NAD+, but niacin causes a well-known flushing reaction, and high-dose nicotinamide can blunt sirtuin activity — the opposite of what most NAD+ users are after.</li>
+        <li><strong>NAD+ itself</strong> — absorbed poorly by mouth, which is exactly why it's delivered by IV or subcutaneous injection when people want the finished molecule rather than a precursor.</li>
+      </ul>
+      <p>The practical takeaway: most <em>oral</em> products are precursors (NR or NMN) because NAD+ doesn't survive digestion well, while the IV and injectable routes deliver NAD+ directly at the cost of being more intense and less convenient.</p>
     </section>
 
     <section class="block">
@@ -215,5 +250,8 @@
     <p class="footer-disclaimer">StackMindr is a tracking and educational reference tool for informational purposes only. It is not medical advice and does not diagnose, treat, cure, or prevent any condition, and does not sell, source, or recommend any compound. Always consult a qualified healthcare provider before starting or changing any protocol.</p>
     <p>&copy; 2026 STACKMINDR LLC · Built in Oregon</p>
   </footer>
+  <script>
+  (function(){var n=document.querySelector('nav');if(!n)return;var t=n.querySelector('.nav-toggle');if(!t)return;t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});Array.prototype.forEach.call(n.querySelectorAll('.nav-links a'),function(a){a.addEventListener('click',function(){n.classList.remove('open');t.setAttribute('aria-expanded','false');});});})();
+  </script>
 </body>
 </html>

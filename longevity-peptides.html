@@ -82,7 +82,18 @@
     footer a { color:rgba(255,255,255,0.6); text-decoration:none; }
     .footer-links { display:flex; justify-content:center; gap:22px; margin-bottom:18px; flex-wrap:wrap; }
     .footer-disclaimer { max-width:640px; margin:0 auto 16px; font-size:12px; line-height:1.7; color:rgba(255,255,255,0.32); }
-    @media (max-width:768px){ nav{padding:12px 20px;} .nav-links a:not(.nav-cta){display:none;} }
+    .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:0;cursor:pointer;padding:7px;}
+    .nav-toggle span{display:block;height:2px;width:100%;background:#fff;border-radius:2px;transition:transform .25s,opacity .2s;}
+    nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    nav.open .nav-toggle span:nth-child(2){opacity:0;}
+    nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    @media (max-width:768px){
+      nav{padding:12px 20px;}
+      .nav-toggle{display:flex;}
+      .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(26,18,16,0.98);padding:6px 0 12px;box-shadow:0 12px 28px rgba(0,0,0,0.38);max-height:0;overflow:hidden;opacity:0;pointer-events:none;transition:max-height .3s ease,opacity .2s;}
+      nav.open .nav-links{max-height:75vh;opacity:1;pointer-events:auto;}
+      .nav-links a{padding:13px 24px;font-size:15px;color:#eee;}
+      .nav-links a.nav-cta{margin:8px 24px 0;text-align:center;border-radius:8px;color:#fff !important;} }
   </style>
 </head>
 <body>
@@ -94,6 +105,7 @@
       <a href="compounds.html">Compounds</a>
       <a href="index.html#get" class="nav-cta">Get the app</a>
     </div>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </nav>
 
   <div class="wrap">
@@ -200,5 +212,8 @@
     <p class="footer-disclaimer">StackMindr is a tracking and educational reference tool for informational purposes only. It is not medical advice and does not diagnose, treat, cure, or prevent any condition, and does not sell, source, or recommend any compound. Always consult a qualified healthcare provider before starting or changing any protocol.</p>
     <p>&copy; 2026 STACKMINDR LLC · Built in Oregon</p>
   </footer>
+  <script>
+  (function(){var n=document.querySelector('nav');if(!n)return;var t=n.querySelector('.nav-toggle');if(!t)return;t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});Array.prototype.forEach.call(n.querySelectorAll('.nav-links a'),function(a){a.addEventListener('click',function(){n.classList.remove('open');t.setAttribute('aria-expanded','false');});});})();
+  </script>
 </body>
 </html>

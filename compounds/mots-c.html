@@ -85,7 +85,18 @@
     footer a { color:rgba(255,255,255,0.6); text-decoration:none; }
     .footer-links { display:flex; justify-content:center; gap:22px; margin-bottom:18px; flex-wrap:wrap; }
     .footer-disclaimer { max-width:640px; margin:0 auto 16px; font-size:12px; line-height:1.7; color:rgba(255,255,255,0.32); }
-    @media (max-width:768px){ nav{padding:12px 20px;} .nav-links a:not(.nav-cta){display:none;} }
+    .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:0;cursor:pointer;padding:7px;}
+    .nav-toggle span{display:block;height:2px;width:100%;background:#fff;border-radius:2px;transition:transform .25s,opacity .2s;}
+    nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    nav.open .nav-toggle span:nth-child(2){opacity:0;}
+    nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    @media (max-width:768px){
+      nav{padding:12px 20px;}
+      .nav-toggle{display:flex;}
+      .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(26,18,16,0.98);padding:6px 0 12px;box-shadow:0 12px 28px rgba(0,0,0,0.38);max-height:0;overflow:hidden;opacity:0;pointer-events:none;transition:max-height .3s ease,opacity .2s;}
+      nav.open .nav-links{max-height:75vh;opacity:1;pointer-events:auto;}
+      .nav-links a{padding:13px 24px;font-size:15px;color:#eee;}
+      .nav-links a.nav-cta{margin:8px 24px 0;text-align:center;border-radius:8px;color:#fff !important;} }
   </style>
 </head>
 <body>
@@ -97,6 +108,7 @@
       <a href="../compounds.html">Compounds</a>
       <a href="../index.html#get" class="nav-cta">Get the app</a>
     </div>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </nav>
 
   <div class="wrap">
@@ -128,6 +140,13 @@
     </section>
 
     <section class="block">
+      <h2>A peptide encoded in your mitochondria</h2>
+      <p>The name MOTS-c is short for "Mitochondrial ORF of the Twelve-S rRNA type-c," and behind that mouthful is something genuinely unusual. Almost every protein in your body is built from instructions stored in the nucleus — but MOTS-c is one of a small, recently discovered class of peptides encoded inside the <strong>mitochondrial genome itself</strong>, in the 12S ribosomal RNA region.</p>
+      <p>These are called <strong>mitochondrial-derived peptides (MDPs)</strong>, and MOTS-c is one of the most studied members. The family also includes <strong>Humanin</strong> — the first MDP discovered — and the lesser-known SHLP peptides. The idea that ties them together is a shift in how we think about mitochondria: not just passive power plants, but sources of their own chemical messages, or "mitokines," that travel out to the rest of the cell and even to other tissues to help coordinate how the body manages energy and stress.</p>
+      <p>In that framing, MOTS-c is essentially a <strong>signal from the mitochondria about the cell's metabolic state</strong> — which is why its effects cluster around metabolism, stress adaptation, and exercise rather than any single organ.</p>
+    </section>
+
+    <section class="block">
       <h2>How MOTS-c is thought to work</h2>
       <p>The mechanisms described in the research literature revolve around cellular energy sensing and metabolic regulation. In animal and cell studies, MOTS-c has been associated with:</p>
       <ul>
@@ -143,6 +162,12 @@
       <h2>What the research shows</h2>
       <p>Most of the MOTS-c evidence comes from <strong>cell and rodent studies</strong>, where it has shown effects on insulin sensitivity, glucose metabolism, and resistance to diet-induced weight gain, along with links to exercise capacity. Because it sits at a genuinely novel point in biology — a peptide written into mitochondrial DNA — it has attracted serious academic interest in metabolism and aging research.</p>
       <p>What is missing is robust human data. There are no large, high-quality human trials establishing that injected MOTS-c improves metabolic health, body composition, or longevity in people, nor a long-term safety record. The fair summary is "promising and biologically fascinating in the lab, unproven in humans." Claims that it is a shortcut to fat loss or a replacement for training should be treated with skepticism.</p>
+    </section>
+
+    <section class="block">
+      <h2>The "exercise mimetic" label, examined</h2>
+      <p>MOTS-c's biggest claim to fame is the "exercise mimetic" framing, and it's worth unpacking honestly rather than repeating the headline. The label grew out of a cluster of real research observations: MOTS-c levels <strong>rise with physical activity</strong>; it activates <strong>AMPK</strong>, the same low-energy sensor that exercise and the diabetes drug metformin engage; and in animal models it has improved metabolic markers and physical performance — including in older animals, where MOTS-c levels tend to be lower.</p>
+      <p>Here's the honest part: "mimics some of the signaling of exercise in animal models" is not the same as "<strong>replaces exercise in humans</strong>." Human data remains limited, and MOTS-c is not an approved treatment for anything. It's a legitimately interesting molecule sitting right at the intersection of metabolism, mitochondria, and aging — but the exciting headline runs well ahead of what has actually been demonstrated in people. Treat the "exercise in a vial" claims with healthy skepticism.</p>
     </section>
 
     <section class="block">
@@ -210,5 +235,8 @@
     <p class="footer-disclaimer">StackMindr is a tracking and educational reference tool for informational purposes only. It is not medical advice and does not diagnose, treat, cure, or prevent any condition, and does not sell, source, or recommend any compound. Always consult a qualified healthcare provider before starting or changing any protocol.</p>
     <p>&copy; 2026 STACKMINDR LLC · Built in Oregon</p>
   </footer>
+  <script>
+  (function(){var n=document.querySelector('nav');if(!n)return;var t=n.querySelector('.nav-toggle');if(!t)return;t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});Array.prototype.forEach.call(n.querySelectorAll('.nav-links a'),function(a){a.addEventListener('click',function(){n.classList.remove('open');t.setAttribute('aria-expanded','false');});});})();
+  </script>
 </body>
 </html>
