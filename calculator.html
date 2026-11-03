@@ -490,17 +490,27 @@
       <!-- CYCLE -->
       <div class="calc-body" data-panel="cycle" hidden>
         <div class="calc-inputs">
-          <div class="mode-title">Cycle planner</div>
-          <div class="mode-desc">Plan a cycle before you buy — vials, timing, and cost. Nothing is saved.</div>
+          <div class="mode-title">Supply &amp; budget planner</div>
+          <div class="mode-desc">Plan before you buy — how many vials or bottles you'll need, when the cycle runs, and what it costs. You enter your own dose; nothing here suggests one, and nothing is saved.</div>
           <div class="field">
-            <label>Cycle length <span class="hint">(weeks)</span></label>
-            <input type="number" inputmode="decimal" id="cy_weeks" value="8" min="0" step="any">
+            <label>Compound <span class="hint">(optional)</span></label>
+            <input type="text" id="cy_name" placeholder="e.g., Testosterone, Semaglutide, Creatine">
+          </div>
+          <div class="input-row">
+            <div class="field" style="flex:1">
+              <label>Cycle length <span class="hint">(weeks)</span></label>
+              <input type="number" inputmode="decimal" id="cy_weeks" value="8" min="0" step="any">
+            </div>
+            <div class="field" style="flex:1">
+              <label>Start date</label>
+              <input type="date" id="cy_start">
+            </div>
           </div>
           <div class="field">
-            <label>Dose per injection</label>
+            <label id="cy_doselabel">Dose per injection</label>
             <div class="input-row">
               <input type="number" inputmode="decimal" id="cy_dose" value="300" min="0" step="any">
-              <select id="cy_unit"><option value="mg">mg</option><option value="mcg" selected>mcg</option><option value="iu">IU</option></select>
+              <select id="cy_unit"><option value="mg">mg</option><option value="mcg" selected>mcg</option><option value="iu">IU</option><option value="caps">caps / tabs</option></select>
             </div>
           </div>
           <div class="field">
@@ -512,15 +522,22 @@
               <option value="3x">3&times; / week</option>
               <option value="2x">2&times; / week</option>
               <option value="weekly">Weekly</option>
+              <option value="custom">Every N days</option>
             </select>
           </div>
-          <div class="field">
-            <label>Vial size <span class="hint">(mg)</span></label>
-            <input type="number" inputmode="decimal" id="cy_vial" value="10" min="0" step="any">
+          <div class="field" id="cy_freqn_field" hidden>
+            <label id="cy_freqn_label">Inject every N days</label>
+            <input type="number" inputmode="decimal" id="cy_freqn" value="3" min="1" step="any">
           </div>
-          <div class="field">
-            <label>Cost per vial <span class="hint">(optional)</span></label>
-            <input type="number" inputmode="decimal" id="cy_cost" value="" min="0" step="any" placeholder="$">
+          <div class="input-row">
+            <div class="field" style="flex:1">
+              <label id="cy_viallabel">Vial size <span class="hint">(mg)</span></label>
+              <input type="number" inputmode="decimal" id="cy_vial" value="10" min="0" step="any">
+            </div>
+            <div class="field" style="flex:1">
+              <label id="cy_costlabel">Cost per vial <span class="hint">(optional)</span></label>
+              <input type="number" inputmode="decimal" id="cy_cost" value="" min="0" step="any" placeholder="$">
+            </div>
           </div>
         </div>
         <div class="calc-output">
@@ -531,10 +548,12 @@
           </div>
           <div class="stat-grid">
             <div class="stat"><div class="s-label">Total doses</div><div class="s-value" id="cy_totaldoses">—</div></div>
-            <div class="stat"><div class="s-label">Doses per vial</div><div class="s-value" id="cy_perdoses">—</div></div>
             <div class="stat"><div class="s-label">Total compound</div><div class="s-value" id="cy_total">—</div></div>
+            <div class="stat"><div class="s-label">Cycle dates</div><div class="s-value" id="cy_dates">—</div></div>
+            <div class="stat"><div class="s-label" id="cy_perlabel">Doses per vial</div><div class="s-value" id="cy_perdoses">—</div></div>
             <div class="stat"><div class="s-label">Leftover</div><div class="s-value" id="cy_leftover">—</div></div>
           </div>
+          <div class="mode-desc" style="margin-top:14px;font-style:italic;">Planning estimate only — nothing is saved. Consider ordering an extra vial or bottle for priming and waste.</div>
         </div>
       </div>
 
@@ -792,32 +811,61 @@
         set('lv_swing', (ssPeak / (ssTrough || 1)).toFixed(1) + '×');
       }
 
-      // ── CYCLE ──  total doses × dose → vials, cost, leftover
-      var CY_FREQ = { daily: 7, '5x': 5, eod: 3.5, '3x': 3, '2x': 2, weekly: 1 };
+      // ── SUPPLY & BUDGET PLANNER ──  total doses × your dose → vials/bottles, dates, cost, leftover.
+      // You enter your own dose; this never suggests one. Math mirrors the app's planner exactly.
+      var CY_FREQ = { daily: 7, '5x': 5, eod: 3.5, '3x': 3, '2x': 2, weekly: 1, custom: null };
+      // mg/mcg auto-scale; IU and caps stay put.
+      function cyFmtAmt(amt, unit) {
+        if (unit === 'iu') return (Math.round(amt * 10) / 10) + ' IU';
+        if (unit === 'caps') { var n = Math.round(amt); return n + (n === 1 ? ' cap' : ' caps'); }
+        var mg = unit === 'mcg' ? amt / 1000 : amt;
+        return mg >= 1 ? (Math.round(mg * 10) / 10) + ' mg' : Math.round(mg * 1000) + ' mcg';
+      }
+      function cyFmtDate(ds) { try { return new Date(ds + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); } catch (e) { return ds; } }
       function calcCycle() {
+        var unit = document.getElementById('cy_unit').value;               // mg | mcg | iu | caps
+        var freqId = document.getElementById('cy_freq').value;
+        var isCaps = unit === 'caps';
+        var container = isCaps ? 'bottle' : 'vial';
+        var vialUnit = isCaps ? 'caps' : (unit === 'iu' ? 'iu' : 'mg');
+        // dynamic labels follow the unit / frequency
+        document.getElementById('cy_doselabel').textContent = isCaps ? 'Caps / tabs per dose' : 'Dose per injection';
+        document.getElementById('cy_viallabel').innerHTML = isCaps ? 'Caps per bottle' : (unit === 'iu' ? 'Vial size <span class="hint">(IU)</span>' : 'Vial size <span class="hint">(mg)</span>');
+        document.getElementById('cy_costlabel').innerHTML = 'Cost per ' + container + ' <span class="hint">(optional)</span>';
+        document.getElementById('cy_perlabel').textContent = 'Doses per ' + container;
+        document.getElementById('cy_freqn_field').hidden = freqId !== 'custom';
+        document.getElementById('cy_freqn_label').textContent = isCaps ? 'Take every N days' : 'Inject every N days';
+
         var weeks = parseFloat(document.getElementById('cy_weeks').value) || 0;
         var dose = parseFloat(document.getElementById('cy_dose').value) || 0;
-        var unit = document.getElementById('cy_unit').value;
-        var perWeek = CY_FREQ[document.getElementById('cy_freq').value] || 0;
         var vialSize = parseFloat(document.getElementById('cy_vial').value) || 0;
         var cost = parseFloat(document.getElementById('cy_cost').value);
+        var start = document.getElementById('cy_start').value;
+        var name = (document.getElementById('cy_name').value || '').trim();
+        var perWeek = CY_FREQ[freqId];
+        if (freqId === 'custom') { var n = parseFloat(document.getElementById('cy_freqn').value) || 0; perWeek = n > 0 ? 7 / n : 0; }
+
         if (!(weeks > 0 && dose > 0 && perWeek > 0)) {
-          set('cy_vials', '—<span>vials</span>'); ['cy_totaldoses', 'cy_perdoses', 'cy_total', 'cy_leftover'].forEach(function (id) { set(id, '—'); });
+          set('cy_vials', '—<span>' + container + 's</span>');
+          ['cy_totaldoses', 'cy_total', 'cy_dates', 'cy_perdoses', 'cy_leftover'].forEach(function (id) { set(id, '—'); });
           document.getElementById('cy_costline').textContent = 'Enter cycle length, dose, and frequency.'; return;
         }
         var doseInVial = unit === 'mcg' ? dose / 1000 : dose;
-        var vialUnit = unit === 'iu' ? 'IU' : 'mg';
         var totalDoses = Math.round(weeks * perWeek), totalAmt = totalDoses * dose, totalInVial = totalDoses * doseInVial;
         var vials = vialSize > 0 ? Math.ceil(totalInVial / vialSize) : null;
         var perVial = (vialSize > 0 && doseInVial > 0) ? Math.floor(vialSize / doseInVial) : null;
         var leftover = vials != null ? Math.max(0, vials * vialSize - totalInVial) : null;
         var costTotal = (vials != null && isFinite(cost) && cost > 0) ? vials * cost : null;
-        set('cy_vials', (vials != null ? vials : '—') + '<span>vials</span>');
-        document.getElementById('cy_costline').textContent = costTotal != null ? ('≈ $' + costTotal.toLocaleString('en-US') + ' for the cycle') : 'for the full cycle';
+        var endStr = null;
+        if (start) { var sd = new Date(start + 'T12:00:00'); if (!isNaN(sd.getTime())) { sd.setDate(sd.getDate() + Math.round(weeks * 7)); endStr = sd.toISOString().slice(0, 10); } }
+
+        set('cy_vials', (vials != null ? vials : '—') + '<span>' + (vials === 1 ? container : container + 's') + '</span>');
+        document.getElementById('cy_costline').textContent = costTotal != null ? ('≈ $' + costTotal.toLocaleString('en-US') + (name ? ' · ' + name : '') + ' for the cycle') : (name ? name + ' · for the full cycle' : 'for the full cycle');
         set('cy_totaldoses', totalDoses);
+        set('cy_total', cyFmtAmt(totalAmt, unit));
+        set('cy_dates', (start && endStr) ? (cyFmtDate(start) + ' → ' + cyFmtDate(endStr)) : '—');
         set('cy_perdoses', perVial != null ? perVial : '—');
-        set('cy_total', fmt0(totalAmt) + ' <small>' + unit + '</small>');
-        set('cy_leftover', leftover != null ? (leftover.toFixed(leftover < 10 ? 1 : 0) + ' <small>' + vialUnit + '</small>') : '—');
+        set('cy_leftover', (leftover != null && leftover > 0) ? cyFmtAmt(leftover, vialUnit) : (leftover != null ? '0' : '—'));
       }
 
       var calcs = { peptide: calcPeptide, trt: calcTrt, hcg: calcHcg, hgh: calcHgh, blend: calcBlend, levels: calcLevels, cycle: calcCycle };
@@ -868,6 +916,7 @@
       });
 
       // Initial render
+      (function () { var d = new Date(), p = function (n) { return (n < 10 ? '0' : '') + n; }; var el = document.getElementById('cy_start'); if (el && !el.value) el.value = d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()); })();
       calcPeptide(); calcTrt(); calcHcg(); calcHgh(); calcBlend(); calcLevels(); calcCycle();
     })();
   </script>
