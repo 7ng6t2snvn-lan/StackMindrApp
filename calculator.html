@@ -218,7 +218,7 @@
   <section class="calc-hero">
     <div class="eyebrow">Free calculator</div>
     <h1>Reconstitution &amp; dose <span>calculator.</span></h1>
-    <p>Enter your vial size, BAC water, and target dose — get the exact units to draw on a U-100 insulin syringe. Or switch to <strong>Estimated levels</strong> to chart how a compound builds to steady state over time. The same math the StackMindr app runs, free in your browser.</p>
+    <p>Enter your vial size, BAC water, and target dose — get the exact units to draw on a U-100 insulin syringe. Or switch to <strong>Estimated levels</strong> — also a dedicated <a href="levels.html">blood-level &amp; steady-state calculator</a> — to chart how a compound builds to steady state over time. The same math the StackMindr app runs, free in your browser.</p>
   </section>
 
   <!-- CALCULATOR -->
@@ -460,7 +460,7 @@
             <select id="lv_preset"></select>
           </div>
           <div class="field">
-            <label>Half-life <span class="hint">(hours)</span></label>
+            <label>Half-life <span class="hint">(hours — auto-filled, edit if you know yours)</span></label>
             <input type="number" inputmode="decimal" id="lv_hl" value="192" min="0" step="any">
           </div>
           <div class="field">
@@ -587,7 +587,7 @@
     <p><strong>Concentration</strong> is how much compound ends up in each millilitre of solution: the amount in the vial divided by the BAC (bacteriostatic) water you add. More water means a weaker mix and a bigger, easier-to-read draw; less water means a stronger mix and a smaller draw.</p>
     <p><strong>Units to draw</strong> is the number that matters at the needle. Insulin syringes are U-100, meaning 100 units per millilitre — so once you know the volume for your dose, the unit mark is just that volume &times; 100. A 1cc, 0.5cc, and 0.3cc syringe all use the same scale; they only differ in how much they hold.</p>
     <p><strong>Doses per vial</strong> tells you how long a vial lasts at your dose, so you can reorder before you run dry. For HGH the calculator uses the standard <strong>1&nbsp;mg = 3&nbsp;IU</strong> conversion; for HCG and peptides it works directly from the IU or mg you enter.</p>
-    <p><strong>Estimated blood levels</strong> is a separate mode. Enter a compound's half-life, your dose, and how often you take it, and the chart shows how the amount in your system rises with each dose and flattens out at <em>steady state</em> — along with how many days and doses that takes and your peak-to-trough swing. You can overlay a second compound to compare how fast each one builds and how steady it stays. It's a single-compartment half-life estimate for education, not a blood test.</p>
+    <p><strong>Estimated blood levels</strong> is a separate mode. Enter a compound's half-life, your dose, and how often you take it, and the chart shows how the amount in your system rises with each dose and flattens out at <em>steady state</em> — along with how many days and doses that takes and your peak-to-trough swing. You can overlay a second compound to compare how fast each one builds and how steady it stays. It's a single-compartment half-life estimate for education, not a blood test. <a href="levels.html" style="color:var(--maroon);font-weight:600;">Open the full blood-level &amp; steady-state calculator →</a></p>
   </section>
 
   <!-- APP CTA -->
@@ -811,7 +811,129 @@
       }
 
       // ── LEVELS ──  single-compartment accumulation: level = Σ dose·½^(t/half-life)
-      var HALF_LIVES = [['', 'Custom (enter half-life)', ''], ['test-cyp', 'Testosterone Cypionate', 192], ['test-e', 'Testosterone Enanthate', 108], ['test-p', 'Testosterone Propionate', 20], ['sema', 'Semaglutide', 168], ['tirz', 'Tirzepatide', 120], ['reta', 'Retatrutide', 144], ['hcg', 'HCG', 33], ['hgh', 'HGH (somatropin)', 2.5], ['cjc-dac', 'CJC-1295 (with DAC)', 168], ['cjc-nodac', 'CJC-1295 (no DAC) / Mod GRF', 0.5], ['ipa', 'Ipamorelin', 2], ['tesa', 'Tesamorelin', 0.5], ['bpc', 'BPC-157', 4], ['tb500', 'TB-500', 48], ['mt2', 'Melanotan II', 33], ['pt141', 'PT-141', 2.5]];
+      var HALF_LIVES = [
+        ['', 'Custom (enter half-life)', '', ''],
+        ['test-base', 'Testosterone (base / suspension)', 2, 'Testosterone & esters'],
+        ['test-p', 'Testosterone Propionate', 20, 'Testosterone & esters'],
+        ['test-pp', 'Testosterone Phenylpropionate', 36, 'Testosterone & esters'],
+        ['test-e', 'Testosterone Enanthate', 108, 'Testosterone & esters'],
+        ['test-cyp', 'Testosterone Cypionate', 192, 'Testosterone & esters'],
+        ['test-u', 'Testosterone Undecanoate (inj.)', 504, 'Testosterone & esters'],
+        ['npp', 'Nandrolone Phenylpropionate (NPP)', 65, 'Other anabolic esters'],
+        ['deca', 'Nandrolone Decanoate (Deca)', 144, 'Other anabolic esters'],
+        ['eq', 'Boldenone Undecylenate (EQ)', 336, 'Other anabolic esters'],
+        ['mast-p', 'Masteron Propionate', 48, 'Other anabolic esters'],
+        ['mast-e', 'Masteron Enanthate', 120, 'Other anabolic esters'],
+        ['tren-a', 'Trenbolone Acetate', 24, 'Other anabolic esters'],
+        ['tren-e', 'Trenbolone Enanthate', 120, 'Other anabolic esters'],
+        ['primo-e', 'Primobolan Enanthate', 120, 'Other anabolic esters'],
+        ['sema', 'Semaglutide (Ozempic / Wegovy)', 168, 'GLP-1 & metabolic'],
+        ['tirz', 'Tirzepatide (Mounjaro / Zepbound)', 120, 'GLP-1 & metabolic'],
+        ['reta', 'Retatrutide', 144, 'GLP-1 & metabolic'],
+        ['cagri', 'Cagrilintide', 180, 'GLP-1 & metabolic'],
+        ['liraglutide', 'Liraglutide (Victoza / Saxenda)', 13, 'GLP-1 & metabolic'],
+        ['dulaglutide', 'Dulaglutide (Trulicity)', 120, 'GLP-1 & metabolic'],
+        ['orforglipron', 'Orforglipron (oral)', 36, 'GLP-1 & metabolic'],
+        ['hgh', 'HGH (somatropin)', 2.5, 'Growth hormone & secretagogues'],
+        ['cjc-dac', 'CJC-1295 (with DAC)', 168, 'Growth hormone & secretagogues'],
+        ['cjc-nodac', 'CJC-1295 (no DAC) / Mod GRF', 0.5, 'Growth hormone & secretagogues'],
+        ['sermorelin', 'Sermorelin', 0.2, 'Growth hormone & secretagogues'],
+        ['ipa', 'Ipamorelin', 2, 'Growth hormone & secretagogues'],
+        ['tesa', 'Tesamorelin', 0.5, 'Growth hormone & secretagogues'],
+        ['mk677', 'MK-677 / Ibutamoren (oral)', 24, 'Growth hormone & secretagogues'],
+        ['ghrp2', 'GHRP-2', 0.4, 'Growth hormone & secretagogues'],
+        ['ghrp6', 'GHRP-6', 0.4, 'Growth hormone & secretagogues'],
+        ['hexarelin', 'Hexarelin', 0.5, 'Growth hormone & secretagogues'],
+        ['igf1lr3', 'IGF-1 LR3', 24, 'Growth hormone & secretagogues'],
+        ['igf1des', 'IGF-1 DES', 0.4, 'Growth hormone & secretagogues'],
+        ['bpc', 'BPC-157', 4, 'Healing & recovery'],
+        ['tb500', 'TB-500', 48, 'Healing & recovery'],
+        ['ghkcu', 'GHK-Cu', 0.5, 'Healing & recovery'],
+        ['kpv', 'KPV', 2, 'Healing & recovery'],
+        ['hcg', 'HCG', 33, 'Other'],
+        ['mt1', 'Melanotan I (afamelanotide)', 1, 'Other'],
+        ['mt2', 'Melanotan II', 33, 'Other'],
+        ['pt141', 'PT-141 (Bremelanotide)', 2.7, 'Other']
+      ];
+      // Map free-text / brand compound names from the user's stack → a preset id (most specific first).
+      var HL_ALIASES = [
+        ['ozempic', 'sema'], ['wegovy', 'sema'], ['semaglutide', 'sema'], ['sema', 'sema'],
+        ['mounjaro', 'tirz'], ['zepbound', 'tirz'], ['tirzepatide', 'tirz'], ['tirz', 'tirz'],
+        ['retatrutide', 'reta'], ['reta', 'reta'],
+        ['victoza', 'liraglutide'], ['saxenda', 'liraglutide'], ['liraglutide', 'liraglutide'],
+        ['trulicity', 'dulaglutide'], ['dulaglutide', 'dulaglutide'],
+        ['orforglipron', 'orforglipron'],
+        ['cagrilintide', 'cagri'], ['cagri', 'cagri'],
+        ['testosterone cypionate', 'test-cyp'], ['test cyp', 'test-cyp'], ['cypionate', 'test-cyp'],
+        ['testosterone enanthate', 'test-e'], ['test e', 'test-e'],
+        ['testosterone phenylpropionate', 'test-pp'],
+        ['testosterone propionate', 'test-p'], ['test prop', 'test-p'], ['test p', 'test-p'],
+        ['testosterone undecanoate', 'test-u'], ['nebido', 'test-u'], ['aveed', 'test-u'],
+        ['suspension', 'test-base'], ['testosterone', 'test-cyp'],
+        ['nandrolone decanoate', 'deca'], ['deca durabolin', 'deca'], ['deca', 'deca'],
+        ['nandrolone phenylpropionate', 'npp'], ['npp', 'npp'],
+        ['boldenone', 'eq'], ['equipoise', 'eq'], [' eq ', 'eq'],
+        ['masteron propionate', 'mast-p'], ['drostanolone propionate', 'mast-p'],
+        ['masteron', 'mast-e'], ['drostanolone', 'mast-e'],
+        ['trenbolone acetate', 'tren-a'], ['tren ace', 'tren-a'], ['tren a', 'tren-a'],
+        ['trenbolone enanthate', 'tren-e'], ['tren e', 'tren-e'],
+        ['trenbolone', 'tren-a'], [' tren ', 'tren-a'],
+        ['primobolan', 'primo-e'], ['methenolone', 'primo-e'], ['primo', 'primo-e'],
+        ['somatropin', 'hgh'], ['growth hormone', 'hgh'], [' hgh ', 'hgh'],
+        ['cjc 1295 with dac', 'cjc-dac'], ['cjc 1295 dac', 'cjc-dac'], ['cjc with dac', 'cjc-dac'],
+        ['cjc 1295', 'cjc-nodac'], ['mod grf', 'cjc-nodac'], ['cjc', 'cjc-nodac'],
+        ['sermorelin', 'sermorelin'],
+        ['ipamorelin', 'ipa'], ['ipa', 'ipa'],
+        ['tesamorelin', 'tesa'], ['egrifta', 'tesa'],
+        ['ibutamoren', 'mk677'], ['mk 677', 'mk677'], ['mk677', 'mk677'], ['nutrobal', 'mk677'],
+        ['ghrp 2', 'ghrp2'], ['ghrp2', 'ghrp2'], ['ghrp 6', 'ghrp6'], ['ghrp6', 'ghrp6'],
+        ['hexarelin', 'hexarelin'],
+        ['igf 1 lr3', 'igf1lr3'], ['igf lr3', 'igf1lr3'], ['lr3', 'igf1lr3'],
+        ['igf 1 des', 'igf1des'], ['igf des', 'igf1des'],
+        ['bpc 157', 'bpc'], ['bpc157', 'bpc'], [' bpc ', 'bpc'],
+        ['tb 500', 'tb500'], ['tb500', 'tb500'], ['thymosin beta', 'tb500'],
+        ['ghk cu', 'ghkcu'], ['ghk', 'ghkcu'],
+        [' kpv ', 'kpv'],
+        [' hcg ', 'hcg'], ['chorionic gonadotropin', 'hcg'],
+        ['melanotan ii', 'mt2'], ['melanotan 2', 'mt2'], [' mt2 ', 'mt2'], [' mt ii ', 'mt2'],
+        ['melanotan i', 'mt1'], ['melanotan 1', 'mt1'], [' mt1 ', 'mt1'], ['afamelanotide', 'mt1'],
+        ['bremelanotide', 'pt141'], ['pt 141', 'pt141'], ['pt141', 'pt141']
+      ];
+      function lvLookupHalfLife(name) {
+        if (!name) return null;
+        var n = ' ' + String(name).toLowerCase().replace(/[^a-z0-9]+/g, ' ').replace(/\s+/g, ' ').trim() + ' ';
+        for (var i = 0; i < HL_ALIASES.length; i++) {
+          if (n.indexOf(HL_ALIASES[i][0]) > -1) {
+            var id = HL_ALIASES[i][1], row = HALF_LIVES.filter(function (h) { return h[0] === id; })[0];
+            if (row) return { id: row[0], hours: row[2], label: row[1] };
+          }
+        }
+        return null;
+      }
+      // Grouped <optgroup> markup for the compound pickers.
+      function lvOptionsHtml() {
+        var byGroup = {}, order = [];
+        HALF_LIVES.forEach(function (h) { var g = h[3] || ''; if (!(g in byGroup)) { byGroup[g] = []; order.push(g); } byGroup[g].push(h); });
+        return order.map(function (g) {
+          var opts = byGroup[g].map(function (h) { return '<option value="' + h[0] + '">' + h[1] + '</option>'; }).join('');
+          return g ? '<optgroup label="' + g + '">' + opts + '</optgroup>' : opts;
+        }).join('');
+      }
+      // Turn a saved schedule's frequency into a dosing interval in days.
+      function lvScheduleInterval(s) {
+        if (!s) return 0;
+        if (s.intervalDays && parseFloat(s.intervalDays) > 0) return parseFloat(s.intervalDays);
+        if (Array.isArray(s.days) && s.days.length) return 7 / s.days.length;
+        var f = String(s.frequency || '').toLowerCase();
+        if (/every other day|eod/.test(f)) return 2;
+        var mw = f.match(/(\d+(?:\.\d+)?)\s*x?\s*(?:\/|per|a|times?)?\s*week/);
+        if (mw) return 7 / parseFloat(mw[1]);
+        if (/week/.test(f)) return 7;
+        var md = f.match(/(\d+(?:\.\d+)?)\s*x?\s*(?:\/|per|a|times?)?\s*da(?:y|i)/);
+        if (md) return 1 / parseFloat(md[1]);
+        if (/daily|every day/.test(f)) return 1;
+        return 0;
+      }
       // v1.11 — bigger chart geometry + optional second-compound overlay (mirrors the app).
       var LV_W = 360, LV_H = 190, LV_PADX = 6, LV_PADT = 10, LV_PADB = 22;
       var lvPlotW = LV_W - 2 * LV_PADX, lvPlotH = LV_H - LV_PADT - LV_PADB, lvYBase = LV_PADT + lvPlotH;
@@ -946,12 +1068,12 @@
       // Levels compound dropdown
       (function () {
         var sel = document.getElementById('lv_preset'); if (!sel) return;
-        sel.innerHTML = HALF_LIVES.map(function (h) { return '<option value="' + h[0] + '">' + h[1] + '</option>'; }).join('');
+        sel.innerHTML = lvOptionsHtml();
         sel.value = 'test-cyp';
         sel.addEventListener('change', function () { var h = HALF_LIVES.filter(function (x) { return x[0] === sel.value; })[0]; if (h && h[2]) document.getElementById('lv_hl').value = h[2]; calcLevels(); });
         var sel2 = document.getElementById('lv_preset2');
         if (sel2) {
-          sel2.innerHTML = HALF_LIVES.map(function (h) { return '<option value="' + h[0] + '">' + h[1] + '</option>'; }).join('');
+          sel2.innerHTML = lvOptionsHtml();
           sel2.value = 'test-e';
           sel2.addEventListener('change', function () { var h = HALF_LIVES.filter(function (x) { return x[0] === sel2.value; })[0]; if (h && h[2]) document.getElementById('lv_hl2').value = h[2]; calcLevels(); });
         }
@@ -1024,7 +1146,7 @@
           statusEl = document.getElementById('acctStatus'),
           prefillEl = document.getElementById('acctPrefill'),
           saveBtn = document.getElementById('acctSave');
-      var currentUser = null, inv = [];
+      var currentUser = null, inv = [], sched = [];
 
       // Token minted by the app and passed on the URL.
       var tok = new URLSearchParams(location.search).get('t');
@@ -1046,6 +1168,10 @@
       });
 
       function loadInventory(uid) {
+        // Pull the user's dosing schedules too, so the Levels tab can prefill dose + interval.
+        db.collection('users').doc(uid).collection('schedules').get().then(function (snap) {
+          sched = []; snap.forEach(function (d) { sched.push(d.data()); });
+        }).catch(function () {});
         db.collection('users').doc(uid).collection('inventory').get().then(function (snap) {
           inv = [];
           snap.forEach(function (d) { var x = d.data(); x._id = d.id; inv.push(x); });
@@ -1067,6 +1193,18 @@
         var mg = parseFloat(it.mgPerVial) || 0, bac = parseFloat(it.reconstitution) || 0;
         var active = document.querySelector('.mode-tab.active');
         var mode = active ? active.getAttribute('data-mode') : 'peptide';
+        // Levels tab: fill half-life (auto-looked-up from the name) + dose/interval from a matching schedule.
+        if (mode === 'levels') {
+          var hit = lvLookupHalfLife(it.name);
+          if (hit) { document.getElementById('lv_hl').value = hit.hours; var sel = document.getElementById('lv_preset'); if (sel) sel.value = hit.id; }
+          var s = sched.filter(function (x) { return (x.name || '').toLowerCase() === (it.name || '').toLowerCase(); })[0];
+          if (s) {
+            if (parseFloat(s.dose) > 0) document.getElementById('lv_dose').value = s.dose;
+            var intv = lvScheduleInterval(s); if (intv > 0) document.getElementById('lv_interval').value = +intv.toFixed(3);
+          }
+          calcLevels();
+          return;
+        }
         var map = { peptide: ['p_vial', 'p_bac'], hcg: ['h_total', 'h_bac'], hgh: ['g_vial', 'g_bac'] };
         var ids = map[mode];
         if (ids) {

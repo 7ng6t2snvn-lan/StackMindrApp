@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2a1f1f">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="format-detection" content="telephone=no">
+
+  <title>Peptide, TRT &amp; GLP-1 Blood-Level &amp; Steady-State Calculator — StackMindr</title>
+  <meta name="description" content="Free estimated blood-level and steady-state calculator for peptides, TRT, and GLP-1s. Enter a half-life, dose, and interval to see how a compound builds to steady state, days to ~90%, peak-to-trough swing, and compare two compounds side by side.">
+  <meta name="keywords" content="peptide half-life calculator, steady state calculator, estimated blood level calculator, testosterone steady state calculator, TRT blood level calculator, peptide accumulation calculator, semaglutide steady state, peak to trough calculator, half-life chart">
+  <meta name="author" content="STACKMINDR LLC">
+
+  <link rel="canonical" href="https://stackmindr.app/levels.html">
+
+  <link rel="icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+  <meta name="apple-itunes-app" content="app-id=6762165518">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="StackMindr">
+  <meta property="og:title" content="Blood-Level &amp; Steady-State Calculator — StackMindr">
+  <meta property="og:description" content="See how a compound builds to steady state from its half-life, dose, and interval — days to ~90%, peak-to-trough swing, and a two-compound comparison. Free.">
+  <meta property="og:url" content="https://stackmindr.app/levels.html">
+  <meta property="og:image" content="https://stackmindr.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blood-Level &amp; Steady-State Calculator — StackMindr">
+  <meta name="twitter:description" content="Estimate how a compound builds to steady state from its half-life. Compare two side by side. Free.">
+  <meta name="twitter:image" content="https://stackmindr.app/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "StackMindr Blood-Level & Steady-State Calculator",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web",
+    "url": "https://stackmindr.app/levels.html",
+    "description": "Free estimated blood-level and steady-state calculator. Enter a compound's half-life, your dose, and your dosing interval to chart accumulation to steady state, days to ~90%, peak-to-trough swing, and compare two compounds.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "STACKMINDR LLC", "url": "https://stackmindr.app/" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "StackMindr", "item": "https://stackmindr.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Calculator", "item": "https://stackmindr.app/calculator.html" },
+      { "@type": "ListItem", "position": 3, "name": "Estimated levels", "item": "https://stackmindr.app/levels.html" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is an estimated blood-level or steady-state calculator?", "acceptedAnswer": {"@type": "Answer", "text": "It charts how much of a compound is in your system over time when you dose it repeatedly. Starting from the compound's half-life, your dose, and how often you take it, it shows the level rising with each dose and flattening out at steady state — the point where what you take each interval roughly balances what your body clears. It is a single-compartment half-life estimate for education, not a blood test."}}, {"@type": "Question", "name": "How long does a compound take to reach steady state?", "acceptedAnswer": {"@type": "Answer", "text": "As a rule of thumb a compound reaches about 90% of steady state after roughly five half-lives, regardless of dose. This calculator works that out and shows the days and the number of doses it takes, so a long-half-life compound like testosterone cypionate takes weeks while a short-acting one levels off in days."}}, {"@type": "Question", "name": "What does peak-to-trough swing mean?", "acceptedAnswer": {"@type": "Answer", "text": "Peak-to-trough is how high your level rises right after a dose versus how low it drifts just before the next one. A short half-life or a long gap between doses makes a bigger swing; a long half-life or more frequent dosing makes it steadier. The calculator shows your swing as a multiple so you can see how smooth or spiky a protocol is."}}, {"@type": "Question", "name": "Can I compare two compounds or two schedules?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Turn on Compare a second compound and the chart overlays both, each scaled to its own steady state so compounds on different units line up fairly. A side-by-side table shows days to steady state, peak-to-trough swing, and accumulation for each — useful for comparing, say, testosterone enanthate versus cypionate."}}, {"@type": "Question", "name": "Does this use my actual blood work?", "acceptedAnswer": {"@type": "Answer", "text": "No. It is a mathematical half-life estimate, not a measurement of your blood, and real absorption and clearance vary by person and compound. If you want to track measured levels, the StackMindr app lets you import lab-report PDFs and chart each marker over time — but that is separate from this estimate."}}, {"@type": "Question", "name": "Is this medical advice?", "acceptedAnswer": {"@type": "Answer", "text": "No. This is an educational tool. You enter your own numbers; it never recommends a dose, and it is not a substitute for bloodwork or a clinician. Always work with a qualified healthcare provider."}}]}</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --maroon: #8b2e1f;
+      --maroon-dark: #6b1a10;
+      --cream: #faf7f5;
+      --dark: #1a1210;
+      --text: #2a1f1f;
+      --text-muted: #8a7a7a;
+      --gold: #c9a84c;
+      --line: #ece6e3;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; color: var(--text); background: var(--cream); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; height: auto; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+
+    /* ── NAV ───────────────────────────────────────── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(26,18,16,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 12px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 0 rgba(255,255,255,0.06); }
+    .nav-logo { display: flex; align-items: center; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: #fff; letter-spacing: -0.3px; text-decoration: none; }
+    .nav-logo img { height: 22px; width: auto; display: block; margin-right: 10px; }
+    .nav-logo span { color: var(--maroon); filter: brightness(1.6); }
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a { color: #ccc; text-decoration: none; font-size: 14px; font-weight: 400; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
+    .nav-cta { background: var(--maroon); color: #fff !important; padding: 8px 20px; border-radius: 8px; font-weight: 600 !important; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--maroon-dark); }
+
+    /* ── HEADER ────────────────────────────────────── */
+    .calc-hero { padding: 128px 24px 56px; background: linear-gradient(170deg, var(--dark) 0%, #2a1210 45%, var(--maroon-dark) 100%); text-align: center; position: relative; overflow: hidden; }
+    .calc-hero::before { content: ''; position: absolute; top: -40%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(201,168,76,0.10) 0%, transparent 70%); }
+    .calc-hero > * { position: relative; z-index: 1; }
+    .calc-hero .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 2.4px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .calc-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 5vw, 52px); font-weight: 700; color: #fff; line-height: 1.08; letter-spacing: -0.5px; margin-bottom: 16px; }
+    .calc-hero h1 span { color: var(--gold); font-style: italic; }
+    .calc-hero p { color: rgba(255,255,255,0.7); font-size: 17px; line-height: 1.6; max-width: 620px; margin: 0 auto; }
+
+    /* ── CALCULATOR ────────────────────────────────── */
+    .calc-wrap { max-width: 860px; margin: -34px auto 0; padding: 0 24px 40px; position: relative; z-index: 5; }
+    .calc-card { background: #fff; border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 24px 60px rgba(26,18,16,0.12); overflow: hidden; }
+
+    .mode-tabs { display: flex; gap: 4px; padding: 8px; background: #f5f0ee; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+    .mode-tab { flex: 1 1 auto; min-width: 88px; text-align: center; padding: 12px 10px; border: none; background: transparent; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600; color: var(--text-muted); border-radius: 12px; cursor: pointer; transition: all 0.2s; }
+    .mode-tab:hover { color: var(--text); }
+    .mode-tab.active { background: var(--maroon); color: #fff; box-shadow: 0 4px 14px rgba(139,46,31,0.25); }
+
+    .calc-body { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .calc-body[hidden] { display: none; }
+    .calc-inputs { padding: 32px; border-right: 1px solid var(--line); }
+    .calc-output { padding: 32px; background: linear-gradient(175deg, #fdf8f7, #fff); }
+    .mode-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+    .mode-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 22px; line-height: 1.5; }
+
+    .field { margin-bottom: 18px; }
+    .field label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 7px; }
+    .field .hint { font-weight: 400; color: var(--text-muted); }
+    .input-row { display: flex; gap: 8px; }
+    .field input, .field select { width: 100%; font-family: 'Outfit', sans-serif; font-size: 16px; color: var(--text); padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: #fff; transition: border-color 0.2s; -webkit-appearance: none; appearance: none; }
+    .field input:focus, .field select:focus { border-color: var(--maroon); }
+    .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238a7a7a' d='M6 8 0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 34px; }
+    .input-row select { width: 108px; flex-shrink: 0; }
+
+    .result-hero { text-align: center; padding: 8px 0 20px; border-bottom: 1px dashed var(--line); margin-bottom: 20px; }
+    .result-hero .r-label { font-size: 12px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+    .result-hero .r-value { font-family: 'Cormorant Garamond', serif; font-size: 64px; font-weight: 700; color: var(--maroon); line-height: 1; letter-spacing: -1px; }
+    .result-hero .r-value span { font-size: 22px; color: var(--text-muted); font-weight: 400; font-family: 'Outfit', sans-serif; margin-left: 4px; }
+    .result-hero .r-caption { font-size: 13px; color: var(--text-muted); margin-top: 10px; }
+    .result-hero .r-caption b { color: var(--text); }
+
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .stat { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+    .stat .s-label { font-size: 11px; font-weight: 600; letter-spacing: 0.6px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 5px; }
+    .stat .s-value { font-size: 20px; font-weight: 600; color: var(--text); }
+    .stat .s-value small { font-size: 13px; font-weight: 400; color: var(--text-muted); }
+
+    .warn { margin-top: 18px; background: rgba(201,168,76,0.14); border: 1px solid rgba(201,168,76,0.5); color: #7a5c12; font-size: 13px; line-height: 1.5; padding: 12px 14px; border-radius: 10px; }
+    .warn.hidden { display: none; }
+
+    /* ── EXPLAINER / CTA ───────────────────────────── */
+    .explain { max-width: 760px; margin: 44px auto 0; padding: 0 24px; }
+    .explain h2 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; margin-bottom: 14px; }
+    .explain p { color: var(--text-muted); font-size: 15px; line-height: 1.75; margin-bottom: 14px; }
+    .explain strong { color: var(--text); }
+    .faq { max-width: 760px; margin: 44px auto 0; padding: 0 24px; }
+    .faq h2 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; margin-bottom: 20px; }
+    .faq-item { margin-bottom: 20px; }
+    .faq-item h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+    .faq-item p { font-size: 14.5px; line-height: 1.7; color: var(--text-muted); }
+    .faq-item a { color: var(--maroon); }
+
+    .app-cta { max-width: 860px; margin: 52px auto 0; padding: 0 24px; }
+    .app-cta-inner { background: linear-gradient(170deg, var(--dark) 0%, #2a1210 55%, var(--maroon-dark) 100%); border-radius: 20px; padding: 44px 36px; text-align: center; position: relative; overflow: hidden; }
+    .app-cta-inner::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 65%); }
+    .app-cta-inner > * { position: relative; z-index: 1; }
+    .app-cta h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 4vw, 36px); font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .app-cta h2 em { color: var(--gold); font-style: italic; }
+    .app-cta p { color: rgba(255,255,255,0.6); font-size: 15.5px; line-height: 1.6; max-width: 520px; margin: 0 auto 28px; }
+    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--maroon); color: #fff; padding: 14px 26px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 15px; transition: all 0.3s; }
+    .btn-primary:hover { background: var(--maroon-dark); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(139,46,31,0.4); }
+    .btn-store { display: inline-flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.85); text-decoration: none; font-size: 15px; font-weight: 500; padding: 13px 24px; border: 1px solid rgba(255,255,255,0.18); border-radius: 12px; transition: all 0.25s; }
+    .btn-store:hover { color: #fff; border-color: rgba(255,255,255,0.4); transform: translateY(-2px); }
+
+    .disclaimer { max-width: 760px; margin: 40px auto 0; padding: 0 24px; }
+    .disclaimer p { font-size: 12.5px; line-height: 1.7; color: var(--text-muted); font-style: italic; text-align: center; }
+
+    /* ── FOOTER ────────────────────────────────────── */
+    footer { background: #140d0c; color: rgba(255,255,255,0.45); padding: 52px 40px 48px; text-align: center; font-size: 13px; margin-top: 56px; }
+    .footer-logo { width: 168px; height: auto; opacity: 0.82; margin: 0 auto 26px; display: block; }
+    footer a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: #fff; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; flex-wrap: wrap; }
+    .footer-disclaimer { max-width: 660px; margin: 0 auto 18px; font-size: 12px; line-height: 1.7; color: rgba(255,255,255,0.32); }
+
+    .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:0;cursor:pointer;padding:7px;}
+    .nav-toggle span{display:block;height:2px;width:100%;background:#fff;border-radius:2px;transition:transform .25s,opacity .2s;}
+    nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    nav.open .nav-toggle span:nth-child(2){opacity:0;}
+    nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    @media (max-width: 768px) {
+      nav { padding: 12px 20px; }
+      .nav-toggle{display:flex;}
+      .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(26,18,16,0.98);padding:6px 0 12px;box-shadow:0 12px 28px rgba(0,0,0,0.38);max-height:0;overflow:hidden;opacity:0;pointer-events:none;transition:max-height .3s ease,opacity .2s;}
+      nav.open .nav-links{max-height:80vh;opacity:1;pointer-events:auto;}
+      .nav-links a{padding:13px 24px;font-size:15px;color:#eee;}
+      .nav-links a.nav-cta{margin:8px 24px 0;text-align:center;border-radius:8px;color:#fff !important;}
+      .calc-body { grid-template-columns: 1fr; }
+      .calc-inputs { border-right: none; border-bottom: 1px solid var(--line); }
+      .result-hero .r-value { font-size: 54px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo" aria-label="StackMindr home">
+      <img src="images/logo-mark-light.png" alt="" width="97" height="162">
+      <b style="font-weight:700"><span>Stack</span>Mindr</b>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#features">Features</a>
+      <a href="calculator.html" class="active">Calculator</a>
+      <a href="glp-1-tracker.html">GLP-1</a>
+      <a href="compounds.html">Compounds</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="index.html#get" class="nav-cta">Get the app</a>
+    </div>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- HEADER -->
+  <section class="calc-hero">
+    <div class="eyebrow">Free calculator</div>
+    <h1>Blood-level &amp; <span>steady-state.</span></h1>
+    <p>Enter a compound's half-life, your dose, and how often you take it — see how it builds to steady state, how long that takes, your peak-to-trough swing, and how two compounds compare side by side. The same model the StackMindr app runs, free in your browser. Signed in? Prefill it straight from your stack.</p>
+  </section>
+
+  <!-- CALCULATOR -->
+  <div class="calc-wrap">
+    <div class="calc-card">
+      <div id="acctBar" style="display:none;margin:0 0 16px;padding:10px 14px;border-radius:12px;background:#f2ead8;border:1px solid #e4d9c2;font-size:13px;color:#7a5a3a;align-items:center;gap:10px;flex-wrap:wrap;">
+        <span id="acctStatus">Connecting to your account…</span>
+        <select id="acctPrefill" style="display:none;margin-left:auto;padding:6px 8px;border-radius:8px;border:1px solid #d9cdb3;background:#fff;font-size:13px;color:#2a2218;">
+          <option value="">Prefill from your stack…</option>
+        </select>
+        <button id="acctSave" type="button" style="display:none;padding:7px 12px;border-radius:8px;border:none;background:#8b1c1c;color:#fff;font-size:13px;font-weight:600;cursor:pointer;">Save to my stack</button>
+      </div>
+      <!-- LEVELS -->
+      <div class="calc-body" data-panel="levels">
+        <div class="calc-inputs">
+          <div class="mode-title">Estimated levels</div>
+          <div class="mode-desc">See how a compound builds up with repeated dosing and roughly when it levels off. Educational estimate from half-life — not a blood test.</div>
+          <div class="field">
+            <label>Compound <span class="hint">(sets the half-life for you)</span></label>
+            <select id="lv_preset"></select>
+          </div>
+          <div id="lv_prefill_note" style="display:none;font-size:12px;color:#7a5a3a;background:#f2ead8;border:1px solid #e4d9c2;border-radius:8px;padding:8px 10px;margin:-4px 0 14px;line-height:1.5;"></div>
+          <div class="field">
+            <label>Half-life <span class="hint">(hours — auto-filled, edit if you know yours)</span></label>
+            <input type="number" inputmode="decimal" id="lv_hl" value="192" min="0" step="any">
+          </div>
+          <div class="field">
+            <label>Dose <span class="hint">(any unit)</span></label>
+            <input type="number" inputmode="decimal" id="lv_dose" value="100" min="0" step="any">
+          </div>
+          <div class="field">
+            <label>Inject / take every <span class="hint">(days)</span></label>
+            <input type="number" inputmode="decimal" id="lv_interval" value="3.5" min="0" step="any">
+          </div>
+          <button type="button" id="lv_cmp_toggle" style="background:none;border:none;color:#0284c7;font-weight:600;font-size:13px;cursor:pointer;padding:2px 0 4px;">+ Compare a second compound</button>
+          <div id="lv_cmp_block" hidden style="border-left:3px solid #0284c7;padding-left:12px;">
+            <div class="field">
+              <label style="color:#0284c7;">Compare with</label>
+              <select id="lv_preset2"></select>
+            </div>
+            <div class="field">
+              <label>Half-life <span class="hint">(hours)</span></label>
+              <input type="number" inputmode="decimal" id="lv_hl2" value="108" min="0" step="any">
+            </div>
+            <div class="field">
+              <label>Dose <span class="hint">(any unit)</span></label>
+              <input type="number" inputmode="decimal" id="lv_dose2" value="100" min="0" step="any">
+            </div>
+            <div class="field">
+              <label>Inject / take every <span class="hint">(days)</span></label>
+              <input type="number" inputmode="decimal" id="lv_interval2" value="3.5" min="0" step="any">
+            </div>
+          </div>
+        </div>
+        <div class="calc-output">
+          <div id="lv_legend" hidden style="display:flex;gap:16px;flex-wrap:wrap;margin:0 2px 10px;font-size:12px;color:#5a4a3a;font-weight:600;"></div>
+          <div style="background:#faf6ee;border:1px solid #e4d9c2;border-radius:12px;padding:12px 12px 8px;">
+            <div style="font-size:12.5px;color:#5a4a3a;font-weight:600;margin-bottom:8px;">Estimated amount in your system (% of steady state)</div>
+            <svg id="lv_chart" viewBox="0 0 360 190" style="width:100%;height:auto;display:block;" role="img" aria-label="Estimated level over time"></svg>
+            <div style="font-size:10px;color:#9a8468;text-align:center;padding:2px 2px 0;">Time (days) →</div>
+          </div>
+          <div class="stat-grid" style="margin-top:12px;">
+            <div class="stat"><div class="s-label">Accumulation</div><div class="s-value" id="lv_accum">—</div></div>
+            <div class="stat"><div class="s-label">To ~90% steady</div><div class="s-value" id="lv_t90">—</div></div>
+            <div class="stat"><div class="s-label">Doses to steady</div><div class="s-value" id="lv_dosesss">—</div></div>
+            <div class="stat"><div class="s-label">Peak-to-trough</div><div class="s-value" id="lv_swing">—</div></div>
+          </div>
+          <div id="lv_cmp_table" hidden style="margin-top:12px;"></div>
+        </div>
+      </div>
+
+    </div>
+    <p style="text-align:center;font-size:13px;color:#7a5a3a;margin:16px 0 0;">Need to mix a vial or work out units to draw? Use the <a href="calculator.html" style="color:#8b1c1c;font-weight:600;">reconstitution &amp; dose calculator →</a></p>
+  </div>
+
+  <!-- EXPLAINER -->
+  <section class="explain">
+    <h2>How estimated blood levels work</h2>
+    <p><strong>Accumulation</strong> is why a single dose doesn't tell the whole story. When you dose again before the last one has fully cleared, the compound stacks on itself — each dose adds to what's left — until the amount you take each interval roughly balances what your body clears. That balance point is <em>steady state</em>, and the chart shows your level climbing toward it with every dose.</p>
+    <p><strong>Time to steady state</strong> depends only on the half-life, not the dose. A compound reaches about 90% of steady state after roughly five half-lives — so a long-acting ester like testosterone cypionate takes weeks, while a short-acting peptide levels off in days. The calculator marks the ~90% point and tells you how many doses it takes to get there.</p>
+    <p><strong>Peak-to-trough swing</strong> is how high your level rises just after a dose versus how low it drifts right before the next one. A short half-life or a long gap between doses makes a bigger swing; a longer half-life or more frequent dosing makes it steadier. Seeing the swing is how people decide whether to split a dose or inject more often.</p>
+    <p><strong>Comparing two compounds</strong> overlays both curves, each scaled to its own steady state so compounds measured in different units line up fairly — then a side-by-side table lays out days to steady state, swing, and accumulation for each. It's a single-compartment half-life estimate for education, built on the model <em>level = Σ dose × ½<sup>(time ÷ half-life)</sup></em> — not a blood test, and it never recommends a dose.</p>
+  </section>
+
+  <!-- APP CTA -->
+  <div class="app-cta">
+    <div class="app-cta-inner">
+      <h2>Stop re-typing it every time. <em>Let the app remember.</em></h2>
+      <p>StackMindr saves every vial, does this math automatically on each dose, decrements your inventory as you go, and reminds you when it's time. Free on iOS and Android.</p>
+      <div class="cta-buttons">
+        <a href="https://apps.apple.com/us/app/stackmindr/id6762165518" class="btn-primary">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Download on iOS
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.stackmindr.app" class="btn-store">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 1.84a1.5 1.5 0 0 0-.6 1.2v17.92c0 .48.22.9.6 1.16l.1.06 10.03-10.03v-.24L3.7 1.78l-.1.06zm13.5 6.62L14.7 6.06l-9.4 9.4 2.4 2.4 9.4-9.4zM4.3 22.2l9.4-9.4 2.4 2.4-9.4 9.4-2.4-2.4zm16.34-11.6-2.5-1.45-2.7 2.7 2.7 2.7 2.5-1.45c.86-.5.86-1.99 0-2.5z" opacity=".95"/></svg>
+          Get it on Android
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2>Blood-level &amp; steady-state FAQ</h2>
+    <div class="faq-item">
+      <h3>What is an estimated blood-level or steady-state calculator?</h3>
+      <p>It charts how much of a compound is in your system over time when you dose it repeatedly. From the compound's half-life, your dose, and how often you take it, it shows the level rising with each dose and flattening out at <strong>steady state</strong> — the point where what you take each interval roughly balances what your body clears. It's a single-compartment half-life estimate for education, not a blood test.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How long does a compound take to reach steady state?</h3>
+      <p>As a rule of thumb, a compound reaches about 90% of steady state after roughly <strong>five half-lives</strong>, regardless of dose. This calculator works that out and shows the days and the number of doses it takes — so a long-acting ester like <a href="compounds/testosterone-cypionate.html">testosterone cypionate</a> takes weeks, while a short-acting peptide levels off in days.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What does peak-to-trough swing mean?</h3>
+      <p>Peak-to-trough is how high your level rises just after a dose versus how low it drifts right before the next one. A short half-life or a long gap between doses makes a bigger swing; a longer half-life or more frequent dosing makes it steadier. The calculator shows your swing as a multiple so you can see how smooth or spiky a protocol is.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I compare two compounds or two schedules?</h3>
+      <p>Yes. Turn on <strong>Compare a second compound</strong> and the chart overlays both, each scaled to its own steady state so compounds measured in different units line up fairly. A side-by-side table shows days to steady state, peak-to-trough swing, and accumulation for each — handy for comparing, say, <a href="compare/testosterone-cypionate-vs-testosterone-enanthate.html">cypionate versus enanthate</a>.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does this use my actual blood work?</h3>
+      <p>No. It's a mathematical half-life estimate, not a measurement of your blood, and real absorption and clearance vary by person and compound. If you want to track measured levels, the <a href="https://apps.apple.com/us/app/stackmindr/id6762165518">StackMindr app</a> lets you import lab-report PDFs and chart each marker over time — separate from this estimate.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is this medical advice?</h3>
+      <p>No. This is an educational tool. You enter your own numbers; it never recommends a dose, and it's not a substitute for bloodwork or a clinician. Always work with a qualified healthcare provider.</p>
+    </div>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <section class="disclaimer">
+    <p>This calculator is a mathematical tool for educational purposes only. It is not medical advice and does not diagnose, treat, or prescribe. Estimated levels are a half-life approximation, not a blood test, and real absorption and clearance vary by person and compound — always verify your own numbers and work with a qualified healthcare provider before starting or changing any protocol.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <img class="footer-logo" src="images/logo-full-light.png" alt="StackMindr — the OS for your body." width="626" height="370" loading="lazy">
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="calculator.html">Calculator</a>
+      <a href="glp-1-tracker.html">GLP-1 Tracker</a>
+      <a href="compounds.html">Compound Library</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="delete-account.html">Delete Account</a>
+      <a href="mailto:justin@stackmindr.app">Contact</a>
+    </div>
+    <p class="footer-disclaimer">StackMindr is a tracking and calculation tool for educational purposes only. It is not medical advice and does not diagnose, treat, cure, or prevent any condition. Always consult a qualified healthcare provider before starting or changing any protocol.</p>
+    <p>&copy; 2026 STACKMINDR LLC &middot; Built in Oregon</p>
+  </footer>
+
+  <script>
+    (function () {
+      var fmt0 = function (n) { return isFinite(n) ? Math.round(n).toLocaleString('en-US') : '—'; };
+      var num = function (id) { return parseFloat(document.getElementById(id).value); };
+      var set = function (id, html) { document.getElementById(id).innerHTML = html; };
+      var syrName = { '100': '1cc (100 units)', '50': '0.5cc (50 units)', '30': '0.3cc (30 units)' };
+
+      function warn(id, units, cap) {
+        var el = document.getElementById(id);
+        if (isFinite(units) && units > cap) {
+          el.innerHTML = 'This dose needs <b>' + units.toFixed(1) + ' units</b> — more than a ' +
+            (cap === 100 ? '1cc' : cap === 50 ? '0.5cc' : '0.3cc') + ' syringe holds (' + cap + ' units). Split the dose across injections or use a larger syringe.';
+          el.classList.remove('hidden');
+        } else { el.classList.add('hidden'); }
+      }
+
+      // ── PEPTIDE ──  concentration(mcg/mL)=mg/bac*1000; vol=doseMcg/conc; units=vol*100
+      function calcPeptide() {
+        var vial = num('p_vial'), bac = num('p_bac'), dose = num('p_dose');
+        var unit = document.getElementById('p_unit').value;
+        var cap = parseFloat(document.getElementById('p_syr').value);
+        var doseMcg = unit === 'mg' ? dose * 1000 : dose;
+        var conc = vial / bac * 1000;          // mcg/mL
+        var vol = doseMcg / conc;              // mL
+        var units = vol * 100;
+        var doses = Math.floor(vial * 1000 / doseMcg);
+        set('p_units', (isFinite(units) ? units.toFixed(1) : '—') + '<span>units</span>');
+        set('p_conc', fmt0(conc) + ' <small>mcg/mL</small>');
+        set('p_vol', (isFinite(vol) ? vol.toFixed(3) : '—') + ' <small>mL</small>');
+        set('p_doses', isFinite(doses) && doses > 0 ? fmt0(doses) : '—');
+        set('p_dosemg', (isFinite(doseMcg) ? (doseMcg / 1000).toFixed(3) : '—') + ' <small>mg</small>');
+        document.getElementById('p_syrname').textContent = syrName[document.getElementById('p_syr').value];
+        warn('p_warn', units, cap);
+      }
+
+      // ── TRT ──  perInj=weekly/(7/interval); vol=perInj/conc; units=vol*100
+      function calcTrt() {
+        var weekly = num('t_weekly'), interval = num('t_interval'), conc = num('t_conc');
+        var perWeek = 7 / interval;
+        var perInj = weekly / perWeek;
+        var vol = perInj / conc;
+        var units = vol * 100;
+        set('t_units', (isFinite(units) ? units.toFixed(1) : '—') + '<span>units</span>');
+        set('t_perinj', (isFinite(perInj) ? perInj.toFixed(1) : '—') + ' <small>mg</small>');
+        set('t_vol', (isFinite(vol) ? vol.toFixed(2) : '—') + ' <small>mL</small>');
+        set('t_perweek', isFinite(perWeek) ? perWeek.toFixed(1) : '—');
+        set('t_wkvol', (isFinite(vol * perWeek) ? (vol * perWeek).toFixed(2) : '—') + ' <small>mL</small>');
+        warn('t_warn', units, 100);
+      }
+
+      // ── HCG ──  conc(IU/mL)=total/bac; vol=dose/conc; units=vol*100
+      function calcHcg() {
+        var total = num('h_total'), bac = num('h_bac'), dose = num('h_dose');
+        var cap = parseFloat(document.getElementById('h_syr').value);
+        var conc = total / bac;
+        var vol = dose / conc;
+        var units = vol * 100;
+        var doses = Math.floor(total / dose);
+        set('h_units', (isFinite(units) ? units.toFixed(1) : '—') + '<span>units</span>');
+        set('h_conc', fmt0(conc) + ' <small>IU/mL</small>');
+        set('h_vol', (isFinite(vol) ? vol.toFixed(3) : '—') + ' <small>mL</small>');
+        set('h_doses', isFinite(doses) && doses > 0 ? fmt0(doses) : '—');
+        set('h_doseiu', (isFinite(dose) ? fmt0(dose) : '—') + ' <small>IU</small>');
+        document.getElementById('h_syrname').textContent = syrName[document.getElementById('h_syr').value];
+        warn('h_warn', units, cap);
+      }
+
+      // ── HGH ──  desiredMg=IU/3; conc(mg/mL)=vial/bac; vol=desiredMg/conc; units=vol*100; totalIU=vial*3
+      function calcHgh() {
+        var vial = num('g_vial'), bac = num('g_bac'), doseIU = num('g_dose');
+        var cap = parseFloat(document.getElementById('g_syr').value);
+        var desiredMg = doseIU / 3;
+        var concMg = vial / bac;
+        var vol = desiredMg / concMg;
+        var units = vol * 100;
+        var totalIU = vial * 3;
+        var concIU = totalIU / bac;
+        var doses = doseIU > 0 ? Math.floor(totalIU / doseIU) : 0;
+        set('g_units', (isFinite(units) ? units.toFixed(1) : '—') + '<span>units</span>');
+        set('g_totaliu', (isFinite(totalIU) ? totalIU.toFixed(1) : '—') + ' <small>IU</small>');
+        set('g_conc', (isFinite(concIU) ? concIU.toFixed(1) : '—') + ' <small>IU/mL</small>');
+        set('g_vol', (isFinite(vol) ? vol.toFixed(3) : '—') + ' <small>mL</small>');
+        set('g_doses', isFinite(doses) && doses > 0 ? fmt0(doses) : '—');
+        document.getElementById('g_syrname').textContent = syrName[document.getElementById('g_syr').value];
+        warn('g_warn', units, cap);
+      }
+
+      // ── BLEND ──  each component shares one vial + BAC water; draw volume → mg of each per shot
+      var BLEND_PRESETS = {
+        '': [{ name: '', mg: '' }, { name: '', mg: '' }, { name: '', mg: '' }],
+        glow: [{ name: 'GHK-Cu', mg: '50' }, { name: 'BPC-157', mg: '10' }, { name: 'TB-500', mg: '10' }],
+        klow: [{ name: 'GHK-Cu', mg: '50' }, { name: 'BPC-157', mg: '10' }, { name: 'TB-500', mg: '10' }, { name: 'KPV', mg: '10' }],
+        wolverine: [{ name: 'BPC-157', mg: '10' }, { name: 'TB-500', mg: '10' }]
+      };
+      var blComps = BLEND_PRESETS[''].map(function (c) { return { name: c.name, mg: c.mg }; });
+      var blMode = 'draw';
+      function renderBlRows() {
+        var box = document.getElementById('bl_rows'); if (!box) return;
+        box.innerHTML = '';
+        blComps.forEach(function (c, i) {
+          var row = document.createElement('div');
+          row.style.cssText = 'display:flex;gap:8px;margin-bottom:8px;align-items:center;';
+          row.innerHTML = '<input type="text" placeholder="Name (e.g. BPC-157)" value="' + (c.name || '').replace(/"/g, '&quot;') + '" data-bi="' + i + '" data-bf="name" style="flex:2;padding:10px;border-radius:8px;border:1px solid #d9cdb3;font-size:14px;">' +
+            '<input type="number" inputmode="decimal" placeholder="mg" value="' + (c.mg || '') + '" data-bi="' + i + '" data-bf="mg" style="flex:1;min-width:0;padding:10px;border-radius:8px;border:1px solid #d9cdb3;font-size:14px;">' +
+            '<button type="button" data-brm="' + i + '" aria-label="Remove" style="background:none;border:none;color:#9a8468;font-size:22px;cursor:pointer;padding:0 4px;line-height:1;">&times;</button>';
+          box.appendChild(row);
+        });
+        box.querySelectorAll('input').forEach(function (el) { el.addEventListener('input', function () { blComps[+el.getAttribute('data-bi')][el.getAttribute('data-bf')] = el.value; refreshBlTargetOpts(); calcBlend(); }); });
+        box.querySelectorAll('[data-brm]').forEach(function (b) { b.addEventListener('click', function () { if (blComps.length > 1) { blComps.splice(+b.getAttribute('data-brm'), 1); renderBlRows(); refreshBlTargetOpts(); calcBlend(); } }); });
+      }
+      function refreshBlTargetOpts() {
+        var sel = document.getElementById('bl_target_idx'); if (!sel) return;
+        var cur = sel.value;
+        sel.innerHTML = blComps.map(function (c, i) { return ((c.name && c.name.trim()) || parseFloat(c.mg) > 0) ? '<option value="' + i + '">' + (c.name || ('Component ' + (i + 1))) + '</option>' : ''; }).join('');
+        if (cur && sel.querySelector('option[value="' + cur + '"]')) sel.value = cur;
+      }
+      function calcBlend() {
+        var bac = parseFloat(document.getElementById('bl_bac').value) || 0, drawMl;
+        if (blMode === 'target') {
+          var ti = parseInt(document.getElementById('bl_target_idx').value, 10) || 0;
+          var tc = blComps[ti] || {};
+          var tConc = bac > 0 ? (parseFloat(tc.mg) || 0) / bac : 0;
+          var tUnit = document.getElementById('bl_target_unit').value;
+          var tMg = (parseFloat(document.getElementById('bl_target_dose').value) || 0) / (tUnit === 'mg' ? 1 : 1000);
+          drawMl = tConc > 0 ? tMg / tConc : 0;
+        } else { drawMl = (parseFloat(document.getElementById('bl_draw').value) || 0) / 100; }
+        var units = drawMl * 100;
+        var dpv = (bac > 0 && drawMl > 0) ? Math.floor(bac / drawMl) : 0;
+        set('bl_units', (isFinite(units) ? units.toFixed(1) : '—') + '<span>units</span>');
+        document.getElementById('bl_sub').textContent = 'draw ' + (isFinite(drawMl) ? drawMl.toFixed(3) : '—') + ' mL · ' + (dpv || '—') + ' doses per vial';
+        var comps = blComps.filter(function (c) { return (c.name && c.name.trim()) || parseFloat(c.mg) > 0; });
+        document.getElementById('bl_components').innerHTML = comps.map(function (c) {
+          var mg = parseFloat(c.mg) || 0, conc = bac > 0 ? mg / bac : 0, perMg = conc * drawMl, perMcg = perMg * 1000;
+          var val = perMg >= 1 ? (perMg.toFixed(2).replace(/\.?0+$/, '') + ' mg') : (Math.round(perMcg) + ' mcg');
+          var alt = perMg >= 1 ? ('(' + Math.round(perMcg) + ' mcg)') : ('(' + perMg.toFixed(3).replace(/\.?0+$/, '') + ' mg)');
+          return '<div style="display:flex;justify-content:space-between;align-items:baseline;padding:10px 12px;background:#faf6ee;border:1px solid #e4d9c2;border-radius:10px;margin-bottom:8px;"><span style="font-weight:600;font-size:14px;">' + (c.name || 'Component') + '</span><span style="font-size:14px;"><b style="color:#8b1c1c;">' + val + '</b> <span style="color:#9a8468;font-size:12px;">' + alt + '</span></span></div>';
+        }).join('') || '<div style="color:#9a8468;font-size:13px;padding:8px 0;">Add components (mg), BAC water, and a draw amount.</div>';
+        warn('bl_warn', units, 100);
+      }
+
+      // ── LEVELS ──  single-compartment accumulation: level = Σ dose·½^(t/half-life)
+      // [id, label, half-life hours, group]. Half-lives are commonly-referenced approximations;
+      // the field stays editable. Picking a compound auto-fills the half-life so users don't need to know it.
+      var HALF_LIVES = [
+        ['', 'Custom (enter half-life)', '', ''],
+        ['test-base', 'Testosterone (base / suspension)', 2, 'Testosterone & esters'],
+        ['test-p', 'Testosterone Propionate', 20, 'Testosterone & esters'],
+        ['test-pp', 'Testosterone Phenylpropionate', 36, 'Testosterone & esters'],
+        ['test-e', 'Testosterone Enanthate', 108, 'Testosterone & esters'],
+        ['test-cyp', 'Testosterone Cypionate', 192, 'Testosterone & esters'],
+        ['test-u', 'Testosterone Undecanoate (inj.)', 504, 'Testosterone & esters'],
+        ['npp', 'Nandrolone Phenylpropionate (NPP)', 65, 'Other anabolic esters'],
+        ['deca', 'Nandrolone Decanoate (Deca)', 144, 'Other anabolic esters'],
+        ['eq', 'Boldenone Undecylenate (EQ)', 336, 'Other anabolic esters'],
+        ['mast-p', 'Masteron Propionate', 48, 'Other anabolic esters'],
+        ['mast-e', 'Masteron Enanthate', 120, 'Other anabolic esters'],
+        ['tren-a', 'Trenbolone Acetate', 24, 'Other anabolic esters'],
+        ['tren-e', 'Trenbolone Enanthate', 120, 'Other anabolic esters'],
+        ['primo-e', 'Primobolan Enanthate', 120, 'Other anabolic esters'],
+        ['sema', 'Semaglutide (Ozempic / Wegovy)', 168, 'GLP-1 & metabolic'],
+        ['tirz', 'Tirzepatide (Mounjaro / Zepbound)', 120, 'GLP-1 & metabolic'],
+        ['reta', 'Retatrutide', 144, 'GLP-1 & metabolic'],
+        ['cagri', 'Cagrilintide', 180, 'GLP-1 & metabolic'],
+        ['liraglutide', 'Liraglutide (Victoza / Saxenda)', 13, 'GLP-1 & metabolic'],
+        ['dulaglutide', 'Dulaglutide (Trulicity)', 120, 'GLP-1 & metabolic'],
+        ['orforglipron', 'Orforglipron (oral)', 36, 'GLP-1 & metabolic'],
+        ['hgh', 'HGH (somatropin)', 2.5, 'Growth hormone & secretagogues'],
+        ['cjc-dac', 'CJC-1295 (with DAC)', 168, 'Growth hormone & secretagogues'],
+        ['cjc-nodac', 'CJC-1295 (no DAC) / Mod GRF', 0.5, 'Growth hormone & secretagogues'],
+        ['sermorelin', 'Sermorelin', 0.2, 'Growth hormone & secretagogues'],
+        ['ipa', 'Ipamorelin', 2, 'Growth hormone & secretagogues'],
+        ['tesa', 'Tesamorelin', 0.5, 'Growth hormone & secretagogues'],
+        ['mk677', 'MK-677 / Ibutamoren (oral)', 24, 'Growth hormone & secretagogues'],
+        ['ghrp2', 'GHRP-2', 0.4, 'Growth hormone & secretagogues'],
+        ['ghrp6', 'GHRP-6', 0.4, 'Growth hormone & secretagogues'],
+        ['hexarelin', 'Hexarelin', 0.5, 'Growth hormone & secretagogues'],
+        ['igf1lr3', 'IGF-1 LR3', 24, 'Growth hormone & secretagogues'],
+        ['igf1des', 'IGF-1 DES', 0.4, 'Growth hormone & secretagogues'],
+        ['bpc', 'BPC-157', 4, 'Healing & recovery'],
+        ['tb500', 'TB-500', 48, 'Healing & recovery'],
+        ['ghkcu', 'GHK-Cu', 0.5, 'Healing & recovery'],
+        ['kpv', 'KPV', 2, 'Healing & recovery'],
+        ['hcg', 'HCG', 33, 'Other'],
+        ['mt1', 'Melanotan I (afamelanotide)', 1, 'Other'],
+        ['mt2', 'Melanotan II', 33, 'Other'],
+        ['pt141', 'PT-141 (Bremelanotide)', 2.7, 'Other']
+      ];
+      // Map free-text / brand compound names from the user's stack → a preset id (most specific first).
+      var HL_ALIASES = [
+        ['ozempic', 'sema'], ['wegovy', 'sema'], ['semaglutide', 'sema'], ['sema', 'sema'],
+        ['mounjaro', 'tirz'], ['zepbound', 'tirz'], ['tirzepatide', 'tirz'], ['tirz', 'tirz'],
+        ['retatrutide', 'reta'], ['reta', 'reta'],
+        ['victoza', 'liraglutide'], ['saxenda', 'liraglutide'], ['liraglutide', 'liraglutide'],
+        ['trulicity', 'dulaglutide'], ['dulaglutide', 'dulaglutide'],
+        ['orforglipron', 'orforglipron'],
+        ['cagrilintide', 'cagri'], ['cagri', 'cagri'],
+        ['testosterone cypionate', 'test-cyp'], ['test cyp', 'test-cyp'], ['cypionate', 'test-cyp'],
+        ['testosterone enanthate', 'test-e'], ['test e', 'test-e'],
+        ['testosterone phenylpropionate', 'test-pp'],
+        ['testosterone propionate', 'test-p'], ['test prop', 'test-p'], ['test p', 'test-p'],
+        ['testosterone undecanoate', 'test-u'], ['nebido', 'test-u'], ['aveed', 'test-u'],
+        ['suspension', 'test-base'], ['testosterone', 'test-cyp'],
+        ['nandrolone decanoate', 'deca'], ['deca durabolin', 'deca'], ['deca', 'deca'],
+        ['nandrolone phenylpropionate', 'npp'], ['npp', 'npp'],
+        ['boldenone', 'eq'], ['equipoise', 'eq'], [' eq ', 'eq'],
+        ['masteron propionate', 'mast-p'], ['drostanolone propionate', 'mast-p'],
+        ['masteron', 'mast-e'], ['drostanolone', 'mast-e'],
+        ['trenbolone acetate', 'tren-a'], ['tren ace', 'tren-a'], ['tren a', 'tren-a'],
+        ['trenbolone enanthate', 'tren-e'], ['tren e', 'tren-e'],
+        ['trenbolone', 'tren-a'], [' tren ', 'tren-a'],
+        ['primobolan', 'primo-e'], ['methenolone', 'primo-e'], ['primo', 'primo-e'],
+        ['somatropin', 'hgh'], ['growth hormone', 'hgh'], [' hgh ', 'hgh'],
+        ['cjc 1295 with dac', 'cjc-dac'], ['cjc 1295 dac', 'cjc-dac'], ['cjc with dac', 'cjc-dac'],
+        ['cjc 1295', 'cjc-nodac'], ['mod grf', 'cjc-nodac'], ['cjc', 'cjc-nodac'],
+        ['sermorelin', 'sermorelin'],
+        ['ipamorelin', 'ipa'], ['ipa', 'ipa'],
+        ['tesamorelin', 'tesa'], ['egrifta', 'tesa'],
+        ['ibutamoren', 'mk677'], ['mk 677', 'mk677'], ['mk677', 'mk677'], ['nutrobal', 'mk677'],
+        ['ghrp 2', 'ghrp2'], ['ghrp2', 'ghrp2'], ['ghrp 6', 'ghrp6'], ['ghrp6', 'ghrp6'],
+        ['hexarelin', 'hexarelin'],
+        ['igf 1 lr3', 'igf1lr3'], ['igf lr3', 'igf1lr3'], ['lr3', 'igf1lr3'],
+        ['igf 1 des', 'igf1des'], ['igf des', 'igf1des'],
+        ['bpc 157', 'bpc'], ['bpc157', 'bpc'], [' bpc ', 'bpc'],
+        ['tb 500', 'tb500'], ['tb500', 'tb500'], ['thymosin beta', 'tb500'],
+        ['ghk cu', 'ghkcu'], ['ghk', 'ghkcu'],
+        [' kpv ', 'kpv'],
+        [' hcg ', 'hcg'], ['chorionic gonadotropin', 'hcg'],
+        ['melanotan ii', 'mt2'], ['melanotan 2', 'mt2'], [' mt2 ', 'mt2'], [' mt ii ', 'mt2'],
+        ['melanotan i', 'mt1'], ['melanotan 1', 'mt1'], [' mt1 ', 'mt1'], ['afamelanotide', 'mt1'],
+        ['bremelanotide', 'pt141'], ['pt 141', 'pt141'], ['pt141', 'pt141']
+      ];
+      function lvLookupHalfLife(name) {
+        if (!name) return null;
+        var n = ' ' + String(name).toLowerCase().replace(/[^a-z0-9]+/g, ' ').replace(/\s+/g, ' ').trim() + ' ';
+        for (var i = 0; i < HL_ALIASES.length; i++) {
+          if (n.indexOf(HL_ALIASES[i][0]) > -1) {
+            var id = HL_ALIASES[i][1], row = HALF_LIVES.filter(function (h) { return h[0] === id; })[0];
+            if (row) return { id: row[0], hours: row[2], label: row[1] };
+          }
+        }
+        return null;
+      }
+      // v1.11 — bigger chart geometry + optional second-compound overlay (mirrors the app).
+      var LV_W = 360, LV_H = 190, LV_PADX = 6, LV_PADT = 10, LV_PADB = 22;
+      var lvPlotW = LV_W - 2 * LV_PADX, lvPlotH = LV_H - LV_PADT - LV_PADB, lvYBase = LV_PADT + lvPlotH;
+      function lvFracToY(f) { return lvYBase - Math.min(1.04, Math.max(0, f)) * lvPlotH; }
+      function lvTimeToX(t, win) { return LV_PADX + (win > 0 ? (t / win) : 0) * lvPlotW; }
+      function lvNaturalWindow(hl, intHrs) { return Math.min(Math.max(5 * hl, 6 * intHrs), 24 * 365); }
+      function lvName(id) { var h = HALF_LIVES.filter(function (x) { return x[0] === id; })[0]; return (h && h[0]) ? h[1] : 'Custom'; }
+      // Single-compartment superposition, normalized to this compound's own steady-state peak.
+      function lvCompute(hl, dose, intHrs, winHrs) {
+        if (!(hl > 0 && dose > 0 && intHrs > 0 && winHrs > 0)) return null;
+        var k = Math.LN2 / hl, doseTimes = [];
+        for (var td = 0; td <= winHrs; td += intHrs) { doseTimes.push(td); if (doseTimes.length > 3000) break; }
+        var eps = Math.min(intHrs * 0.002, 0.25), tset = {}; tset[0] = 1; tset[winHrs] = 1;
+        doseTimes.forEach(function (t) { if (t > eps) tset[t - eps] = 1; tset[t] = 1; tset[Math.min(winHrs, t + intHrs * 0.33)] = 1; tset[Math.min(winHrs, t + intHrs * 0.66)] = 1; });
+        var times = Object.keys(tset).map(parseFloat).filter(function (t) { return t >= 0 && t <= winHrs; }).sort(function (a, b) { return a - b; });
+        var accum = 1 / (1 - Math.exp(-k * intHrs)), ssPeak = dose * accum, ssTrough = ssPeak * Math.exp(-k * intHrs);
+        var denom = (ssPeak > 0 && isFinite(ssPeak)) ? ssPeak : 1, poly = [];
+        times.forEach(function (t) { var lvl = 0; for (var d = 0; d < doseTimes.length; d++) { if (doseTimes[d] <= t) lvl += dose * Math.exp(-k * (t - doseTimes[d])); else break; } poly.push(lvTimeToX(t, winHrs).toFixed(1) + ',' + lvFracToY(lvl / denom).toFixed(1)); });
+        var polyStr = poly.join(' ');
+        var area = 'M' + lvTimeToX(0, winHrs).toFixed(1) + ',' + lvYBase.toFixed(1) + ' L' + polyStr + ' L' + lvTimeToX(winHrs, winHrs).toFixed(1) + ',' + lvYBase.toFixed(1) + ' Z';
+        return { poly: polyStr, area: area, accum: accum, troughFrac: ssPeak > 0 ? ssTrough / ssPeak : 0, t90Days: (3.32 * hl) / 24, peakToTrough: ssTrough > 0 ? ssPeak / ssTrough : 0 };
+      }
+      var lvCompare = false;
+      function calcLevels() {
+        var hl = parseFloat(document.getElementById('lv_hl').value) || 0;
+        var dose = parseFloat(document.getElementById('lv_dose').value) || 0;
+        var intervalDays = parseFloat(document.getElementById('lv_interval').value) || 0;
+        var intHrs = intervalDays * 24, chart = document.getElementById('lv_chart');
+        var legend = document.getElementById('lv_legend'), cmpTable = document.getElementById('lv_cmp_table');
+        if (!(hl > 0 && dose > 0 && intHrs > 0)) { chart.innerHTML = ''; legend.hidden = true; cmpTable.hidden = true; ['lv_accum', 'lv_t90', 'lv_dosesss', 'lv_swing'].forEach(function (id) { set(id, '—'); }); return; }
+        var hl2 = parseFloat(document.getElementById('lv_hl2').value) || 0;
+        var dose2 = parseFloat(document.getElementById('lv_dose2').value) || 0;
+        var int2Hrs = (parseFloat(document.getElementById('lv_interval2').value) || 0) * 24;
+        var cmpReady = lvCompare && hl2 > 0 && dose2 > 0 && int2Hrs > 0;
+        var win = lvNaturalWindow(hl, intHrs);
+        if (cmpReady) win = Math.max(win, lvNaturalWindow(hl2, int2Hrs));
+        var a = lvCompute(hl, dose, intHrs, win);
+        var b = cmpReady ? lvCompute(hl2, dose2, int2Hrs, win) : null;
+        var windowDays = win / 24;
+        var mags = [1, 2, 3, 5, 7, 10, 14, 21, 28, 45, 60, 90, 120, 180, 365];
+        var stepDays = mags.filter(function (m) { return m >= windowDays / 5; })[0] || 365;
+        var y100 = lvFracToY(1), yTrough = lvFracToY(a.troughFrac), t90X = lvTimeToX(Math.min(a.t90Days * 24, win), win);
+        var svg = '<defs><linearGradient id="lvAreaA" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b1c1c" stop-opacity="0.22"/><stop offset="100%" stop-color="#8b1c1c" stop-opacity="0.02"/></linearGradient></defs>';
+        svg += '<rect x="' + LV_PADX + '" y="' + y100 + '" width="' + lvPlotW + '" height="' + Math.max(0, yTrough - y100) + '" fill="#8b1c1c" opacity="0.06"/>';
+        for (var dd = stepDays; dd < windowDays - 0.01; dd += stepDays) { var gx = lvTimeToX(dd * 24, win); svg += '<line x1="' + gx + '" y1="' + LV_PADT + '" x2="' + gx + '" y2="' + lvYBase + '" stroke="#e4d9c2" stroke-dasharray="2 4" opacity="0.7"/><text x="' + gx + '" y="' + (lvYBase + 13) + '" font-size="8" fill="#9a8468" text-anchor="middle">' + dd + '</text>'; }
+        svg += '<line x1="' + LV_PADX + '" y1="' + lvYBase + '" x2="' + (LV_W - LV_PADX) + '" y2="' + lvYBase + '" stroke="#e4d9c2"/>';
+        svg += '<line x1="' + LV_PADX + '" y1="' + y100 + '" x2="' + (LV_W - LV_PADX) + '" y2="' + y100 + '" stroke="#6f1515" stroke-dasharray="4 3" opacity="0.5"/>';
+        svg += '<line x1="' + LV_PADX + '" y1="' + yTrough + '" x2="' + (LV_W - LV_PADX) + '" y2="' + yTrough + '" stroke="#8b1c1c" stroke-dasharray="4 3" opacity="0.35"/>';
+        if (t90X < LV_W - LV_PADX - 2) svg += '<line x1="' + t90X + '" y1="' + LV_PADT + '" x2="' + t90X + '" y2="' + lvYBase + '" stroke="#1d9e75" stroke-width="1.25" stroke-dasharray="3 3" opacity="0.8"/>';
+        svg += '<path d="' + a.area + '" fill="url(#lvAreaA)" stroke="none"/>';
+        svg += '<polyline points="' + a.poly + '" fill="none" stroke="#8b1c1c" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>';
+        if (b) svg += '<polyline points="' + b.poly + '" fill="none" stroke="#0284c7" stroke-width="2" stroke-dasharray="5 3" stroke-linejoin="round" stroke-linecap="round"/>';
+        svg += '<text x="' + (LV_PADX + 3) + '" y="' + (y100 - 3) + '" font-size="8" fill="#9a8468">100% (peak)</text>';
+        svg += '<text x="' + (LV_PADX + 3) + '" y="' + (yTrough + 9) + '" font-size="8" fill="#9a8468">trough ≈ ' + Math.round(a.troughFrac * 100) + '%</text>';
+        if (t90X < LV_W - LV_PADX - 2) svg += '<text x="' + Math.min(t90X + 3, LV_W - 54) + '" y="' + (LV_PADT + 8) + '" font-size="7.5" fill="#1d9e75">~90% here</text>';
+        chart.innerHTML = svg;
+        set('lv_accum', a.accum.toFixed(1) + '×');
+        set('lv_t90', a.t90Days.toFixed(1) + ' <small>days</small>');
+        set('lv_dosesss', Math.ceil(a.t90Days / (intervalDays || 1)));
+        set('lv_swing', a.peakToTrough.toFixed(1) + '×');
+        if (cmpReady) {
+          var nameA = lvName(document.getElementById('lv_preset').value), nameB = lvName(document.getElementById('lv_preset2').value);
+          legend.innerHTML = '<span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:14px;height:3px;border-radius:2px;background:#8b1c1c;display:inline-block;"></span>' + nameA + '</span><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:14px;height:3px;border-radius:2px;background:#0284c7;display:inline-block;"></span>' + nameB + '</span>';
+          legend.hidden = false;
+          var rows = [['To ~90% steady state', a.t90Days.toFixed(1) + ' d', b.t90Days.toFixed(1) + ' d'], ['Peak-to-trough swing', a.peakToTrough.toFixed(1) + '×', b.peakToTrough.toFixed(1) + '×'], ['Accumulation vs 1 dose', a.accum.toFixed(1) + '×', b.accum.toFixed(1) + '×']];
+          var html = '<div style="background:#faf6ee;border:1px solid #e4d9c2;border-radius:12px;overflow:hidden;font-size:12.5px;"><div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;"><div style="padding:8px 12px;font-weight:700;color:#9a8468;font-size:11px;text-transform:uppercase;letter-spacing:0.4px;">Side by side</div><div style="padding:8px 10px;font-weight:700;color:#8b1c1c;text-align:right;">' + nameA + '</div><div style="padding:8px 12px 8px 10px;font-weight:700;color:#0284c7;text-align:right;">' + nameB + '</div>';
+          rows.forEach(function (r) { html += '<div style="padding:7px 12px;border-top:1px solid #e4d9c2;color:#5a4a3a;">' + r[0] + '</div><div style="padding:7px 10px;border-top:1px solid #e4d9c2;text-align:right;font-weight:600;">' + r[1] + '</div><div style="padding:7px 12px 7px 10px;border-top:1px solid #e4d9c2;text-align:right;font-weight:600;">' + r[2] + '</div>'; });
+          html += '</div></div>';
+          cmpTable.innerHTML = html; cmpTable.hidden = false;
+        } else { legend.hidden = true; cmpTable.hidden = true; cmpTable.innerHTML = ''; }
+      }
+
+      // ── SUPPLY & BUDGET PLANNER ──  total doses × your dose → vials/bottles, dates, cost, leftover.
+      // You enter your own dose; this never suggests one. Math mirrors the app's planner exactly.
+      var CY_FREQ = { daily: 7, '5x': 5, eod: 3.5, '3x': 3, '2x': 2, weekly: 1, custom: null };
+      // mg/mcg auto-scale; IU and caps stay put.
+      function cyFmtAmt(amt, unit) {
+        if (unit === 'iu') return (Math.round(amt * 10) / 10) + ' IU';
+        if (unit === 'caps') { var n = Math.round(amt); return n + (n === 1 ? ' cap' : ' caps'); }
+        var mg = unit === 'mcg' ? amt / 1000 : amt;
+        return mg >= 1 ? (Math.round(mg * 10) / 10) + ' mg' : Math.round(mg * 1000) + ' mcg';
+      }
+      function cyFmtDate(ds) { try { return new Date(ds + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); } catch (e) { return ds; } }
+      function calcCycle() {
+        var unit = document.getElementById('cy_unit').value;               // mg | mcg | iu | caps
+        var freqId = document.getElementById('cy_freq').value;
+        var isCaps = unit === 'caps';
+        var container = isCaps ? 'bottle' : 'vial';
+        var vialUnit = isCaps ? 'caps' : (unit === 'iu' ? 'iu' : 'mg');
+        // dynamic labels follow the unit / frequency
+        document.getElementById('cy_doselabel').textContent = isCaps ? 'Caps / tabs per dose' : 'Dose per injection';
+        document.getElementById('cy_viallabel').innerHTML = isCaps ? 'Caps per bottle' : (unit === 'iu' ? 'Vial size <span class="hint">(IU)</span>' : 'Vial size <span class="hint">(mg)</span>');
+        document.getElementById('cy_costlabel').innerHTML = 'Cost per ' + container + ' <span class="hint">(optional)</span>';
+        document.getElementById('cy_perlabel').textContent = 'Doses per ' + container;
+        document.getElementById('cy_freqn_field').hidden = freqId !== 'custom';
+        document.getElementById('cy_freqn_label').textContent = isCaps ? 'Take every N days' : 'Inject every N days';
+
+        var weeks = parseFloat(document.getElementById('cy_weeks').value) || 0;
+        var dose = parseFloat(document.getElementById('cy_dose').value) || 0;
+        var vialSize = parseFloat(document.getElementById('cy_vial').value) || 0;
+        var cost = parseFloat(document.getElementById('cy_cost').value);
+        var start = document.getElementById('cy_start').value;
+        var name = (document.getElementById('cy_name').value || '').trim();
+        var perWeek = CY_FREQ[freqId];
+        if (freqId === 'custom') { var n = parseFloat(document.getElementById('cy_freqn').value) || 0; perWeek = n > 0 ? 7 / n : 0; }
+
+        if (!(weeks > 0 && dose > 0 && perWeek > 0)) {
+          set('cy_vials', '—<span>' + container + 's</span>');
+          ['cy_totaldoses', 'cy_total', 'cy_dates', 'cy_perdoses', 'cy_leftover'].forEach(function (id) { set(id, '—'); });
+          document.getElementById('cy_costline').textContent = 'Enter cycle length, dose, and frequency.'; return;
+        }
+        var doseInVial = unit === 'mcg' ? dose / 1000 : dose;
+        var totalDoses = Math.round(weeks * perWeek), totalAmt = totalDoses * dose, totalInVial = totalDoses * doseInVial;
+        var vials = vialSize > 0 ? Math.ceil(totalInVial / vialSize) : null;
+        var perVial = (vialSize > 0 && doseInVial > 0) ? Math.floor(vialSize / doseInVial) : null;
+        var leftover = vials != null ? Math.max(0, vials * vialSize - totalInVial) : null;
+        var costTotal = (vials != null && isFinite(cost) && cost > 0) ? vials * cost : null;
+        var endStr = null;
+        if (start) { var sd = new Date(start + 'T12:00:00'); if (!isNaN(sd.getTime())) { sd.setDate(sd.getDate() + Math.round(weeks * 7)); endStr = sd.toISOString().slice(0, 10); } }
+
+        set('cy_vials', (vials != null ? vials : '—') + '<span>' + (vials === 1 ? container : container + 's') + '</span>');
+        document.getElementById('cy_costline').textContent = costTotal != null ? ('≈ $' + costTotal.toLocaleString('en-US') + (name ? ' · ' + name : '') + ' for the cycle') : (name ? name + ' · for the full cycle' : 'for the full cycle');
+        set('cy_totaldoses', totalDoses);
+        set('cy_total', cyFmtAmt(totalAmt, unit));
+        set('cy_dates', (start && endStr) ? (cyFmtDate(start) + ' → ' + cyFmtDate(endStr)) : '—');
+        set('cy_perdoses', perVial != null ? perVial : '—');
+        set('cy_leftover', (leftover != null && leftover > 0) ? cyFmtAmt(leftover, vialUnit) : (leftover != null ? '0' : '—'));
+      }
+
+      var calcs = { peptide: calcPeptide, trt: calcTrt, hcg: calcHcg, hgh: calcHgh, blend: calcBlend, levels: calcLevels, cycle: calcCycle };
+
+      // Levels compound dropdown — grouped so picking a compound auto-fills its half-life.
+      function lvOptionsHtml() {
+        var order = [], byGroup = {};
+        HALF_LIVES.forEach(function (h) { var g = h[3] || ''; if (!(g in byGroup)) { byGroup[g] = []; order.push(g); } byGroup[g].push(h); });
+        return order.map(function (g) {
+          var opts = byGroup[g].map(function (h) { return '<option value="' + h[0] + '">' + h[1] + '</option>'; }).join('');
+          return g ? ('<optgroup label="' + g + '">' + opts + '</optgroup>') : opts;
+        }).join('');
+      }
+      (function () {
+        var sel = document.getElementById('lv_preset'); if (!sel) return;
+        sel.innerHTML = lvOptionsHtml();
+        sel.value = 'test-cyp';
+        sel.addEventListener('change', function () { var h = HALF_LIVES.filter(function (x) { return x[0] === sel.value; })[0]; if (h && h[2]) document.getElementById('lv_hl').value = h[2]; calcLevels(); });
+        var sel2 = document.getElementById('lv_preset2');
+        if (sel2) {
+          sel2.innerHTML = lvOptionsHtml();
+          sel2.value = 'test-e';
+          sel2.addEventListener('change', function () { var h = HALF_LIVES.filter(function (x) { return x[0] === sel2.value; })[0]; if (h && h[2]) document.getElementById('lv_hl2').value = h[2]; calcLevels(); });
+        }
+        var tog = document.getElementById('lv_cmp_toggle');
+        if (tog) tog.addEventListener('click', function () { lvCompare = !lvCompare; document.getElementById('lv_cmp_block').hidden = !lvCompare; tog.textContent = lvCompare ? '− Remove comparison' : '+ Compare a second compound'; calcLevels(); });
+      })();
+
+      // Blend setup
+      renderBlRows(); refreshBlTargetOpts();
+      (function () {
+        var ps = document.getElementById('bl_preset');
+        if (ps) ps.addEventListener('change', function () { blComps = (BLEND_PRESETS[ps.value] || BLEND_PRESETS['']).map(function (c) { return { name: c.name, mg: c.mg }; }); renderBlRows(); refreshBlTargetOpts(); calcBlend(); });
+        var add = document.getElementById('bl_add');
+        if (add) add.addEventListener('click', function () { if (blComps.length < 6) { blComps.push({ name: '', mg: '' }); renderBlRows(); refreshBlTargetOpts(); } });
+        document.querySelectorAll('.bl-toggle').forEach(function (b) {
+          b.addEventListener('click', function () {
+            blMode = b.getAttribute('data-blmode');
+            document.querySelectorAll('.bl-toggle').forEach(function (t) { var on = t === b; t.style.background = on ? '#8b1c1c' : 'transparent'; t.style.color = on ? '#fff' : '#7a5a3a'; });
+            document.getElementById('bl_draw_field').hidden = blMode !== 'draw';
+            document.getElementById('bl_target_fields').hidden = blMode !== 'target';
+            calcBlend();
+          });
+        });
+      })();
+
+      // Wire inputs → recalc their panel live
+      document.querySelectorAll('.calc-body').forEach(function (panel) {
+        var mode = panel.getAttribute('data-panel');
+        panel.querySelectorAll('input, select').forEach(function (el) {
+          el.addEventListener('input', calcs[mode]);
+          el.addEventListener('change', calcs[mode]);
+        });
+      });
+
+      // Tab switching
+      document.querySelectorAll('.mode-tab').forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var mode = tab.getAttribute('data-mode');
+          document.querySelectorAll('.mode-tab').forEach(function (t) { t.classList.toggle('active', t === tab); });
+          document.querySelectorAll('.calc-body').forEach(function (p) { p.hidden = p.getAttribute('data-panel') !== mode; });
+          calcs[mode]();
+        });
+      });
+
+      // Initial render
+      (function () { var d = new Date(), p = function (n) { return (n < 10 ? '0' : '') + n; }; var el = document.getElementById('cy_start'); if (el && !el.value) el.value = d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()); })();
+      calcLevels();
+    })();
+  </script>
+
+  <!-- Account tie-in: when opened from the StackMindr app, auto-sign-in from the ?t= custom token,
+       prefill from the user's stack, and save results back to their inventory. -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script>
+    (function () {
+      if (typeof firebase === 'undefined') return;
+      var cfg = {
+        apiKey: "AIzaSyD_1ec1nCTnoge97CUHf6qNW4u7ytAFxQg",
+        authDomain: "stackmindr.firebaseapp.com",
+        projectId: "stackmindr",
+        storageBucket: "stackmindr.firebasestorage.app",
+        messagingSenderId: "339390855259",
+        appId: "1:339390855259:web:d4c76814d6068d6a2e677e"
+      };
+      try { firebase.initializeApp(cfg); } catch (e) {}
+      var auth = firebase.auth(), db = firebase.firestore();
+      var bar = document.getElementById('acctBar'),
+          statusEl = document.getElementById('acctStatus'),
+          prefillEl = document.getElementById('acctPrefill'),
+          saveBtn = document.getElementById('acctSave');
+      var currentUser = null, inv = [];
+
+      // Token minted by the app and passed on the URL.
+      var tok = new URLSearchParams(location.search).get('t');
+      if (tok) {
+        bar.style.display = 'flex';
+        auth.signInWithCustomToken(tok).catch(function () {
+          statusEl.textContent = 'Could not sign in automatically — using the calculator in guest mode.';
+        });
+        // Don't leave the token sitting in the address bar / history.
+        try { history.replaceState(null, '', location.pathname); } catch (e) {}
+      }
+
+      auth.onAuthStateChanged(function (u) {
+        currentUser = u;
+        if (!u) return;
+        bar.style.display = 'flex';
+        statusEl.textContent = 'Signed in as ' + (u.email || 'your account') + ' ✓';
+        loadInventory(u.uid);
+      });
+
+      // Load the user's saved protocols (name + dose + frequency) so we can model their actual stack.
+      function loadInventory(uid) {
+        db.collection('users').doc(uid).collection('schedules').get().then(function (snap) {
+          inv = [];
+          snap.forEach(function (d) { var x = d.data(); x._id = d.id; inv.push(x); });
+          inv.sort(function (a, b) { return (a.name || '').localeCompare(b.name || ''); });
+          if (inv.length) {
+            prefillEl.style.display = 'inline-block';
+            prefillEl.innerHTML = '<option value="">Prefill from my stack…</option>' +
+              inv.map(function (it, i) { return '<option value="' + i + '">' + (it.name || 'Compound') + '</option>'; }).join('');
+          }
+        }).catch(function () {});
+      }
+
+      function fire(id) { var e = document.getElementById(id); if (e) e.dispatchEvent(new Event('input', { bubbles: true })); }
+
+      // Best-effort conversion of a saved schedule's frequency into a dosing interval in days.
+      function lvScheduleInterval(s) {
+        if (s.intervalDays) { var n = parseFloat(s.intervalDays); if (n > 0) return n; }
+        if (Array.isArray(s.days) && s.days.length) return 7 / s.days.length;
+        var f = (s.frequency || '').toLowerCase(), m;
+        if (f.indexOf('every other day') > -1 || f === 'eod') return 2;
+        if ((m = f.match(/(\d+)\s*x?\s*(?:per|a|\/)?\s*week/))) { var w = parseFloat(m[1]); return w > 0 ? 7 / w : 7; }
+        if (f.indexOf('week') > -1) return 7;
+        if ((m = f.match(/(\d+)\s*x?\s*(?:per|a|\/)?\s*da(?:y|i)/))) { var d = parseFloat(m[1]); return d > 0 ? 1 / d : 1; }
+        if (f.indexOf('dai') > -1 || f.indexOf('day') > -1) return 1;
+        return null;
+      }
+
+      // Prefill the levels inputs from a chosen protocol: dose, interval, and the looked-up half-life.
+      if (prefillEl) prefillEl.addEventListener('change', function () {
+        var s = inv[parseInt(prefillEl.value, 10)];
+        var note = document.getElementById('lv_prefill_note');
+        if (!s) { if (note) { note.innerHTML = ''; note.style.display = 'none'; } return; }
+        var dose = parseFloat(s.dose);
+        if (isFinite(dose) && dose > 0) { var de = document.getElementById('lv_dose'); if (de) de.value = dose; }
+        var intv = lvScheduleInterval(s);
+        if (intv) { var ie = document.getElementById('lv_interval'); if (ie) ie.value = Math.round(intv * 100) / 100; }
+        var hit = lvLookupHalfLife(s.name);
+        var sel = document.getElementById('lv_preset');
+        if (hit) {
+          var he = document.getElementById('lv_hl'); if (he) he.value = hit.hours;
+          if (sel) sel.value = hit.id;
+          if (note) { note.innerHTML = 'Loaded <b>' + (s.name || 'your compound') + '</b> — half-life ' + hit.hours + ' h (editable).'; note.style.display = 'block'; }
+        } else {
+          if (sel) sel.value = '';
+          if (note) { note.innerHTML = 'Loaded your dose &amp; schedule for <b>' + (s.name || 'this compound') + '</b> — we don\'t have its half-life on file, so pick the closest compound above or type it in.'; note.style.display = 'block'; }
+        }
+        fire('lv_hl');
+      });
+    })();
+  </script>
+
+  <script>
+  (function(){var n=document.querySelector("nav");if(!n)return;var t=n.querySelector(".nav-toggle");if(!t)return;t.addEventListener("click",function(){var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});Array.prototype.forEach.call(n.querySelectorAll(".nav-links a"),function(a){a.addEventListener("click",function(){n.classList.remove("open");t.setAttribute("aria-expanded","false");});});})();
+  </script>
+</body>
+</html>
